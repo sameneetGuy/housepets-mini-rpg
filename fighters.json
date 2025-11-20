@@ -1,0 +1,7044 @@
+{
+	"bailey": {
+		"id": "bailey",
+		"name": "Bailey",
+		"role": "Tank",
+		"roleClass": "frontliner",
+		"position": "front",
+		"maxHP": 40,
+		"attackBonus": 3,
+		"magicBonus": 1,
+		"defenseBonus": 4,
+		"speed": 2,
+		"luck": 3,
+		"resistances": [
+			"physical"
+		],
+		"vulnerabilities": [
+			"radiant"
+		],
+		"abilities": [
+			{
+				"id": "bailey_shield_bash",
+				"name": "Shield Bash",
+				"type": "physical",
+				"category": "light",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "front-preferred",
+				"aiWeight": 1,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"1d6+2",
+					"1d8+2",
+					"2d4+2"
+				],
+				"description": "A bash that deals light damage and asserts dominance."
+			},
+			{
+				"id": "bailey_guardian_stance",
+				"name": "Guardian Stance",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "self",
+				"aiWeight": 0.9,
+				"cooldown": 2,
+				"charges": 2,
+				"effect": {
+					"defenseBonus": 2
+				},
+				"duration": 3,
+				"description": "Bailey focuses on protecting the team, boosting her defenses."
+			},
+			{
+				"id": "bailey_body_block",
+				"name": "Body Block",
+				"type": "utility",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "ally",
+				"aiWeight": 1.2,
+				"effect": {
+					"redirectChance": 0.5
+				},
+				"duration": 2,
+				"description": "Bailey takes the brunt of attacks aimed at an ally."
+			},
+			{
+				"id": "bailey_crushing_counter",
+				"name": "Crushing Counter",
+				"type": "physical",
+				"category": "heavy",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "front-preferred",
+				"aiWeight": 1.8,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"2d8+2",
+					"2d10+2",
+					"3d8+3"
+				],
+				"description": "A devastating counterstrike delivered after holding the line."
+			}
+		],
+		"loadoutSize": 4,
+		"abilityPool": [
+			{
+				"id": "bailey_shield_bash",
+				"name": "Shield Bash",
+				"type": "physical",
+				"category": "light",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "front-preferred",
+				"aiWeight": 1,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"1d6+2",
+					"1d8+2",
+					"2d4+2"
+				],
+				"description": "A bash that deals light damage and asserts dominance."
+			},
+			{
+				"id": "bailey_guardian_stance",
+				"name": "Guardian Stance",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "self",
+				"aiWeight": 0.9,
+				"cooldown": 2,
+				"charges": 2,
+				"effect": {
+					"defenseBonus": 2
+				},
+				"duration": 3,
+				"description": "Bailey focuses on protecting the team, boosting her defenses."
+			},
+			{
+				"id": "bailey_body_block",
+				"name": "Body Block",
+				"type": "utility",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "ally",
+				"aiWeight": 1.2,
+				"effect": {
+					"redirectChance": 0.5
+				},
+				"duration": 2,
+				"description": "Bailey takes the brunt of attacks aimed at an ally."
+			},
+			{
+				"id": "bailey_crushing_counter",
+				"name": "Crushing Counter",
+				"type": "physical",
+				"category": "heavy",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "front-preferred",
+				"aiWeight": 1.8,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"2d8+2",
+					"2d10+2",
+					"3d8+3"
+				],
+				"description": "A devastating counterstrike delivered after holding the line."
+			},
+			{
+				"id": "bailey_line_breaker",
+				"name": "Line Breaker",
+				"type": "physical",
+				"category": "heavy",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "front-preferred",
+				"aiWeight": 1.25,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"2d6+1",
+					"2d8+1",
+					"2d10+2"
+				],
+				"extraEffect": {
+					"enemy": {
+						"defenseBonus": -1,
+						"duration": 2
+					}
+				},
+				"description": "A driving charge meant to crack the enemy front line."
+			},
+			{
+				"id": "bailey_bulwark_shout",
+				"name": "Bulwark Shout",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "team",
+				"targeting": "team",
+				"aiWeight": 1.05,
+				"cooldown": 3,
+				"effect": {
+					"defenseBonus": 1,
+					"redirectChance": 0.15
+				},
+				"duration": 2,
+				"description": "Rallies allies to tighten their guard and share protection."
+			}
+		],
+		"activeAbilities": [
+			"bailey_shield_bash",
+			"bailey_guardian_stance",
+			"bailey_body_block",
+			"bailey_crushing_counter"
+		],
+		"coreAbilities": [
+			"bailey_shield_bash",
+			"bailey_guardian_stance"
+		]
+	},
+	"bino": {
+		"id": "bino",
+		"name": "Bino",
+		"role": "Trickster",
+		"roleClass": "trickster",
+		"position": "mid",
+		"maxHP": 32,
+		"attackBonus": 2,
+		"magicBonus": 1,
+		"defenseBonus": 3,
+		"speed": 4,
+		"luck": 5,
+		"abilities": [
+			{
+				"id": "bino_taunting_bark",
+				"name": "Taunting Bark",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "any-enemy",
+				"aiWeight": 1,
+				"concentration": true,
+				"cooldown": 2,
+				"effect": {
+					"luck": -2,
+					"defenseBonus": -1
+				},
+				"duration": 3,
+				"saveStat": "luck",
+				"saveDifficulty": 13,
+				"grantsDisadvantage": true,
+				"description": "Bino's obnoxious barking rattles the enemy’s nerves."
+			},
+			{
+				"id": "bino_dirty_trick",
+				"name": "Dirty Trick",
+				"type": "physical",
+				"category": "light",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "any-enemy",
+				"aiWeight": 1,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"1d4+1",
+					"1d6+1",
+					"1d8+1"
+				],
+				"positionShift": 1,
+				"extraEffect": {
+					"attackBonus": -1,
+					"duration": 1
+				},
+				"grantsDisadvantage": true,
+				"description": "A cheap shot while the ref isn't looking."
+			},
+			{
+				"id": "bino_ego_boost",
+				"name": "Ego Boost",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "self",
+				"aiWeight": 0.9,
+				"effect": {
+					"luck": 2,
+					"speed": 1
+				},
+				"duration": 2,
+				"description": "Bino hypes himself up, convinced he's the best fighter in the league."
+			},
+			{
+				"id": "bino_come_at_me",
+				"name": "Come At Me, Loser!",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "self",
+				"aiWeight": 0.7,
+				"reaction": {
+					"trigger": "onMissed",
+					"action": "counter",
+					"damage": "1d4+1"
+				},
+				"reactionDuration": 99,
+				"description": "If the next attack against Bino misses, he immediately counterattacks."
+			}
+		],
+		"loadoutSize": 4,
+		"abilityPool": [
+			{
+				"id": "bino_taunting_bark",
+				"name": "Taunting Bark",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "any-enemy",
+				"aiWeight": 1,
+				"concentration": true,
+				"cooldown": 2,
+				"effect": {
+					"luck": -2,
+					"defenseBonus": -1
+				},
+				"duration": 3,
+				"saveStat": "luck",
+				"saveDifficulty": 13,
+				"grantsDisadvantage": true,
+				"description": "Bino's obnoxious barking rattles the enemy’s nerves."
+			},
+			{
+				"id": "bino_dirty_trick",
+				"name": "Dirty Trick",
+				"type": "physical",
+				"category": "light",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "any-enemy",
+				"aiWeight": 1,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"1d4+1",
+					"1d6+1",
+					"1d8+1"
+				],
+				"positionShift": 1,
+				"extraEffect": {
+					"attackBonus": -1,
+					"duration": 1
+				},
+				"grantsDisadvantage": true,
+				"description": "A cheap shot while the ref isn't looking."
+			},
+			{
+				"id": "bino_ego_boost",
+				"name": "Ego Boost",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "self",
+				"aiWeight": 0.9,
+				"effect": {
+					"luck": 2,
+					"speed": 1
+				},
+				"duration": 2,
+				"description": "Bino hypes himself up, convinced he's the best fighter in the league."
+			},
+			{
+				"id": "bino_come_at_me",
+				"name": "Come At Me, Loser!",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "self",
+				"aiWeight": 0.7,
+				"reaction": {
+					"trigger": "onMissed",
+					"action": "counter",
+					"damage": "1d4+1"
+				},
+				"reactionDuration": 99,
+				"description": "If the next attack against Bino misses, he immediately counterattacks."
+			},
+			{
+				"id": "bino_shadowstep",
+				"name": "Shadowstep",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "self",
+				"aiWeight": 1,
+				"grantsAdvantage": true,
+				"effect": {
+					"speed": 1
+				},
+				"duration": 2,
+				"description": "A quick feint that boosts speed and lines up a precise strike."
+			},
+			{
+				"id": "bino_flash_powder",
+				"name": "Flash Powder",
+				"type": "support",
+				"category": "light",
+				"rank": 1,
+				"aoe": "enemy-team",
+				"targeting": "any-enemy",
+				"aiWeight": 1.15,
+				"grantsDisadvantage": true,
+				"effect": {
+					"luck": -1
+				},
+				"duration": 2,
+				"description": "A blinding burst that rattles foes and throws off their aim."
+			}
+		],
+		"activeAbilities": [
+			"bino_taunting_bark",
+			"bino_dirty_trick",
+			"bino_ego_boost",
+			"bino_come_at_me"
+		],
+		"coreAbilities": [
+			"bino_taunting_bark",
+			"bino_dirty_trick"
+		]
+	},
+	"breel": {
+		"id": "breel",
+		"name": "Breel",
+		"role": "Mage/Support",
+		"roleClass": "support",
+		"position": "back",
+		"maxHP": 36,
+		"attackBonus": 1,
+		"magicBonus": 4,
+		"defenseBonus": 3,
+		"speed": 3,
+		"luck": 3,
+		"abilities": [
+			{
+				"id": "breel_radiant_blast",
+				"name": "Radiant Blast",
+				"type": "magic",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "any-enemy",
+				"aiWeight": 1.3,
+				"hitStat": "magicBonus",
+				"damageByRank": [
+					"1d8+2",
+					"2d6+2",
+					"2d8+2"
+				],
+				"description": "A burst of radiant energy that scorches the foe."
+			},
+			{
+				"id": "breel_gentle_light",
+				"name": "Gentle Light",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "ally",
+				"aiWeight": 1.5,
+				"cooldown": 2,
+				"healByRank": [
+					"1d6+3",
+					"1d8+4",
+					"2d6+3"
+				],
+				"description": "A calm, soothing glow that heals wounds."
+			},
+			{
+				"id": "breel_protective_aura",
+				"name": "Protective Aura",
+				"type": "support",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "team",
+				"targeting": "team",
+				"aiWeight": 1.2,
+				"concentration": true,
+				"cooldown": 2,
+				"effect": {
+					"defenseBonus": 2
+				},
+				"duration": 1,
+				"description": "A soft aura strengthens the team's defenses."
+			},
+			{
+				"id": "breel_soul_flare",
+				"name": "Soul Flare",
+				"type": "magic",
+				"category": "heavy",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "any-enemy",
+				"aiWeight": 1.7,
+				"hitStat": "magicBonus",
+				"damageByRank": [
+					"2d8+1",
+					"2d10+1",
+					"3d8+2"
+				],
+				"description": "Breel focuses deep spiritual power into a devastating flare."
+			}
+		],
+		"loadoutSize": 4,
+		"abilityPool": [
+			{
+				"id": "breel_radiant_blast",
+				"name": "Radiant Blast",
+				"type": "magic",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "any-enemy",
+				"aiWeight": 1.3,
+				"hitStat": "magicBonus",
+				"damageByRank": [
+					"1d8+2",
+					"2d6+2",
+					"2d8+2"
+				],
+				"description": "A burst of radiant energy that scorches the foe."
+			},
+			{
+				"id": "breel_gentle_light",
+				"name": "Gentle Light",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "ally",
+				"aiWeight": 1.5,
+				"cooldown": 2,
+				"healByRank": [
+					"1d6+3",
+					"1d8+4",
+					"2d6+3"
+				],
+				"description": "A calm, soothing glow that heals wounds."
+			},
+			{
+				"id": "breel_protective_aura",
+				"name": "Protective Aura",
+				"type": "support",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "team",
+				"targeting": "team",
+				"aiWeight": 1.2,
+				"concentration": true,
+				"cooldown": 2,
+				"effect": {
+					"defenseBonus": 2
+				},
+				"duration": 1,
+				"description": "A soft aura strengthens the team's defenses."
+			},
+			{
+				"id": "breel_soul_flare",
+				"name": "Soul Flare",
+				"type": "magic",
+				"category": "heavy",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "any-enemy",
+				"aiWeight": 1.7,
+				"hitStat": "magicBonus",
+				"damageByRank": [
+					"2d8+1",
+					"2d10+1",
+					"3d8+2"
+				],
+				"description": "Breel focuses deep spiritual power into a devastating flare."
+			},
+			{
+				"id": "breel_team_mend",
+				"name": "Team Mend",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "team",
+				"targeting": "team",
+				"aiWeight": 1.1,
+				"healByRank": [
+					"1d6+1",
+					"1d6+3",
+					"2d4+3"
+				],
+				"description": "A calming pulse of healing that patches up the whole squad."
+			},
+			{
+				"id": "breel_protective_ward",
+				"name": "Protective Ward",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "team",
+				"targeting": "team",
+				"aiWeight": 0.95,
+				"effect": {
+					"defenseBonus": 1,
+					"luck": 1
+				},
+				"duration": 2,
+				"cooldown": 3,
+				"description": "Sets a quick ward that steadies allies and hardens defenses."
+			}
+		],
+		"activeAbilities": [
+			"breel_radiant_blast",
+			"breel_gentle_light",
+			"breel_protective_aura",
+			"breel_soul_flare"
+		],
+		"coreAbilities": [
+			"breel_radiant_blast",
+			"breel_gentle_light"
+		]
+	},
+	"fido": {
+		"id": "fido",
+		"name": "Fido",
+		"role": "Bruiser",
+		"roleClass": "frontliner",
+		"position": "front",
+		"maxHP": 36,
+		"attackBonus": 4,
+		"magicBonus": 1,
+		"defenseBonus": 3,
+		"speed": 3,
+		"luck": 3,
+		"abilities": [
+			{
+				"id": "fido_commanding_blow",
+				"name": "Commanding Blow",
+				"type": "physical",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "front-preferred",
+				"aiWeight": 1.3,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"1d8+3",
+					"2d6+2",
+					"2d8+2"
+				],
+				"description": "A disciplined strike that shows K9 training."
+			},
+			{
+				"id": "fido_k9_drill",
+				"name": "K9 Drill",
+				"type": "physical",
+				"category": "light",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "front-preferred",
+				"aiWeight": 1,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"1d6+2",
+					"1d8+2",
+					"2d4+2"
+				],
+				"description": "A practiced combination attack."
+			},
+			{
+				"id": "fido_rally_the_troops",
+				"name": "Rally the Troops",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "team",
+				"targeting": "team",
+				"aiWeight": 1.2,
+				"concentration": true,
+				"cooldown": 2,
+				"effect": {
+					"defenseBonus": 1,
+					"attackBonus": 1
+				},
+				"duration": 2,
+				"description": "Fido's leadership inspires the whole team."
+			},
+			{
+				"id": "fido_justice_strike",
+				"name": "Justice Strike",
+				"type": "physical",
+				"category": "heavy",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "front-preferred",
+				"aiWeight": 1.5,
+				"cooldown": 1,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"2d8+2",
+					"2d10+2",
+					"3d8+3"
+				],
+				"description": "A punishing blow delivered in the name of justice."
+			}
+		],
+		"loadoutSize": 4,
+		"abilityPool": [
+			{
+				"id": "fido_commanding_blow",
+				"name": "Commanding Blow",
+				"type": "physical",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "front-preferred",
+				"aiWeight": 1.3,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"1d8+3",
+					"2d6+2",
+					"2d8+2"
+				],
+				"description": "A disciplined strike that shows K9 training."
+			},
+			{
+				"id": "fido_k9_drill",
+				"name": "K9 Drill",
+				"type": "physical",
+				"category": "light",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "front-preferred",
+				"aiWeight": 1,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"1d6+2",
+					"1d8+2",
+					"2d4+2"
+				],
+				"description": "A practiced combination attack."
+			},
+			{
+				"id": "fido_rally_the_troops",
+				"name": "Rally the Troops",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "team",
+				"targeting": "team",
+				"aiWeight": 1.2,
+				"concentration": true,
+				"cooldown": 2,
+				"effect": {
+					"defenseBonus": 1,
+					"attackBonus": 1
+				},
+				"duration": 2,
+				"description": "Fido's leadership inspires the whole team."
+			},
+			{
+				"id": "fido_justice_strike",
+				"name": "Justice Strike",
+				"type": "physical",
+				"category": "heavy",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "front-preferred",
+				"aiWeight": 1.5,
+				"cooldown": 1,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"2d8+2",
+					"2d10+2",
+					"3d8+3"
+				],
+				"description": "A punishing blow delivered in the name of justice."
+			},
+			{
+				"id": "fido_line_breaker",
+				"name": "Line Breaker",
+				"type": "physical",
+				"category": "heavy",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "front-preferred",
+				"aiWeight": 1.25,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"2d6+1",
+					"2d8+1",
+					"2d10+2"
+				],
+				"extraEffect": {
+					"enemy": {
+						"defenseBonus": -1,
+						"duration": 2
+					}
+				},
+				"description": "A driving charge meant to crack the enemy front line."
+			},
+			{
+				"id": "fido_bulwark_shout",
+				"name": "Bulwark Shout",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "team",
+				"targeting": "team",
+				"aiWeight": 1.05,
+				"cooldown": 3,
+				"effect": {
+					"defenseBonus": 1,
+					"redirectChance": 0.15
+				},
+				"duration": 2,
+				"description": "Rallies allies to tighten their guard and share protection."
+			}
+		],
+		"activeAbilities": [
+			"fido_commanding_blow",
+			"fido_k9_drill",
+			"fido_rally_the_troops",
+			"fido_justice_strike"
+		],
+		"coreAbilities": [
+			"fido_commanding_blow",
+			"fido_k9_drill"
+		]
+	},
+	"fox": {
+		"id": "fox",
+		"name": "Fox",
+		"role": "DPS",
+		"roleClass": "dps",
+		"position": "mid",
+		"maxHP": 32,
+		"attackBonus": 4,
+		"magicBonus": 1,
+		"defenseBonus": 2,
+		"speed": 4,
+		"luck": 4,
+		"abilities": [
+			{
+				"id": "fox_quick_slash",
+				"name": "Quick Slash",
+				"type": "physical",
+				"category": "light",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "front-preferred",
+				"aiWeight": 1,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"1d6+2",
+					"1d8+2",
+					"2d4+2"
+				],
+				"description": "A fast slash that keeps Fox constantly on the offensive."
+			},
+			{
+				"id": "fox_flanking_strike",
+				"name": "Flanking Strike",
+				"type": "physical",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "any-enemy",
+				"aiWeight": 1.2,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"1d8+3",
+					"2d6+2",
+					"2d8+2"
+				],
+				"description": "A precise attack from the side or rear of the enemy."
+			},
+			{
+				"id": "fox_dash_in",
+				"name": "Dash In",
+				"type": "utility",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "self",
+				"aiWeight": 0.8,
+				"effect": {
+					"speed": 2
+				},
+				"duration": 3,
+				"description": "Fox rushes into an advantageous position, boosting his speed."
+			},
+			{
+				"id": "fox_finishing_blow",
+				"name": "Finishing Blow",
+				"type": "physical",
+				"category": "heavy",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "any-enemy",
+				"aiWeight": 1.7,
+				"cooldown": 1,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"2d8+2",
+					"2d10+2",
+					"3d8+3"
+				],
+				"description": "A powerful strike aimed to end the fight."
+			}
+		],
+		"loadoutSize": 4,
+		"abilityPool": [
+			{
+				"id": "fox_quick_slash",
+				"name": "Quick Slash",
+				"type": "physical",
+				"category": "light",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "front-preferred",
+				"aiWeight": 1,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"1d6+2",
+					"1d8+2",
+					"2d4+2"
+				],
+				"description": "A fast slash that keeps Fox constantly on the offensive."
+			},
+			{
+				"id": "fox_flanking_strike",
+				"name": "Flanking Strike",
+				"type": "physical",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "any-enemy",
+				"aiWeight": 1.2,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"1d8+3",
+					"2d6+2",
+					"2d8+2"
+				],
+				"description": "A precise attack from the side or rear of the enemy."
+			},
+			{
+				"id": "fox_dash_in",
+				"name": "Dash In",
+				"type": "utility",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "self",
+				"aiWeight": 0.8,
+				"effect": {
+					"speed": 2
+				},
+				"duration": 3,
+				"description": "Fox rushes into an advantageous position, boosting his speed."
+			},
+			{
+				"id": "fox_finishing_blow",
+				"name": "Finishing Blow",
+				"type": "physical",
+				"category": "heavy",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "any-enemy",
+				"aiWeight": 1.7,
+				"cooldown": 1,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"2d8+2",
+					"2d10+2",
+					"3d8+3"
+				],
+				"description": "A powerful strike aimed to end the fight."
+			},
+			{
+				"id": "fox_relentless_assault",
+				"name": "Relentless Assault",
+				"type": "physical",
+				"category": "heavy",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "any-enemy",
+				"aiWeight": 1.3,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"2d6+2",
+					"2d8+2",
+					"2d10+3"
+				],
+				"description": "A focused barrage meant to finish off priority targets."
+			},
+			{
+				"id": "fox_whirlwind_cleave",
+				"name": "Whirlwind Cleave",
+				"type": "physical",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "random-2-enemies",
+				"targeting": "any-enemy",
+				"aiWeight": 1.1,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"1d8+1",
+					"1d10+1",
+					"2d6+1"
+				],
+				"description": "Sweeping strikes that threaten multiple foes at once."
+			}
+		],
+		"activeAbilities": [
+			"fox_quick_slash",
+			"fox_flanking_strike",
+			"fox_dash_in",
+			"fox_finishing_blow"
+		],
+		"coreAbilities": [
+			"fox_quick_slash",
+			"fox_flanking_strike"
+		]
+	},
+	"grape": {
+		"id": "grape",
+		"name": "Grape",
+		"role": "Agile DPS",
+		"roleClass": "dps",
+		"position": "mid",
+		"maxHP": 32,
+		"attackBonus": 3,
+		"magicBonus": 3,
+		"defenseBonus": 3,
+		"speed": 3,
+		"luck": 3,
+		"abilities": [
+			{
+				"id": "grape_pounce",
+				"name": "Pounce",
+				"type": "physical",
+				"category": "light",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "front-preferred",
+				"aiWeight": 1,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"1d6+2",
+					"1d8+2",
+					"2d4+2"
+				],
+				"description": "Grape springs onto the target with feline grace."
+			},
+			{
+				"id": "grape_flurry_swipes",
+				"name": "Flurry of Swipes",
+				"type": "physical",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "any-enemy",
+				"aiWeight": 1.3,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"1d8+2",
+					"2d6+2",
+					"2d8+2"
+				],
+				"description": "A rapid series of claw strikes."
+			},
+			{
+				"id": "grape_pridelands_pose",
+				"name": "Pridelands Pose",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "self",
+				"aiWeight": 1,
+				"effect": {
+					"attackBonus": 1,
+					"speed": 1
+				},
+				"duration": 1,
+				"cooldown": 2,
+				"description": "Grape channels her inner warrior, improving her combat focus."
+			},
+			{
+				"id": "grape_predator_rush",
+				"name": "Predator's Rush",
+				"type": "physical",
+				"category": "heavy",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "front-preferred",
+				"aiWeight": 1.35,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"2d6+1",
+					"2d8+1",
+					"3d6+2"
+				],
+				"description": "A full-speed charge that slams into the opponent."
+			}
+		],
+		"loadoutSize": 4,
+		"abilityPool": [
+			{
+				"id": "grape_pounce",
+				"name": "Pounce",
+				"type": "physical",
+				"category": "light",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "front-preferred",
+				"aiWeight": 1,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"1d6+2",
+					"1d8+2",
+					"2d4+2"
+				],
+				"description": "Grape springs onto the target with feline grace."
+			},
+			{
+				"id": "grape_flurry_swipes",
+				"name": "Flurry of Swipes",
+				"type": "physical",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "any-enemy",
+				"aiWeight": 1.3,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"1d8+2",
+					"2d6+2",
+					"2d8+2"
+				],
+				"description": "A rapid series of claw strikes."
+			},
+			{
+				"id": "grape_pridelands_pose",
+				"name": "Pridelands Pose",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "self",
+				"aiWeight": 1,
+				"effect": {
+					"attackBonus": 1,
+					"speed": 1
+				},
+				"duration": 1,
+				"cooldown": 2,
+				"description": "Grape channels her inner warrior, improving her combat focus."
+			},
+			{
+				"id": "grape_predator_rush",
+				"name": "Predator's Rush",
+				"type": "physical",
+				"category": "heavy",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "front-preferred",
+				"aiWeight": 1.35,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"2d6+1",
+					"2d8+1",
+					"3d6+2"
+				],
+				"description": "A full-speed charge that slams into the opponent."
+			},
+			{
+				"id": "grape_relentless_assault",
+				"name": "Relentless Assault",
+				"type": "physical",
+				"category": "heavy",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "any-enemy",
+				"aiWeight": 1.3,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"2d6+2",
+					"2d8+2",
+					"2d10+3"
+				],
+				"description": "A focused barrage meant to finish off priority targets."
+			},
+			{
+				"id": "grape_whirlwind_cleave",
+				"name": "Whirlwind Cleave",
+				"type": "physical",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "random-2-enemies",
+				"targeting": "any-enemy",
+				"aiWeight": 1.1,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"1d8+1",
+					"1d10+1",
+					"2d6+1"
+				],
+				"description": "Sweeping strikes that threaten multiple foes at once."
+			}
+		],
+		"activeAbilities": [
+			"grape_pounce",
+			"grape_flurry_swipes",
+			"grape_pridelands_pose",
+			"grape_predator_rush"
+		],
+		"coreAbilities": [
+			"grape_pounce",
+			"grape_flurry_swipes"
+		]
+	},
+	"joey": {
+		"id": "joey",
+		"name": "Joey",
+		"role": "Mage",
+		"roleClass": "mage",
+		"position": "back",
+		"maxHP": 32,
+		"attackBonus": 1,
+		"magicBonus": 5,
+		"defenseBonus": 3,
+		"speed": 2,
+		"luck": 4,
+		"resistances": [
+			"magic"
+		],
+		"vulnerabilities": [
+			"physical"
+		],
+		"abilities": [
+			{
+				"id": "joey_magic_trick",
+				"name": "Magic Trick",
+				"type": "magic",
+				"category": "light",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "any-enemy",
+				"aiWeight": 1,
+				"hitStat": "magicBonus",
+				"damageByRank": [
+					"1d8",
+					"2d4+1",
+					"2d6+1"
+				],
+				"description": "A flashy bolt of magic that Joey fires off with a grin."
+			},
+			{
+				"id": "joey_mystic_guard",
+				"name": "Mystic Guard",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "ally",
+				"aiWeight": 1.2,
+				"effect": {
+					"defenseBonus": 2
+				},
+				"duration": 2,
+				"description": "A shimmering ward that protects an ally from harm."
+			},
+			{
+				"id": "joey_supportive_cheer",
+				"name": "Supportive Cheer",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "ally",
+				"aiWeight": 1,
+				"effect": {
+					"luck": 2
+				},
+				"duration": 2,
+				"description": "Joey's enthusiastic cheer sharpens an ally's focus."
+			},
+			{
+				"id": "joey_starfall_burst",
+				"name": "Starfall Burst",
+				"type": "magic",
+				"category": "heavy",
+				"rank": 1,
+				"aoe": "random-2-enemies",
+				"targeting": "any-enemy",
+				"aiWeight": 1.7,
+				"cooldown": 2,
+				"charges": 2,
+				"hitStat": "magicBonus",
+				"damageByRank": [
+					"2d8+2",
+					"2d10+2",
+					"3d8+2"
+				],
+				"damageType": "radiant",
+				"description": "Joey calls down a concentrated shower of arcane stars on 2 foes."
+			}
+		],
+		"loadoutSize": 4,
+		"abilityPool": [
+			{
+				"id": "joey_magic_trick",
+				"name": "Magic Trick",
+				"type": "magic",
+				"category": "light",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "any-enemy",
+				"aiWeight": 1,
+				"hitStat": "magicBonus",
+				"damageByRank": [
+					"1d8",
+					"2d4+1",
+					"2d6+1"
+				],
+				"description": "A flashy bolt of magic that Joey fires off with a grin."
+			},
+			{
+				"id": "joey_mystic_guard",
+				"name": "Mystic Guard",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "ally",
+				"aiWeight": 1.2,
+				"effect": {
+					"defenseBonus": 2
+				},
+				"duration": 2,
+				"description": "A shimmering ward that protects an ally from harm."
+			},
+			{
+				"id": "joey_supportive_cheer",
+				"name": "Supportive Cheer",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "ally",
+				"aiWeight": 1,
+				"effect": {
+					"luck": 2
+				},
+				"duration": 2,
+				"description": "Joey's enthusiastic cheer sharpens an ally's focus."
+			},
+			{
+				"id": "joey_starfall_burst",
+				"name": "Starfall Burst",
+				"type": "magic",
+				"category": "heavy",
+				"rank": 1,
+				"aoe": "random-2-enemies",
+				"targeting": "any-enemy",
+				"aiWeight": 1.7,
+				"cooldown": 2,
+				"charges": 2,
+				"hitStat": "magicBonus",
+				"damageByRank": [
+					"2d8+2",
+					"2d10+2",
+					"3d8+2"
+				],
+				"damageType": "radiant",
+				"description": "Joey calls down a concentrated shower of arcane stars on 2 foes."
+			},
+			{
+				"id": "joey_arcane_barrage",
+				"name": "Arcane Barrage",
+				"type": "magic",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "enemy-team",
+				"targeting": "any-enemy",
+				"aiWeight": 1.2,
+				"hitStat": "magicBonus",
+				"damageByRank": [
+					"2d4+2",
+					"2d6+2",
+					"2d8+3"
+				],
+				"damageType": "magic",
+				"description": "A surge of bolts that pepper the opposing line."
+			},
+			{
+				"id": "joey_focus_chant",
+				"name": "Focus Chant",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "self",
+				"aiWeight": 0.95,
+				"cooldown": 3,
+				"effect": {
+					"magicBonus": 2,
+					"luck": 1
+				},
+				"duration": 2,
+				"description": "Centers the caster, boosting arcane focus and fortune."
+			}
+		],
+		"activeAbilities": [
+			"joey_magic_trick",
+			"joey_mystic_guard",
+			"joey_supportive_cheer",
+			"joey_starfall_burst"
+		],
+		"coreAbilities": [
+			"joey_magic_trick",
+			"joey_mystic_guard"
+		]
+	},
+	"karishad": {
+		"id": "karishad",
+		"name": "Karishad",
+		"role": "Trickster",
+		"roleClass": "trickster",
+		"position": "mid",
+		"maxHP": 32,
+		"attackBonus": 3,
+		"magicBonus": 2,
+		"defenseBonus": 2,
+		"speed": 5,
+		"luck": 4,
+		"abilities": [
+			{
+				"id": "karishad_misdirection",
+				"name": "Misdirection",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "any-enemy",
+				"aiWeight": 1,
+				"effect": {
+					"luck": -2
+				},
+				"duration": 2,
+				"save": {
+					"stat": "luck",
+					"dc": 12,
+					"onSave": "negate"
+				},
+				"description": "Karishad confuses the target, reducing their accuracy."
+			},
+			{
+				"id": "karishad_slapstick_strike",
+				"name": "Slapstick Strike",
+				"type": "physical",
+				"category": "light",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "any-enemy",
+				"aiWeight": 1,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"1d6+1",
+					"1d8+1",
+					"2d4+2"
+				],
+				"positionShift": -1,
+				"extraEffect": {
+					"speed": -1,
+					"duration": 1
+				},
+				"description": "A goofy strike that throws the target off-balance."
+			},
+			{
+				"id": "karishad_trickster_spin",
+				"name": "Trickster Spin",
+				"type": "physical",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "any-enemy",
+				"aiWeight": 1.3,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"1d8+1",
+					"2d6+1",
+					"2d8+1"
+				],
+				"description": "A spiraling swipe that’s hard to predict."
+			},
+			{
+				"id": "karishad_prankster_burst",
+				"name": "Prankster Burst",
+				"type": "support",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "team",
+				"targeting": "team",
+				"aiWeight": 1.1,
+				"effect": {
+					"speed": 1,
+					"luck": 1
+				},
+				"duration": 2,
+				"description": "A chaotic morale boost that sharpens reflexes."
+			},
+			{
+				"id": "karishad_prank_swap",
+				"name": "Prank Swap",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "ally",
+				"aiWeight": 1,
+				"swapPositions": "withTarget",
+				"effect": {
+					"luck": 1
+				},
+				"duration": 2,
+				"description": "Karishad tumbles through the fray, trading places with an ally while boosting their luck."
+			},
+			{
+				"id": "karishad_comedic_rescue",
+				"name": "Comedic Rescue",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "self",
+				"aiWeight": 0.8,
+				"reaction": {
+					"trigger": "allyHit",
+					"action": "heal",
+					"heal": "1d4+1",
+					"target": "ally"
+				},
+				"reactionDuration": 3,
+				"description": "Whenever an ally gets bonked, Karishad swoops in with a quick patch-up gag."
+			}
+		],
+		"loadoutSize": 4,
+		"abilityPool": [
+			{
+				"id": "karishad_misdirection",
+				"name": "Misdirection",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "any-enemy",
+				"aiWeight": 1,
+				"effect": {
+					"luck": -2
+				},
+				"duration": 2,
+				"save": {
+					"stat": "luck",
+					"dc": 12,
+					"onSave": "negate"
+				},
+				"description": "Karishad confuses the target, reducing their accuracy."
+			},
+			{
+				"id": "karishad_slapstick_strike",
+				"name": "Slapstick Strike",
+				"type": "physical",
+				"category": "light",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "any-enemy",
+				"aiWeight": 1,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"1d6+1",
+					"1d8+1",
+					"2d4+2"
+				],
+				"positionShift": -1,
+				"extraEffect": {
+					"speed": -1,
+					"duration": 1
+				},
+				"description": "A goofy strike that throws the target off-balance."
+			},
+			{
+				"id": "karishad_trickster_spin",
+				"name": "Trickster Spin",
+				"type": "physical",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "any-enemy",
+				"aiWeight": 1.3,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"1d8+1",
+					"2d6+1",
+					"2d8+1"
+				],
+				"description": "A spiraling swipe that’s hard to predict."
+			},
+			{
+				"id": "karishad_prankster_burst",
+				"name": "Prankster Burst",
+				"type": "support",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "team",
+				"targeting": "team",
+				"aiWeight": 1.1,
+				"effect": {
+					"speed": 1,
+					"luck": 1
+				},
+				"duration": 2,
+				"description": "A chaotic morale boost that sharpens reflexes."
+			},
+			{
+				"id": "karishad_prank_swap",
+				"name": "Prank Swap",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "ally",
+				"aiWeight": 1,
+				"swapPositions": "withTarget",
+				"effect": {
+					"luck": 1
+				},
+				"duration": 2,
+				"description": "Karishad tumbles through the fray, trading places with an ally while boosting their luck."
+			},
+			{
+				"id": "karishad_comedic_rescue",
+				"name": "Comedic Rescue",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "self",
+				"aiWeight": 0.8,
+				"reaction": {
+					"trigger": "allyHit",
+					"action": "heal",
+					"heal": "1d4+1",
+					"target": "ally"
+				},
+				"reactionDuration": 3,
+				"description": "Whenever an ally gets bonked, Karishad swoops in with a quick patch-up gag."
+			},
+			{
+				"id": "karishad_shadowstep",
+				"name": "Shadowstep",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "self",
+				"aiWeight": 1,
+				"grantsAdvantage": true,
+				"effect": {
+					"speed": 1
+				},
+				"duration": 2,
+				"description": "A quick feint that boosts speed and lines up a precise strike."
+			},
+			{
+				"id": "karishad_flash_powder",
+				"name": "Flash Powder",
+				"type": "support",
+				"category": "light",
+				"rank": 1,
+				"aoe": "enemy-team",
+				"targeting": "any-enemy",
+				"aiWeight": 1.15,
+				"grantsDisadvantage": true,
+				"effect": {
+					"luck": -1
+				},
+				"duration": 2,
+				"description": "A blinding burst that rattles foes and throws off their aim."
+			}
+		],
+		"activeAbilities": [
+			"karishad_misdirection",
+			"karishad_slapstick_strike",
+			"karishad_trickster_spin",
+			"karishad_prankster_burst"
+		],
+		"coreAbilities": [
+			"karishad_misdirection",
+			"karishad_slapstick_strike"
+		]
+	},
+	"keene": {
+		"id": "keene",
+		"name": "Keene",
+		"role": "Trickster",
+		"roleClass": "trickster",
+		"position": "mid",
+		"maxHP": 32,
+		"attackBonus": 2,
+		"magicBonus": 3,
+		"defenseBonus": 2,
+		"speed": 4,
+		"luck": 4,
+		"abilities": [
+			{
+				"id": "keene_sneaky_swipe",
+				"name": "Sneaky Swipe",
+				"type": "physical",
+				"category": "light",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "front-preferred",
+				"aiWeight": 1,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"1d6",
+					"1d8",
+					"2d4+1"
+				],
+				"description": "A quick swipe when the enemy isn't looking."
+			},
+			{
+				"id": "keene_insider_trading",
+				"name": "Insider Trading",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "any-enemy",
+				"aiWeight": 1.2,
+				"concentration": true,
+				"cooldown": 2,
+				"effect": {
+					"attackBonus": -1,
+					"defenseBonus": -1
+				},
+				"duration": 1,
+				"saveStat": "luck",
+				"saveDifficulty": 13,
+				"grantsDisadvantage": true,
+				"description": "Keene manipulates the battlefield economy to rattle the opponent."
+			},
+			{
+				"id": "keene_bribe",
+				"name": "Milton Foundation Bribe",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "self",
+				"aiWeight": 0.8,
+				"effect": {
+					"oneTimeDodge": true
+				},
+				"duration": 99,
+				"description": "Keene calls in a timely donation to avoid the next attack that hits him."
+			},
+			{
+				"id": "keene_opportunistic_strike",
+				"name": "Opportunistic Strike",
+				"type": "physical",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "any-enemy",
+				"aiWeight": 1.3,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"1d10+2",
+					"2d6+2",
+					"2d8+2"
+				],
+				"extraDamageIfTargetDebuffed": 2,
+				"description": "Hits harder if the enemy is debuffed or off-balance."
+			}
+		],
+		"loadoutSize": 4,
+		"abilityPool": [
+			{
+				"id": "keene_sneaky_swipe",
+				"name": "Sneaky Swipe",
+				"type": "physical",
+				"category": "light",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "front-preferred",
+				"aiWeight": 1,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"1d6",
+					"1d8",
+					"2d4+1"
+				],
+				"description": "A quick swipe when the enemy isn't looking."
+			},
+			{
+				"id": "keene_insider_trading",
+				"name": "Insider Trading",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "any-enemy",
+				"aiWeight": 1.2,
+				"concentration": true,
+				"cooldown": 2,
+				"effect": {
+					"attackBonus": -1,
+					"defenseBonus": -1
+				},
+				"duration": 1,
+				"saveStat": "luck",
+				"saveDifficulty": 13,
+				"grantsDisadvantage": true,
+				"description": "Keene manipulates the battlefield economy to rattle the opponent."
+			},
+			{
+				"id": "keene_bribe",
+				"name": "Milton Foundation Bribe",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "self",
+				"aiWeight": 0.8,
+				"effect": {
+					"oneTimeDodge": true
+				},
+				"duration": 99,
+				"description": "Keene calls in a timely donation to avoid the next attack that hits him."
+			},
+			{
+				"id": "keene_opportunistic_strike",
+				"name": "Opportunistic Strike",
+				"type": "physical",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "any-enemy",
+				"aiWeight": 1.3,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"1d10+2",
+					"2d6+2",
+					"2d8+2"
+				],
+				"extraDamageIfTargetDebuffed": 2,
+				"description": "Hits harder if the enemy is debuffed or off-balance."
+			},
+			{
+				"id": "keene_shadowstep",
+				"name": "Shadowstep",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "self",
+				"aiWeight": 1,
+				"grantsAdvantage": true,
+				"effect": {
+					"speed": 1
+				},
+				"duration": 2,
+				"description": "A quick feint that boosts speed and lines up a precise strike."
+			},
+			{
+				"id": "keene_flash_powder",
+				"name": "Flash Powder",
+				"type": "support",
+				"category": "light",
+				"rank": 1,
+				"aoe": "enemy-team",
+				"targeting": "any-enemy",
+				"aiWeight": 1.15,
+				"grantsDisadvantage": true,
+				"effect": {
+					"luck": -1
+				},
+				"duration": 2,
+				"description": "A blinding burst that rattles foes and throws off their aim."
+			}
+		],
+		"activeAbilities": [
+			"keene_sneaky_swipe",
+			"keene_insider_trading",
+			"keene_bribe",
+			"keene_opportunistic_strike"
+		],
+		"coreAbilities": [
+			"keene_sneaky_swipe",
+			"keene_insider_trading"
+		]
+	},
+	"kevin": {
+		"id": "kevin",
+		"name": "Kevin",
+		"role": "Bruiser",
+		"roleClass": "frontliner",
+		"position": "front",
+		"maxHP": 36,
+		"attackBonus": 5,
+		"magicBonus": 0,
+		"defenseBonus": 3,
+		"speed": 4,
+		"luck": 2,
+		"abilities": [
+			{
+				"id": "kevin_power_pose",
+				"name": "Power Pose",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "self",
+				"aiWeight": 1,
+				"effect": {
+					"attackBonus": 2
+				},
+				"duration": 2,
+				"concentration": true,
+				"cooldown": 2,
+				"description": "Kevin pumps himself up, increasing raw strength."
+			},
+			{
+				"id": "kevin_training_strike",
+				"name": "Training Strike",
+				"type": "physical",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "front-preferred",
+				"aiWeight": 1.3,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"1d8+3",
+					"2d6+2",
+					"2d8+2"
+				],
+				"description": "A measured strike born of constant workouts."
+			},
+			{
+				"id": "kevin_bulldog_charge",
+				"name": "Bulldog Charge",
+				"type": "physical",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "front-preferred",
+				"aiWeight": 1.4,
+				"cooldown": 1,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"1d10+2",
+					"2d8+2",
+					"3d6+2"
+				],
+				"description": "Kevin barrels into the enemy with full force."
+			},
+			{
+				"id": "kevin_iron_will",
+				"name": "Iron Will",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "self",
+				"aiWeight": 1,
+				"concentration": true,
+				"cooldown": 2,
+				"effect": {
+					"defenseBonus": 2
+				},
+				"duration": 2,
+				"description": "Kevin’s focus hardens, boosting defenses briefly.",
+				"grantsDisadvantage": true
+			}
+		],
+		"loadoutSize": 4,
+		"abilityPool": [
+			{
+				"id": "kevin_power_pose",
+				"name": "Power Pose",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "self",
+				"aiWeight": 1,
+				"effect": {
+					"attackBonus": 2
+				},
+				"duration": 2,
+				"concentration": true,
+				"cooldown": 2,
+				"description": "Kevin pumps himself up, increasing raw strength."
+			},
+			{
+				"id": "kevin_training_strike",
+				"name": "Training Strike",
+				"type": "physical",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "front-preferred",
+				"aiWeight": 1.3,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"1d8+3",
+					"2d6+2",
+					"2d8+2"
+				],
+				"description": "A measured strike born of constant workouts."
+			},
+			{
+				"id": "kevin_bulldog_charge",
+				"name": "Bulldog Charge",
+				"type": "physical",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "front-preferred",
+				"aiWeight": 1.4,
+				"cooldown": 1,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"1d10+2",
+					"2d8+2",
+					"3d6+2"
+				],
+				"description": "Kevin barrels into the enemy with full force."
+			},
+			{
+				"id": "kevin_iron_will",
+				"name": "Iron Will",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "self",
+				"aiWeight": 1,
+				"concentration": true,
+				"cooldown": 2,
+				"effect": {
+					"defenseBonus": 2
+				},
+				"duration": 2,
+				"description": "Kevin’s focus hardens, boosting defenses briefly.",
+				"grantsDisadvantage": true
+			},
+			{
+				"id": "kevin_line_breaker",
+				"name": "Line Breaker",
+				"type": "physical",
+				"category": "heavy",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "front-preferred",
+				"aiWeight": 1.25,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"2d6+1",
+					"2d8+1",
+					"2d10+2"
+				],
+				"extraEffect": {
+					"enemy": {
+						"defenseBonus": -1,
+						"duration": 2
+					}
+				},
+				"description": "A driving charge meant to crack the enemy front line."
+			},
+			{
+				"id": "kevin_bulwark_shout",
+				"name": "Bulwark Shout",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "team",
+				"targeting": "team",
+				"aiWeight": 1.05,
+				"cooldown": 3,
+				"effect": {
+					"defenseBonus": 1,
+					"redirectChance": 0.15
+				},
+				"duration": 2,
+				"description": "Rallies allies to tighten their guard and share protection."
+			},
+			{
+				"id": "kevin_brutal_advance",
+				"name": "Brutal Advance",
+				"type": "physical",
+				"category": "medium",
+				"aoe": "enemy-team",
+				"rank": 2,
+				"hitStat": "attackBonus",
+				"damageByRank": ["1d6+1", "1d6+2", "2d4+2"],
+				"aiWeight": 1.1,
+				"description": "Kevin charges forward aggressively, striking multiple foes."
+			}
+			
+		],
+		"activeAbilities": [
+			"kevin_power_pose",
+			"kevin_training_strike",
+			"kevin_bulldog_charge",
+			"kevin_iron_will"
+		],
+		"coreAbilities": [
+			"kevin_power_pose",
+			"kevin_training_strike"
+		]
+	},
+	"king": {
+		"id": "king",
+		"name": "King",
+		"role": "Bruiser",
+		"roleClass": "frontliner",
+		"position": "front",
+		"maxHP": 36,
+		"attackBonus": 4,
+		"magicBonus": 1,
+		"defenseBonus": 3,
+		"speed": 3,
+		"luck": 3,
+		"abilities": [
+			{
+				"id": "king_guarded_strike",
+				"name": "Guarded Strike",
+				"type": "physical",
+				"category": "light",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "front-preferred",
+				"aiWeight": 1,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"1d6+1",
+					"1d8+1",
+					"2d4+2"
+				],
+				"description": "A cautious blow that keeps King ready to defend."
+			},
+			{
+				"id": "king_clumsy_swing",
+				"name": "Clumsy Swing",
+				"type": "physical",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "front-preferred",
+				"aiWeight": 1.2,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"1d8+2",
+					"2d6+1",
+					"2d8+1"
+				],
+				"description": "A heavier attack that hits surprisingly hard when it connects."
+			},
+			{
+				"id": "king_dogged_resolve",
+				"name": "Dogged Resolve",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "self",
+				"aiWeight": 1,
+				"cooldown": 2,
+				"effect": {
+					"defenseBonus": 3
+				},
+				"duration": 2,
+				"description": "King steels himself, boosting his defenses for a short time."
+			},
+			{
+				"id": "king_last_minute_luck",
+				"name": "Last-Minute Luck",
+				"type": "physical",
+				"category": "heavy",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "any-enemy",
+				"aiWeight": 1.7,
+				"cooldown": 1,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"2d8+1",
+					"2d10+1",
+					"3d8+2"
+				],
+				"description": "A desperate attack that relies on King's luck to land a big hit."
+			}
+		],
+		"loadoutSize": 4,
+		"abilityPool": [
+			{
+				"id": "king_guarded_strike",
+				"name": "Guarded Strike",
+				"type": "physical",
+				"category": "light",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "front-preferred",
+				"aiWeight": 1,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"1d6+1",
+					"1d8+1",
+					"2d4+2"
+				],
+				"description": "A cautious blow that keeps King ready to defend."
+			},
+			{
+				"id": "king_clumsy_swing",
+				"name": "Clumsy Swing",
+				"type": "physical",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "front-preferred",
+				"aiWeight": 1.2,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"1d8+2",
+					"2d6+1",
+					"2d8+1"
+				],
+				"description": "A heavier attack that hits surprisingly hard when it connects."
+			},
+			{
+				"id": "king_dogged_resolve",
+				"name": "Dogged Resolve",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "self",
+				"aiWeight": 1,
+				"cooldown": 2,
+				"effect": {
+					"defenseBonus": 3
+				},
+				"duration": 2,
+				"description": "King steels himself, boosting his defenses for a short time."
+			},
+			{
+				"id": "king_last_minute_luck",
+				"name": "Last-Minute Luck",
+				"type": "physical",
+				"category": "heavy",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "any-enemy",
+				"aiWeight": 1.7,
+				"cooldown": 1,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"2d8+1",
+					"2d10+1",
+					"3d8+2"
+				],
+				"description": "A desperate attack that relies on King's luck to land a big hit."
+			},
+			{
+				"id": "king_line_breaker",
+				"name": "Line Breaker",
+				"type": "physical",
+				"category": "heavy",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "front-preferred",
+				"aiWeight": 1.25,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"2d6+1",
+					"2d8+1",
+					"2d10+2"
+				],
+				"extraEffect": {
+					"enemy": {
+						"defenseBonus": -1,
+						"duration": 2
+					}
+				},
+				"description": "A driving charge meant to crack the enemy front line."
+			},
+			{
+				"id": "king_bulwark_shout",
+				"name": "Bulwark Shout",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "team",
+				"targeting": "team",
+				"aiWeight": 1.05,
+				"cooldown": 3,
+				"effect": {
+					"defenseBonus": 1,
+					"redirectChance": 0.15
+				},
+				"duration": 2,
+				"description": "Rallies allies to tighten their guard and share protection."
+			}
+		],
+		"activeAbilities": [
+			"king_guarded_strike",
+			"king_clumsy_swing",
+			"king_dogged_resolve",
+			"king_last_minute_luck"
+		],
+		"coreAbilities": [
+			"king_guarded_strike",
+			"king_clumsy_swing"
+		]
+	},
+	"lana": {
+		"id": "lana",
+		"name": "Lana Milton",
+		"role": "Trickster",
+		"roleClass": "trickster",
+		"position": "mid",
+		"maxHP": 32,
+		"attackBonus": 3,
+		"magicBonus": 2,
+		"defenseBonus": 2,
+		"speed": 4,
+		"luck": 3,
+		"abilities": [
+			{
+				"id": "lana_feint_sting",
+				"name": "Feint Sting",
+				"type": "physical",
+				"category": "light",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "any-enemy",
+				"aiWeight": 1.2,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"1d6+1",
+					"1d8+1",
+					"2d4+1"
+				],
+				"description": "A misleading jab that throws off the enemy’s timing."
+			},
+			{
+				"id": "lana_sly_suggestion",
+				"name": "Sly Suggestion",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "any-enemy",
+				"aiWeight": 1,
+				"effect": {
+					"speed": -1
+				},
+				"duration": 2,
+				"save": {
+					"stat": "speed",
+					"dc": 11,
+					"onSave": "negate"
+				},
+				"description": "Lana manipulates the foe's focus with smooth words."
+			},
+			{
+				"id": "lana_agile_flip",
+				"name": "Agile Flip",
+				"type": "support",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "self",
+				"aiWeight": 1.2,
+				"effect": {
+					"speed": 2
+				},
+				"duration": 2,
+				"description": "A swift flip that boosts Lana's speed."
+			},
+			{
+				"id": "lana_milton_finisher",
+				"name": "Milton Finisher",
+				"type": "physical",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "any-enemy",
+				"aiWeight": 1.3,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"1d10+1",
+					"2d6+1",
+					"2d8+2"
+				],
+				"description": "A stylish and surprisingly forceful strike."
+			}
+		],
+		"loadoutSize": 4,
+		"abilityPool": [
+			{
+				"id": "lana_feint_sting",
+				"name": "Feint Sting",
+				"type": "physical",
+				"category": "light",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "any-enemy",
+				"aiWeight": 1.2,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"1d6+1",
+					"1d8+1",
+					"2d4+1"
+				],
+				"description": "A misleading jab that throws off the enemy’s timing."
+			},
+			{
+				"id": "lana_sly_suggestion",
+				"name": "Sly Suggestion",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "any-enemy",
+				"aiWeight": 1,
+				"effect": {
+					"speed": -1
+				},
+				"duration": 2,
+				"save": {
+					"stat": "speed",
+					"dc": 11,
+					"onSave": "negate"
+				},
+				"description": "Lana manipulates the foe's focus with smooth words."
+			},
+			{
+				"id": "lana_agile_flip",
+				"name": "Agile Flip",
+				"type": "support",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "self",
+				"aiWeight": 1.2,
+				"effect": {
+					"speed": 2
+				},
+				"duration": 2,
+				"description": "A swift flip that boosts Lana's speed."
+			},
+			{
+				"id": "lana_milton_finisher",
+				"name": "Milton Finisher",
+				"type": "physical",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "any-enemy",
+				"aiWeight": 1.3,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"1d10+1",
+					"2d6+1",
+					"2d8+2"
+				],
+				"description": "A stylish and surprisingly forceful strike."
+			},
+			{
+				"id": "lana_shadowstep",
+				"name": "Shadowstep",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "self",
+				"aiWeight": 1,
+				"grantsAdvantage": true,
+				"effect": {
+					"speed": 1
+				},
+				"duration": 2,
+				"description": "A quick feint that boosts speed and lines up a precise strike."
+			},
+			{
+				"id": "lana_flash_powder",
+				"name": "Flash Powder",
+				"type": "support",
+				"category": "light",
+				"rank": 1,
+				"aoe": "enemy-team",
+				"targeting": "any-enemy",
+				"aiWeight": 1.15,
+				"grantsDisadvantage": true,
+				"effect": {
+					"luck": -1
+				},
+				"duration": 2,
+				"description": "A blinding burst that rattles foes and throws off their aim."
+			}
+		],
+		"activeAbilities": [
+			"lana_feint_sting",
+			"lana_sly_suggestion",
+			"lana_agile_flip",
+			"lana_milton_finisher"
+		],
+		"coreAbilities": [
+			"lana_feint_sting",
+			"lana_sly_suggestion"
+		]
+	},
+	"lucretia": {
+		"id": "lucretia",
+		"name": "Lucretia",
+		"role": "Tank",
+		"roleClass": "frontliner",
+		"position": "front",
+		"maxHP": 40,
+		"attackBonus": 2,
+		"magicBonus": 1,
+		"defenseBonus": 5,
+		"speed": 2,
+		"luck": 3,
+		"abilities": [
+			{
+				"id": "lucretia_guardian_howl",
+				"name": "Guardian Howl",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "team",
+				"targeting": "team",
+				"aiWeight": 1.2,
+				"concentration": true,
+				"cooldown": 2,
+				"effect": {
+					"defenseBonus": 2,
+					"luck": 1
+				},
+				"duration": 2,
+				"description": "Lucretia’s steady howl strengthens allies’ resolve."
+			},
+			{
+				"id": "lucretia_stand_firm",
+				"name": "Stand Firm",
+				"type": "support",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "self",
+				"aiWeight": 1.2,
+				"concentration": true,
+				"cooldown": 2,
+				"effect": {
+					"defenseBonus": 3
+				},
+				"duration": 2,
+				"description": "Lucretia braces her posture, greatly boosting defense."
+			},
+			{
+				"id": "lucretia_shielding_paw",
+				"name": "Shielding Paw",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "ally",
+				"aiWeight": 1.1,
+				"effect": {
+					"redirectChance": 0.4
+				},
+				"duration": 2,
+				"description": "Lucretia intercepts blows aimed at a teammate."
+			},
+			{
+				"id": "lucretia_resolute_strike",
+				"name": "Resolute Strike",
+				"type": "physical",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "front-preferred",
+				"aiWeight": 1.2,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"1d8+1",
+					"2d6+1",
+					"2d8+1"
+				],
+				"description": "A calm, confident blow delivered with perfect timing."
+			}
+		],
+		"loadoutSize": 4,
+		"abilityPool": [
+			{
+				"id": "lucretia_guardian_howl",
+				"name": "Guardian Howl",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "team",
+				"targeting": "team",
+				"aiWeight": 1.2,
+				"concentration": true,
+				"cooldown": 2,
+				"effect": {
+					"defenseBonus": 2,
+					"luck": 1
+				},
+				"duration": 2,
+				"description": "Lucretia’s steady howl strengthens allies’ resolve."
+			},
+			{
+				"id": "lucretia_stand_firm",
+				"name": "Stand Firm",
+				"type": "support",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "self",
+				"aiWeight": 1.2,
+				"concentration": true,
+				"cooldown": 2,
+				"effect": {
+					"defenseBonus": 3
+				},
+				"duration": 2,
+				"description": "Lucretia braces her posture, greatly boosting defense."
+			},
+			{
+				"id": "lucretia_shielding_paw",
+				"name": "Shielding Paw",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "ally",
+				"aiWeight": 1.1,
+				"effect": {
+					"redirectChance": 0.4
+				},
+				"duration": 2,
+				"description": "Lucretia intercepts blows aimed at a teammate."
+			},
+			{
+				"id": "lucretia_resolute_strike",
+				"name": "Resolute Strike",
+				"type": "physical",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "front-preferred",
+				"aiWeight": 1.2,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"1d8+1",
+					"2d6+1",
+					"2d8+1"
+				],
+				"description": "A calm, confident blow delivered with perfect timing."
+			},
+			{
+				"id": "lucretia_line_breaker",
+				"name": "Line Breaker",
+				"type": "physical",
+				"category": "heavy",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "front-preferred",
+				"aiWeight": 1.25,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"2d6+1",
+					"2d8+1",
+					"2d10+2"
+				],
+				"extraEffect": {
+					"enemy": {
+						"defenseBonus": -1,
+						"duration": 2
+					}
+				},
+				"description": "A driving charge meant to crack the enemy front line."
+			},
+			{
+				"id": "lucretia_bulwark_shout",
+				"name": "Bulwark Shout",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "team",
+				"targeting": "team",
+				"aiWeight": 1.05,
+				"cooldown": 3,
+				"effect": {
+					"defenseBonus": 1,
+					"redirectChance": 0.15
+				},
+				"duration": 2,
+				"description": "Rallies allies to tighten their guard and share protection."
+			}
+		],
+		"activeAbilities": [
+			"lucretia_guardian_howl",
+			"lucretia_stand_firm",
+			"lucretia_shielding_paw",
+			"lucretia_resolute_strike"
+		],
+		"coreAbilities": [
+			"lucretia_guardian_howl",
+			"lucretia_stand_firm"
+		]
+	},
+	"marvin": {
+		"id": "marvin",
+		"name": "Marvin",
+		"role": "Support",
+		"roleClass": "support",
+		"position": "back",
+		"maxHP": 36,
+		"attackBonus": 0,
+		"magicBonus": 4,
+		"defenseBonus": 4,
+		"speed": 1,
+		"luck": 5,
+		"abilities": [
+			{
+				"id": "marvin_clumsy_swipe",
+				"name": "Clumsy Swipe",
+				"type": "physical",
+				"category": "light",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "front-preferred",
+				"aiWeight": 0.8,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"1d4+2",
+					"1d6+2",
+					"2d4+2"
+				],
+				"description": "A clumsy attack that occasionally lands well."
+			},
+			{
+				"id": "marvin_supportive_yowl",
+				"name": "Supportive Yowl",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "ally",
+				"aiWeight": 1.1,
+				"effect": {
+					"attackBonus": 1,
+					"defenseBonus": 1
+				},
+				"duration": 3,
+				"description": "A loud meow that somehow helps allies focus."
+			},
+			{
+				"id": "marvin_bandage_up",
+				"name": "Bandage Up",
+				"type": "support",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "ally",
+				"aiWeight": 1.7,
+				"cooldown": 2,
+				"healByRank": [
+					"1d6+3",
+					"1d8+4",
+					"2d6+3"
+				],
+				"description": "A bit of basic first aid that goes a long way."
+			},
+			{
+				"id": "marvin_accidental_help",
+				"name": "Accidental Help",
+				"type": "support",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "team",
+				"targeting": "team",
+				"aiWeight": 1.5,
+				"concentration": true,
+				"cooldown": 2,
+				"effect": {
+					"luck": 2
+				},
+				"duration": 2,
+				"description": "Marvin stumbles into the right place, providing a lucky break."
+			}
+		],
+		"loadoutSize": 4,
+		"abilityPool": [
+			{
+				"id": "marvin_clumsy_swipe",
+				"name": "Clumsy Swipe",
+				"type": "physical",
+				"category": "light",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "front-preferred",
+				"aiWeight": 0.8,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"1d4+2",
+					"1d6+2",
+					"2d4+2"
+				],
+				"description": "A clumsy attack that occasionally lands well."
+			},
+			{
+				"id": "marvin_supportive_yowl",
+				"name": "Supportive Yowl",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "ally",
+				"aiWeight": 1.1,
+				"effect": {
+					"attackBonus": 1,
+					"defenseBonus": 1
+				},
+				"duration": 3,
+				"description": "A loud meow that somehow helps allies focus."
+			},
+			{
+				"id": "marvin_bandage_up",
+				"name": "Bandage Up",
+				"type": "support",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "ally",
+				"aiWeight": 1.7,
+				"cooldown": 2,
+				"healByRank": [
+					"1d6+3",
+					"1d8+4",
+					"2d6+3"
+				],
+				"description": "A bit of basic first aid that goes a long way."
+			},
+			{
+				"id": "marvin_accidental_help",
+				"name": "Accidental Help",
+				"type": "support",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "team",
+				"targeting": "team",
+				"aiWeight": 1.5,
+				"concentration": true,
+				"cooldown": 2,
+				"effect": {
+					"luck": 2
+				},
+				"duration": 2,
+				"description": "Marvin stumbles into the right place, providing a lucky break."
+			},
+			{
+				"id": "marvin_team_mend",
+				"name": "Team Mend",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "team",
+				"targeting": "team",
+				"aiWeight": 1.1,
+				"healByRank": [
+					"1d6+1",
+					"1d6+3",
+					"2d4+3"
+				],
+				"description": "A calming pulse of healing that patches up the whole squad."
+			},
+			{
+				"id": "marvin_protective_ward",
+				"name": "Protective Ward",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "team",
+				"targeting": "team",
+				"aiWeight": 0.95,
+				"effect": {
+					"defenseBonus": 1,
+					"luck": 1
+				},
+				"duration": 2,
+				"cooldown": 3,
+				"description": "Sets a quick ward that steadies allies and hardens defenses."
+			}
+		],
+		"activeAbilities": [
+			"marvin_clumsy_swipe",
+			"marvin_supportive_yowl",
+			"marvin_bandage_up",
+			"marvin_accidental_help"
+		],
+		"coreAbilities": [
+			"marvin_clumsy_swipe",
+			"marvin_supportive_yowl"
+		]
+	},
+	"maxwell": {
+		"id": "maxwell",
+		"name": "Maxwell",
+		"role": "Trickster",
+		"roleClass": "trickster",
+		"position": "mid",
+		"maxHP": 32,
+		"attackBonus": 3,
+		"magicBonus": 2,
+		"defenseBonus": 2,
+		"speed": 5,
+		"luck": 3,
+		"abilities": [
+			{
+				"id": "maxwell_shadow_step",
+				"name": "Shadow Step",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "self",
+				"aiWeight": 1.1,
+				"effect": {
+					"speed": 1,
+					"defenseBonus": 1
+				},
+				"duration": 2,
+				"description": "Maxwell melts into the shadows, becoming harder to hit and much quicker."
+			},
+			{
+				"id": "maxwell_distracting_flurry",
+				"name": "Distracting Flurry",
+				"type": "physical",
+				"category": "light",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "any-enemy",
+				"aiWeight": 1.3,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"1d6+1",
+					"1d8+1",
+					"2d4+1"
+				],
+				"extraEffect": {
+					"enemy": {
+						"attackBonus": -1,
+						"duration": 1
+					},
+					"ally": {
+						"id": "grape",
+						"attackBonus": 1,
+						"duration": 1
+					}
+				},
+				"grantsDisadvantage": true,
+				"description": "A fast series of feints that confuses the enemy and opens a window for Grape."
+			},
+			{
+				"id": "maxwell_tricky_slash",
+				"name": "Tricky Slash",
+				"type": "physical",
+				"category": "light",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "any-enemy",
+				"aiWeight": 1.3,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"1d6+2",
+					"1d8+2",
+					"2d4+2"
+				],
+				"positionShift": -1,
+				"description": "A precise cut that exploits tiny openings."
+			},
+			{
+				"id": "maxwell_disappearing_act",
+				"name": "Disappearing Act",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "self",
+				"aiWeight": 0.9,
+				"effect": {
+					"oneTimeDodge": true
+				},
+				"duration": 99,
+				"description": "Maxwell slips away in a swirl of motion, causing the next attack aimed at him to miss completely."
+			},
+			{
+				"id": "maxwell_switcheroo",
+				"name": "Switcheroo",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "ally",
+				"aiWeight": 1,
+				"swapPositions": "withTarget",
+				"effect": {
+					"speed": 1
+				},
+				"duration": 1,
+				"description": "Maxwell darts around to swap places with an ally, giving them a quick boost."
+			},
+			{
+				"id": "maxwell_predatory_grin",
+				"name": "Predatory Grin",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "self",
+				"aiWeight": 0.8,
+				"reaction": {
+					"trigger": "enemyLowHP",
+					"action": "buff",
+					"effect": {
+						"attackBonus": 2
+					},
+					"duration": 2
+				},
+				"reactionDuration": 3,
+				"description": "Maxwell senses weakness and prepares a finishing blow whenever an enemy falters."
+			},
+			{
+				"id": "maxwell_shadow_trip",
+				"name": "Shadow Trip",
+				"type": "physical",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "any-enemy",
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"1d6+1",
+					"1d6+1",
+					"1d6+2"
+				],
+				"applyCondition": "stunned",
+				"conditionDuration": 1,
+				"saveStat": "luck",
+				"saveDifficulty": 12,
+				"aiWeight": 1.2,
+				"description": "Maxwell sweeps from the shadows, tripping the target and leaving them dazed."
+			}
+		],
+		"loadoutSize": 4,
+		"abilityPool": [
+			{
+				"id": "maxwell_shadow_step",
+				"name": "Shadow Step",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "self",
+				"aiWeight": 1.1,
+				"effect": {
+					"speed": 1,
+					"defenseBonus": 1
+				},
+				"duration": 2,
+				"description": "Maxwell melts into the shadows, becoming harder to hit and much quicker."
+			},
+			{
+				"id": "maxwell_distracting_flurry",
+				"name": "Distracting Flurry",
+				"type": "physical",
+				"category": "light",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "any-enemy",
+				"aiWeight": 1.3,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"1d6+1",
+					"1d8+1",
+					"2d4+1"
+				],
+				"extraEffect": {
+					"enemy": {
+						"attackBonus": -1,
+						"duration": 1
+					},
+					"ally": {
+						"id": "grape",
+						"attackBonus": 1,
+						"duration": 1
+					}
+				},
+				"grantsDisadvantage": true,
+				"description": "A fast series of feints that confuses the enemy and opens a window for Grape."
+			},
+			{
+				"id": "maxwell_switcheroo",
+				"name": "Switcheroo",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "ally",
+				"aiWeight": 1,
+				"swapPositions": "withTarget",
+				"effect": {
+					"speed": 1
+				},
+				"duration": 1,
+				"description": "Maxwell darts around to swap places with an ally, giving them a quick boost."
+			},
+			{
+				"id": "maxwell_predatory_grin",
+				"name": "Predatory Grin",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "self",
+				"aiWeight": 0.8,
+				"reaction": {
+					"trigger": "enemyLowHP",
+					"action": "buff",
+					"effect": {
+						"attackBonus": 1
+					},
+					"duration": 2
+				},
+				"reactionDuration": 3,
+				"description": "Maxwell senses weakness and prepares a finishing blow whenever an enemy falters."
+			},
+			{
+				"id": "maxwell_tricky_slash",
+				"name": "Tricky Slash",
+				"type": "physical",
+				"category": "light",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "any-enemy",
+				"aiWeight": 1.3,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"1d6+2",
+					"1d8+2",
+					"2d4+2"
+				],
+				"positionShift": -1,
+				"description": "A precise cut that exploits tiny openings."
+			},
+			{
+				"id": "maxwell_disappearing_act",
+				"name": "Disappearing Act",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "self",
+				"aiWeight": 0.9,
+				"effect": {
+					"oneTimeDodge": true
+				},
+				"duration": 99,
+				"description": "Maxwell slips away in a swirl of motion, causing the next attack aimed at him to miss completely."
+			},
+			{
+				"id": "maxwell_shadowstep",
+				"name": "Shadowstep",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "self",
+				"aiWeight": 1,
+				"grantsAdvantage": true,
+				"effect": {
+					"speed": 1
+				},
+				"duration": 2,
+				"description": "A quick feint that boosts speed and lines up a precise strike."
+			},
+			{
+				"id": "maxwell_flash_powder",
+				"name": "Flash Powder",
+				"type": "support",
+				"category": "light",
+				"rank": 1,
+				"aoe": "enemy-team",
+				"targeting": "any-enemy",
+				"aiWeight": 1.15,
+				"grantsDisadvantage": true,
+				"effect": {
+					"luck": -1
+				},
+				"duration": 2,
+				"description": "A blinding burst that rattles foes and throws off their aim."
+			},
+			{
+				"id": "maxwell_shadow_trip",
+				"name": "Shadow Trip",
+				"type": "physical",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "any-enemy",
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"1d6+1",
+					"1d6+1",
+					"1d6+2"
+				],
+				"applyCondition": "stunned",
+				"conditionDuration": 1,
+				"saveStat": "luck",
+				"saveDifficulty": 12,
+				"aiWeight": 1.2,
+				"description": "Maxwell sweeps from the shadows, tripping the target and leaving them dazed."
+			}
+		],
+		"activeAbilities": [
+			"maxwell_shadow_step",
+			"maxwell_distracting_flurry",
+			"maxwell_tricky_slash",
+			"maxwell_disappearing_act"
+		],
+		"coreAbilities": [
+			"maxwell_shadow_step",
+			"maxwell_distracting_flurry"
+		]
+	},
+	"mungo": {
+		"id": "mungo",
+		"name": "Mungo",
+		"role": "Tank",
+		"roleClass": "frontliner",
+		"position": "front",
+		"maxHP": 44,
+		"attackBonus": 3,
+		"magicBonus": 1,
+		"defenseBonus": 5,
+		"speed": 1,
+		"luck": 2,
+		"abilities": [
+			{
+				"id": "mungo_shield_slam",
+				"name": "Shield Slam",
+				"type": "physical",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "front-preferred",
+				"aiWeight": 1.3,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"1d8+2",
+					"2d6+2",
+					"2d8+2"
+				],
+				"extraEffect": {
+					"speed": -1,
+					"duration": 1
+				},
+				"description": "A heavy slam that briefly slows the enemy."
+			},
+			{
+				"id": "mungo_unbreakable",
+				"name": "Unbreakable",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "self",
+				"aiWeight": 1.2,
+				"cooldown": 2,
+				"effect": {
+					"defenseBonus": 2
+				},
+				"duration": 1,
+				"description": "Mungo braces with overwhelming strength."
+			},
+			{
+				"id": "mungo_guard_duty",
+				"name": "Guard Duty",
+				"type": "utility",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "ally",
+				"aiWeight": 1.3,
+				"effect": {
+					"redirectChance": 0.6
+				},
+				"duration": 2,
+				"description": "Mungo protects a teammate with sheer body mass."
+			},
+			{
+				"id": "mungo_groundbreaker",
+				"name": "Groundbreaker",
+				"type": "physical",
+				"category": "heavy",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "front-preferred",
+				"aiWeight": 1.45,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"2d8+1",
+					"2d10+1",
+					"3d8+2"
+				],
+				"description": "Mungo slams the ground, shaking everything nearby."
+			}
+		],
+		"loadoutSize": 4,
+		"abilityPool": [
+			{
+				"id": "mungo_shield_slam",
+				"name": "Shield Slam",
+				"type": "physical",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "front-preferred",
+				"aiWeight": 1.3,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"1d8+2",
+					"2d6+2",
+					"2d8+2"
+				],
+				"extraEffect": {
+					"speed": -1,
+					"duration": 1
+				},
+				"description": "A heavy slam that briefly slows the enemy."
+			},
+			{
+				"id": "mungo_unbreakable",
+				"name": "Unbreakable",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "self",
+				"aiWeight": 1.2,
+				"cooldown": 2,
+				"effect": {
+					"defenseBonus": 2
+				},
+				"duration": 1,
+				"description": "Mungo braces with overwhelming strength."
+			},
+			{
+				"id": "mungo_guard_duty",
+				"name": "Guard Duty",
+				"type": "utility",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "ally",
+				"aiWeight": 1.3,
+				"effect": {
+					"redirectChance": 0.6
+				},
+				"duration": 2,
+				"description": "Mungo protects a teammate with sheer body mass."
+			},
+			{
+				"id": "mungo_groundbreaker",
+				"name": "Groundbreaker",
+				"type": "physical",
+				"category": "heavy",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "front-preferred",
+				"aiWeight": 1.45,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"2d8+1",
+					"2d10+1",
+					"3d8+2"
+				],
+				"description": "Mungo slams the ground, shaking everything nearby."
+			},
+			{
+				"id": "mungo_line_breaker",
+				"name": "Line Breaker",
+				"type": "physical",
+				"category": "heavy",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "front-preferred",
+				"aiWeight": 1.25,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"2d6+1",
+					"2d8+1",
+					"2d10+2"
+				],
+				"extraEffect": {
+					"enemy": {
+						"defenseBonus": -1,
+						"duration": 2
+					}
+				},
+				"description": "A driving charge meant to crack the enemy front line."
+			},
+			{
+				"id": "mungo_bulwark_shout",
+				"name": "Bulwark Shout",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "team",
+				"targeting": "team",
+				"aiWeight": 1.05,
+				"cooldown": 3,
+				"effect": {
+					"defenseBonus": 1,
+					"redirectChance": 0.15
+				},
+				"duration": 2,
+				"description": "Rallies allies to tighten their guard and share protection."
+			}
+		],
+		"activeAbilities": [
+			"mungo_shield_slam",
+			"mungo_unbreakable",
+			"mungo_guard_duty",
+			"mungo_groundbreaker"
+		],
+		"coreAbilities": [
+			"mungo_shield_slam",
+			"mungo_unbreakable"
+		]
+	},
+	"natalie": {
+		"id": "natalie",
+		"name": "Natalie",
+		"role": "Mage",
+		"roleClass": "mage",
+		"position": "back",
+		"maxHP": 32,
+		"attackBonus": 2,
+		"magicBonus": 4,
+		"defenseBonus": 2,
+		"speed": 3,
+		"luck": 4,
+		"abilities": [
+			{
+				"id": "natalie_chill_wind",
+				"name": "Chill Wind",
+				"type": "magic",
+				"category": "light",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "any-enemy",
+				"aiWeight": 1,
+				"hitStat": "magicBonus",
+				"damageByRank": [
+					"1d8+1",
+					"2d4+2",
+					"2d6+2"
+				],
+				"extraEffect": {
+					"speed": -1,
+					"duration": 1
+				},
+				"description": "A cold gust that chills the target and slows them.",
+				"saveStat": "luck",
+				"saveDifficulty": 14
+			},
+			{
+				"id": "natalie_arcane_barrier",
+				"name": "Arcane Barrier",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "team",
+				"targeting": "team",
+				"aiWeight": 1.3,
+				"concentration": true,
+				"cooldown": 2,
+				"effect": {
+					"defenseBonus": 1
+				},
+				"duration": 1,
+				"description": "Natalie conjures a magical barrier shielding allies."
+			},
+			{
+				"id": "natalie_mystic_focus",
+				"name": "Mystic Focus",
+				"type": "support",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "self",
+				"aiWeight": 1,
+				"concentration": true,
+				"cooldown": 2,
+				"effect": {
+					"magicBonus": 1
+				},
+				"duration": 2,
+				"description": "A moment of concentration amplifies her spell power."
+			},
+			{
+				"id": "natalie_spectral_lance",
+				"name": "Spectral Lance",
+				"type": "magic",
+				"category": "heavy",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "any-enemy",
+				"aiWeight": 1.35,
+				"hitStat": "magicBonus",
+				"damageByRank": [
+					"2d6+2",
+					"2d8+2",
+					"3d6+2"
+				],
+				"description": "A piercing spectral projectile aimed with precision."
+			}
+		],
+		"loadoutSize": 4,
+		"abilityPool": [
+			{
+				"id": "natalie_chill_wind",
+				"name": "Chill Wind",
+				"type": "magic",
+				"category": "light",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "any-enemy",
+				"aiWeight": 1,
+				"hitStat": "magicBonus",
+				"damageByRank": [
+					"1d8+1",
+					"2d4+2",
+					"2d6+2"
+				],
+				"extraEffect": {
+					"speed": -1,
+					"duration": 1
+				},
+				"description": "A cold gust that chills the target and slows them.",
+				"saveStat": "luck",
+				"saveDifficulty": 14
+			},
+			{
+				"id": "natalie_arcane_barrier",
+				"name": "Arcane Barrier",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "team",
+				"targeting": "team",
+				"aiWeight": 1.3,
+				"concentration": true,
+				"cooldown": 2,
+				"effect": {
+					"defenseBonus": 1
+				},
+				"duration": 1,
+				"description": "Natalie conjures a magical barrier shielding allies."
+			},
+			{
+				"id": "natalie_mystic_focus",
+				"name": "Mystic Focus",
+				"type": "support",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "self",
+				"aiWeight": 1,
+				"concentration": true,
+				"cooldown": 2,
+				"effect": {
+					"magicBonus": 1
+				},
+				"duration": 2,
+				"description": "A moment of concentration amplifies her spell power."
+			},
+			{
+				"id": "natalie_spectral_lance",
+				"name": "Spectral Lance",
+				"type": "magic",
+				"category": "heavy",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "any-enemy",
+				"aiWeight": 1.35,
+				"hitStat": "magicBonus",
+				"damageByRank": [
+					"2d6+2",
+					"2d8+2",
+					"3d6+2"
+				],
+				"description": "A piercing spectral projectile aimed with precision."
+			},
+			{
+				"id": "natalie_arcane_barrage",
+				"name": "Arcane Barrage",
+				"type": "magic",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "enemy-team",
+				"targeting": "any-enemy",
+				"aiWeight": 1.2,
+				"hitStat": "magicBonus",
+				"damageByRank": [
+					"2d4+2",
+					"2d6+2",
+					"2d8+3"
+				],
+				"damageType": "magic",
+				"description": "A surge of bolts that pepper the opposing line."
+			},
+			{
+				"id": "natalie_focus_chant",
+				"name": "Focus Chant",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "self",
+				"aiWeight": 0.95,
+				"cooldown": 3,
+				"effect": {
+					"magicBonus": 2,
+					"luck": 1
+				},
+				"duration": 2,
+				"description": "Centers the caster, boosting arcane focus and fortune."
+			}
+		],
+		"activeAbilities": [
+			"natalie_chill_wind",
+			"natalie_arcane_barrier",
+			"natalie_mystic_focus",
+			"natalie_spectral_lance"
+		],
+		"coreAbilities": [
+			"natalie_chill_wind",
+			"natalie_arcane_barrier"
+		]
+	},
+	"peanut": {
+		"id": "peanut",
+		"name": "Peanut",
+		"role": "Support",
+		"roleClass": "support",
+		"position": "back",
+		"maxHP": 36,
+		"attackBonus": 1,
+		"magicBonus": 4,
+		"defenseBonus": 3,
+		"speed": 2,
+		"luck": 4,
+		"abilities": [
+			{
+				"id": "peanut_tail_wag",
+				"name": "Tail Wag",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "team",
+				"targeting": "team",
+				"aiWeight": 1,
+				"effect": {
+					"luck": 2
+				},
+				"duration": 2,
+				"description": "Peanut's enthusiasm cheers up the entire team."
+			},
+			{
+				"id": "peanut_pridelands_inspiration",
+				"name": "Pridelands Inspiration",
+				"type": "support",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "team",
+				"targeting": "team",
+				"aiWeight": 1.3,
+				"concentration": true,
+				"cooldown": 2,
+				"effect": {
+					"attackBonus": 1,
+					"magicBonus": 1
+				},
+				"duration": 3,
+				"description": "Peanut quotes Pridelands, inspiring allies to fight harder.",
+				"grantsAdvantage": true
+			},
+			{
+				"id": "peanut_book_bonk",
+				"name": "Book Bonk",
+				"type": "physical",
+				"category": "light",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "front-preferred",
+				"aiWeight": 0.9,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"1d4+2",
+					"1d6+2",
+					"2d4+2"
+				],
+				"description": "A bonk with a hefty book. Educational and painful."
+			},
+			{
+				"id": "peanut_hearty_encouragement",
+				"name": "Hearty Encouragement",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "ally",
+				"aiWeight": 1.5,
+				"cooldown": 2,
+				"healByRank": [
+					"1d6+3",
+					"1d8+4",
+					"2d6+3"
+				],
+				"description": "A heartfelt pep talk that restores an ally's strength."
+			}
+		],
+		"loadoutSize": 4,
+		"abilityPool": [
+			{
+				"id": "peanut_tail_wag",
+				"name": "Tail Wag",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "team",
+				"targeting": "team",
+				"aiWeight": 1,
+				"effect": {
+					"luck": 2,
+					"attackBonus": 1
+				},
+				"duration": 2,
+				"description": "Peanut's enthusiasm cheers up the entire team."
+			},
+			{
+				"id": "peanut_pridelands_inspiration",
+				"name": "Pridelands Inspiration",
+				"type": "support",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "team",
+				"targeting": "team",
+				"aiWeight": 1.3,
+				"concentration": true,
+				"cooldown": 2,
+				"effect": {
+					"attackBonus": 1,
+					"magicBonus": 1
+				},
+				"duration": 3,
+				"description": "Peanut quotes Pridelands, inspiring allies to fight harder.",
+				"grantsAdvantage": true
+			},
+			{
+				"id": "peanut_book_bonk",
+				"name": "Book Bonk",
+				"type": "physical",
+				"category": "light",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "front-preferred",
+				"aiWeight": 0.9,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"1d4+2",
+					"1d6+2",
+					"2d4+2"
+				],
+				"description": "A bonk with a hefty book. Educational and painful."
+			},
+			{
+				"id": "peanut_hearty_encouragement",
+				"name": "Hearty Encouragement",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "ally",
+				"aiWeight": 1.5,
+				"cooldown": 2,
+				"healByRank": [
+					"1d6+3",
+					"1d8+4",
+					"2d6+3"
+				],
+				"description": "A heartfelt pep talk that restores an ally's strength."
+			},
+			{
+				"id": "peanut_team_mend",
+				"name": "Team Mend",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "team",
+				"targeting": "team",
+				"aiWeight": 1.1,
+				"healByRank": [
+					"1d6+1",
+					"1d6+3",
+					"2d4+3"
+				],
+				"description": "A calming pulse of healing that patches up the whole squad."
+			},
+			{
+				"id": "peanut_protective_ward",
+				"name": "Protective Ward",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "team",
+				"targeting": "team",
+				"aiWeight": 0.95,
+				"effect": {
+					"defenseBonus": 1,
+					"luck": 1
+				},
+				"duration": 2,
+				"cooldown": 3,
+				"description": "Sets a quick ward that steadies allies and hardens defenses."
+			}
+		],
+		"activeAbilities": [
+			"peanut_tail_wag",
+			"peanut_pridelands_inspiration",
+			"peanut_book_bonk",
+			"peanut_hearty_encouragement"
+		],
+		"coreAbilities": [
+			"peanut_tail_wag",
+			"peanut_pridelands_inspiration"
+		]
+	},
+	"ralph": {
+		"id": "ralph",
+		"name": "Ralph",
+		"role": "Tank",
+		"roleClass": "frontliner",
+		"position": "front",
+		"maxHP": 40,
+		"attackBonus": 2,
+		"magicBonus": 1,
+		"defenseBonus": 4,
+		"speed": 2,
+		"luck": 4,
+		"abilities": [
+			{
+				"id": "ralph_shoulder_check",
+				"name": "Shoulder Check",
+				"type": "physical",
+				"category": "light",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "front-preferred",
+				"aiWeight": 1,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"1d6+2",
+					"1d8+2",
+					"2d4+2"
+				],
+				"description": "A solid shoulder slam that knocks enemies around."
+			},
+			{
+				"id": "ralph_bark_orders",
+				"name": "Bark Orders",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "team",
+				"targeting": "team",
+				"aiWeight": 1.2,
+				"effect": {
+					"defenseBonus": 2
+				},
+				"duration": 2,
+				"description": "Ralph barks out commands, improving the team's discipline."
+			},
+			{
+				"id": "ralph_hold_the_line",
+				"name": "Hold the Line",
+				"type": "support",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "self",
+				"aiWeight": 1.1,
+				"cooldown": 2,
+				"effect": {
+					"defenseBonus": 3,
+					"speed": -1
+				},
+				"duration": 3,
+				"description": "Ralph digs in, becoming very hard to move."
+			},
+			{
+				"id": "ralph_full_stop_tackle",
+				"name": "Full-Stop Tackle",
+				"type": "physical",
+				"category": "heavy",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "front-preferred",
+				"aiWeight": 1.7,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"2d8+2",
+					"2d10+2",
+					"3d8+3"
+				],
+				"description": "A high-impact takedown that stops the target cold."
+			}
+		],
+		"loadoutSize": 4,
+		"abilityPool": [
+			{
+				"id": "ralph_shoulder_check",
+				"name": "Shoulder Check",
+				"type": "physical",
+				"category": "light",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "front-preferred",
+				"aiWeight": 1,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"1d6+2",
+					"1d8+2",
+					"2d4+2"
+				],
+				"description": "A solid shoulder slam that knocks enemies around."
+			},
+			{
+				"id": "ralph_bark_orders",
+				"name": "Bark Orders",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "team",
+				"targeting": "team",
+				"aiWeight": 1.2,
+				"effect": {
+					"defenseBonus": 2
+				},
+				"duration": 2,
+				"description": "Ralph barks out commands, improving the team's discipline."
+			},
+			{
+				"id": "ralph_hold_the_line",
+				"name": "Hold the Line",
+				"type": "support",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "self",
+				"aiWeight": 1.1,
+				"cooldown": 2,
+				"effect": {
+					"defenseBonus": 3,
+					"speed": -1
+				},
+				"duration": 3,
+				"description": "Ralph digs in, becoming very hard to move."
+			},
+			{
+				"id": "ralph_full_stop_tackle",
+				"name": "Full-Stop Tackle",
+				"type": "physical",
+				"category": "heavy",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "front-preferred",
+				"aiWeight": 1.7,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"2d8+2",
+					"2d10+2",
+					"3d8+3"
+				],
+				"description": "A high-impact takedown that stops the target cold."
+			},
+			{
+				"id": "ralph_line_breaker",
+				"name": "Line Breaker",
+				"type": "physical",
+				"category": "heavy",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "front-preferred",
+				"aiWeight": 1.25,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"2d6+1",
+					"2d8+1",
+					"2d10+2"
+				],
+				"extraEffect": {
+					"enemy": {
+						"defenseBonus": -1,
+						"duration": 2
+					}
+				},
+				"description": "A driving charge meant to crack the enemy front line."
+			},
+			{
+				"id": "ralph_bulwark_shout",
+				"name": "Bulwark Shout",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "team",
+				"targeting": "team",
+				"aiWeight": 1.05,
+				"cooldown": 3,
+				"effect": {
+					"defenseBonus": 1,
+					"redirectChance": 0.15
+				},
+				"duration": 2,
+				"description": "Rallies allies to tighten their guard and share protection."
+			}
+		],
+		"activeAbilities": [
+			"ralph_shoulder_check",
+			"ralph_bark_orders",
+			"ralph_hold_the_line",
+			"ralph_full_stop_tackle"
+		],
+		"coreAbilities": [
+			"ralph_shoulder_check",
+			"ralph_bark_orders"
+		]
+	},
+	"sabrina": {
+		"id": "sabrina",
+		"name": "Sabrina",
+		"role": "Mage",
+		"roleClass": "mage",
+		"position": "back",
+		"maxHP": 32,
+		"attackBonus": 1,
+		"magicBonus": 5,
+		"defenseBonus": 3,
+		"speed": 3,
+		"luck": 4,
+		"resistances": [
+			"shadow"
+		],
+		"vulnerabilities": [
+			"radiant"
+		],
+		"abilities": [
+			{
+				"id": "sabrina_shadow_bolt",
+				"name": "Shadow Bolt",
+				"type": "magic",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "any-enemy",
+				"aiWeight": 1.2,
+				"hitStat": "magicBonus",
+				"damageByRank": [
+					"1d8+2",
+					"2d6+2",
+					"2d8+2"
+				],
+				"damageType": "shadow",
+				"description": "A bolt of shadowy energy fired with precision."
+			},
+			{
+				"id": "sabrina_dark_mist",
+				"name": "Dark Mist",
+				"type": "magic",
+				"category": "support",
+				"rank": 1,
+				"aoe": "enemy-team",
+				"targeting": "any-enemy",
+				"aiWeight": 1.5,
+				"concentration": true,
+				"cooldown": 3,
+				"effect": {
+					"attackBonus": -2
+				},
+				"duration": 2,
+				"saveStat": "luck",
+				"saveDifficulty": 13,
+				"description": "A dark fog reduces accuracy of all enemies."
+			},
+			{
+				"id": "sabrina_focus_chant",
+				"name": "Focus Chant",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "team",
+				"targeting": "team",
+				"aiWeight": 1.1,
+				"effect": {
+					"magicBonus": 1
+				},
+				"duration": 2,
+				"description": "A calm chant that empowers spellcasting allies."
+			},
+			{
+				"id": "sabrina_astral_spear",
+				"name": "Astral Spear",
+				"type": "magic",
+				"category": "heavy",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "any-enemy",
+				"aiWeight": 1.8,
+				"hitStat": "magicBonus",
+				"damageByRank": [
+					"2d8+1",
+					"2d10+1",
+					"3d8+2"
+				],
+				"damageType": "radiant",
+				"description": "A piercing astral strike launched at high velocity."
+			}
+		],
+		"loadoutSize": 4,
+		"abilityPool": [
+			{
+				"id": "sabrina_shadow_bolt",
+				"name": "Shadow Bolt",
+				"type": "magic",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "any-enemy",
+				"aiWeight": 1.2,
+				"hitStat": "magicBonus",
+				"damageByRank": [
+					"1d8+2",
+					"2d6+2",
+					"2d8+2"
+				],
+				"damageType": "shadow",
+				"description": "A bolt of shadowy energy fired with precision."
+			},
+			{
+				"id": "sabrina_dark_mist",
+				"name": "Dark Mist",
+				"type": "magic",
+				"category": "support",
+				"rank": 1,
+				"aoe": "enemy-team",
+				"targeting": "any-enemy",
+				"aiWeight": 1.5,
+				"concentration": true,
+				"cooldown": 3,
+				"effect": {
+					"attackBonus": -2
+				},
+				"duration": 2,
+				"saveStat": "luck",
+				"saveDifficulty": 13,
+				"description": "A dark fog reduces accuracy of all enemies."
+			},
+			{
+				"id": "sabrina_focus_chant",
+				"name": "Focus Chant",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "team",
+				"targeting": "team",
+				"aiWeight": 1.1,
+				"effect": {
+					"magicBonus": 1
+				},
+				"duration": 2,
+				"description": "A calm chant that empowers spellcasting allies."
+			},
+			{
+				"id": "sabrina_astral_spear",
+				"name": "Astral Spear",
+				"type": "magic",
+				"category": "heavy",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "any-enemy",
+				"aiWeight": 1.8,
+				"hitStat": "magicBonus",
+				"damageByRank": [
+					"2d8+1",
+					"2d10+1",
+					"3d8+2"
+				],
+				"damageType": "radiant",
+				"description": "A piercing astral strike launched at high velocity."
+			},
+			{
+				"id": "sabrina_arcane_barrage",
+				"name": "Arcane Barrage",
+				"type": "magic",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "enemy-team",
+				"targeting": "any-enemy",
+				"aiWeight": 1.2,
+				"hitStat": "magicBonus",
+				"damageByRank": [
+					"2d4+2",
+					"2d6+2",
+					"2d8+3"
+				],
+				"damageType": "magic",
+				"description": "A surge of bolts that pepper the opposing line."
+			},
+			{
+				"id": "sabrina_null_shield",
+				"name": "Null Shield",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "team",
+				"targeting": "team",
+				"aiWeight": 1.05,
+				"cooldown": 3,
+				"effect": {
+					"defenseBonus": 1
+				},
+				"duration": 2,
+				"description": "A ward of shadow that softens incoming blows for allies."
+			}
+		],
+		"activeAbilities": [
+			"sabrina_shadow_bolt",
+			"sabrina_dark_mist",
+			"sabrina_focus_chant",
+			"sabrina_astral_spear"
+		],
+		"coreAbilities": [
+			"sabrina_shadow_bolt",
+			"sabrina_dark_mist"
+		]
+	},
+	"sasha": {
+		"id": "sasha",
+		"name": "Sasha",
+		"role": "Support",
+		"roleClass": "support",
+		"position": "back",
+		"maxHP": 36,
+		"attackBonus": 2,
+		"magicBonus": 3,
+		"defenseBonus": 3,
+		"speed": 3,
+		"luck": 3,
+		"abilities": [
+			{
+				"id": "sasha_cheer_up",
+				"name": "Cheer Up!",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "ally",
+				"aiWeight": 1.2,
+				"effect": {
+					"attackBonus": 1,
+					"magicBonus": 1,
+					"speed": 1
+				},
+				"duration": 2,
+				"description": "Sasha cheers an ally, raising their spirits and a key stat."
+			},
+			{
+				"id": "sasha_playful_smack",
+				"name": "Playful Smack",
+				"type": "physical",
+				"category": "light",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "front-preferred",
+				"aiWeight": 0.9,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"1d4+1",
+					"1d6+1",
+					"2d4+1"
+				],
+				"description": "A light, silly hit that still stings a bit."
+			},
+			{
+				"id": "sasha_healing_hug",
+				"name": "Healing Hug",
+				"type": "support",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "ally",
+				"aiWeight": 1.5,
+				"cooldown": 2,
+				"healByRank": [
+					"1d6+3",
+					"1d8+4",
+					"2d6+3"
+				],
+				"description": "A comforting hug that restores an ally's vitality."
+			},
+			{
+				"id": "sasha_lucky_charm",
+				"name": "Lucky Charm",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "team",
+				"targeting": "team",
+				"aiWeight": 1.3,
+				"concentration": true,
+				"cooldown": 2,
+				"effect": {
+					"luck": 2
+				},
+				"duration": 2,
+				"description": "Sasha spreads her good luck to the team."
+			}
+		],
+		"loadoutSize": 4,
+		"abilityPool": [
+			{
+				"id": "sasha_cheer_up",
+				"name": "Cheer Up!",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "ally",
+				"aiWeight": 1.2,
+				"effect": {
+					"attackBonus": 1,
+					"magicBonus": 1,
+					"speed": 1
+				},
+				"duration": 2,
+				"description": "Sasha cheers an ally, raising their spirits and a key stat."
+			},
+			{
+				"id": "sasha_playful_smack",
+				"name": "Playful Smack",
+				"type": "physical",
+				"category": "light",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "front-preferred",
+				"aiWeight": 0.9,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"1d4+1",
+					"1d6+1",
+					"2d4+1"
+				],
+				"description": "A light, silly hit that still stings a bit."
+			},
+			{
+				"id": "sasha_healing_hug",
+				"name": "Healing Hug",
+				"type": "support",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "ally",
+				"aiWeight": 1.5,
+				"cooldown": 2,
+				"healByRank": [
+					"1d6+3",
+					"1d8+4",
+					"2d6+3"
+				],
+				"description": "A comforting hug that restores an ally's vitality."
+			},
+			{
+				"id": "sasha_lucky_charm",
+				"name": "Lucky Charm",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "team",
+				"targeting": "team",
+				"aiWeight": 1.3,
+				"concentration": true,
+				"cooldown": 2,
+				"effect": {
+					"luck": 2
+				},
+				"duration": 2,
+				"description": "Sasha spreads her good luck to the team."
+			},
+			{
+				"id": "sasha_team_mend",
+				"name": "Team Mend",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "team",
+				"targeting": "team",
+				"aiWeight": 1.1,
+				"healByRank": [
+					"1d6+1",
+					"1d6+3",
+					"2d4+3"
+				],
+				"description": "A calming pulse of healing that patches up the whole squad."
+			},
+			{
+				"id": "sasha_protective_ward",
+				"name": "Protective Ward",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "team",
+				"targeting": "team",
+				"aiWeight": 0.95,
+				"effect": {
+					"defenseBonus": 1,
+					"luck": 1
+				},
+				"duration": 2,
+				"cooldown": 3,
+				"description": "Sets a quick ward that steadies allies and hardens defenses."
+			}
+		],
+		"activeAbilities": [
+			"sasha_cheer_up",
+			"sasha_playful_smack",
+			"sasha_healing_hug",
+			"sasha_lucky_charm"
+		],
+		"coreAbilities": [
+			"sasha_cheer_up",
+			"sasha_playful_smack"
+		]
+	},
+	"tarot": {
+		"id": "tarot",
+		"name": "Tarot",
+		"role": "Mage",
+		"roleClass": "mage",
+		"position": "back",
+		"maxHP": 32,
+		"attackBonus": 1,
+		"magicBonus": 5,
+		"defenseBonus": 2,
+		"speed": 3,
+		"luck": 4,
+		"resistances": [
+			"radiant"
+		],
+		"vulnerabilities": [
+			"shadow"
+		],
+		"abilities": [
+			{
+				"id": "tarot_arcane_bolt",
+				"name": "Arcane Bolt",
+				"type": "magic",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "any-enemy",
+				"aiWeight": 1.2,
+				"hitStat": "magicBonus",
+				"damageByRank": [
+					"1d8+2",
+					"2d6+2",
+					"2d8+2"
+				],
+				"description": "A focused bolt of arcane energy."
+			},
+			{
+				"id": "tarot_hex",
+				"name": "Hex",
+				"type": "magic",
+				"category": "light",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "any-enemy",
+				"aiWeight": 1.1,
+				"concentration": true,
+				"cooldown": 2,
+				"hitStat": "magicBonus",
+				"damageByRank": [
+					"1d6+1",
+					"1d8+1",
+					"2d4+2"
+				],
+				"effect": {
+					"defenseBonus": -1
+				},
+				"duration": 2,
+				"saveStat": "luck",
+				"saveDifficulty": 13,
+				"applyCondition": "silenced",
+				"conditionDuration": 1,
+				"description": "A minor curse that weakens the target's defenses."
+			},
+			{
+				"id": "tarot_future_sight",
+				"name": "Future Sight",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "team",
+				"targeting": "team",
+				"aiWeight": 1.3,
+				"concentration": true,
+				"cooldown": 3,
+				"effect": {
+					"speed": 1,
+					"luck": 1,
+					"defenseBonus": 1
+				},
+				"grantsAdvantage": true,
+				"duration": 3,
+				"description": "Tarot glimpses possible futures, improving her team's reactions."
+			},
+			{
+				"id": "tarot_meteor_burst",
+				"name": "Meteor Burst",
+				"type": "magic",
+				"category": "heavy",
+				"rank": 1,
+				"aoe": "enemy-team",
+				"targeting": "any-enemy",
+				"aiWeight": 1.3,
+				"cooldown": 4,
+				"charges": 2,
+				"hitStat": "magicBonus",
+				"damageByRank": [
+					"2d8+2",
+					"2d10+2",
+					"3d8+3"
+				],
+				"damageType": "radiant",
+				"description": "A psychic meteor slams into the enemy team in a burst of energy."
+			}
+		],
+		"loadoutSize": 4,
+		"abilityPool": [
+			{
+				"id": "tarot_arcane_bolt",
+				"name": "Arcane Bolt",
+				"type": "magic",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "any-enemy",
+				"aiWeight": 1.2,
+				"hitStat": "magicBonus",
+				"damageByRank": [
+					"1d8+2",
+					"2d6+2",
+					"2d8+2"
+				],
+				"description": "A focused bolt of arcane energy."
+			},
+			{
+				"id": "tarot_hex",
+				"name": "Hex",
+				"type": "magic",
+				"category": "light",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "any-enemy",
+				"aiWeight": 1.1,
+				"concentration": true,
+				"cooldown": 2,
+				"hitStat": "magicBonus",
+				"damageByRank": [
+					"1d6+1",
+					"1d8+1",
+					"2d4+2"
+				],
+				"effect": {
+					"defenseBonus": -1
+				},
+				"duration": 2,
+				"saveStat": "luck",
+				"saveDifficulty": 13,
+				"applyCondition": "silenced",
+				"conditionDuration": 1,
+				"description": "A minor curse that weakens the target's defenses."
+			},
+			{
+				"id": "tarot_future_sight",
+				"name": "Future Sight",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "team",
+				"targeting": "team",
+				"aiWeight": 1.3,
+				"concentration": true,
+				"cooldown": 3,
+				"effect": {
+					"speed": 1,
+					"luck": 1,
+					"defenseBonus": 1
+				},
+				"grantsAdvantage": true,
+				"duration": 3,
+				"description": "Tarot glimpses possible futures, improving her team's reactions."
+			},
+			{
+				"id": "tarot_meteor_burst",
+				"name": "Meteor Burst",
+				"type": "magic",
+				"category": "heavy",
+				"rank": 1,
+				"aoe": "enemy-team",
+				"targeting": "any-enemy",
+				"aiWeight": 1.3,
+				"cooldown": 4,
+				"charges": 2,
+				"hitStat": "magicBonus",
+				"damageByRank": [
+					"2d8+2",
+					"2d10+2",
+					"3d8+3"
+				],
+				"damageType": "radiant",
+				"description": "A psychic meteor slams into the enemy team in a burst of energy."
+			},
+			{
+				"id": "tarot_arcane_barrage",
+				"name": "Arcane Barrage",
+				"type": "magic",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "enemy-team",
+				"targeting": "any-enemy",
+				"aiWeight": 1.2,
+				"hitStat": "magicBonus",
+				"damageByRank": [
+					"2d4+2",
+					"2d6+2",
+					"2d8+3"
+				],
+				"damageType": "magic",
+				"description": "A surge of bolts that pepper the opposing line."
+			},
+			{
+				"id": "tarot_focus_chant",
+				"name": "Focus Chant",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "self",
+				"aiWeight": 0.95,
+				"cooldown": 3,
+				"effect": {
+					"magicBonus": 2,
+					"luck": 1
+				},
+				"duration": 2,
+				"description": "Centers the caster, boosting arcane focus and fortune."
+			}
+		],
+		"activeAbilities": [
+			"tarot_arcane_bolt",
+			"tarot_hex",
+			"tarot_future_sight",
+			"tarot_meteor_burst"
+		],
+		"coreAbilities": [
+			"tarot_arcane_bolt",
+			"tarot_hex"
+		]
+	},
+	"terrace": {
+		"id": "terrace",
+		"name": "Terrace",
+		"role": "Bruiser",
+		"roleClass": "frontliner",
+		"position": "front",
+		"maxHP": 36,
+		"attackBonus": 4,
+		"magicBonus": 1,
+		"defenseBonus": 3,
+		"speed": 3,
+		"luck": 3,
+		"abilities": [
+			{
+				"id": "terrace_warning_shot",
+				"name": "Warning Shot",
+				"type": "physical",
+				"category": "light",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "front-preferred",
+				"aiWeight": 1,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"1d6+2",
+					"1d8+2",
+					"2d4+2"
+				],
+				"description": "A controlled strike meant to keep foes at bay."
+			},
+			{
+				"id": "terrace_k9_focus",
+				"name": "K9 Focus",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "self",
+				"aiWeight": 1,
+				"effect": {
+					"attackBonus": 2
+				},
+				"duration": 2,
+				"description": "Terrace sharpens her senses, increasing her strike accuracy."
+			},
+			{
+				"id": "terrace_concussive_hit",
+				"name": "Concussive Hit",
+				"type": "physical",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "front-preferred",
+				"aiWeight": 1.3,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"1d8+2",
+					"2d6+2",
+					"2d8+2"
+				],
+				"extraEffect": {
+					"speed": -1,
+					"duration": 1
+				},
+				"applyCondition": "stunned",
+				"conditionDuration": 1,
+				"description": "A powerful strike that leaves enemies rattled.",
+				"saveStat": "luck",
+				"saveDifficulty": 13
+			},
+			{
+				"id": "terrace_k9_finisher",
+				"name": "K9 Finisher",
+				"type": "physical",
+				"category": "heavy",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "any-enemy",
+				"aiWeight": 1.2,
+				"cooldown": 1,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"2d8+2",
+					"2d10+2",
+					"3d8+3"
+				],
+				"description": "A decisive takedown blow used at the end of K9 drills."
+			}
+		],
+		"loadoutSize": 4,
+		"abilityPool": [
+			{
+				"id": "terrace_warning_shot",
+				"name": "Warning Shot",
+				"type": "physical",
+				"category": "light",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "front-preferred",
+				"aiWeight": 1,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"1d6+2",
+					"1d8+2",
+					"2d4+2"
+				],
+				"description": "A controlled strike meant to keep foes at bay."
+			},
+			{
+				"id": "terrace_k9_focus",
+				"name": "K9 Focus",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "self",
+				"aiWeight": 1,
+				"effect": {
+					"attackBonus": 2
+				},
+				"duration": 2,
+				"description": "Terrace sharpens her senses, increasing her strike accuracy."
+			},
+			{
+				"id": "terrace_concussive_hit",
+				"name": "Concussive Hit",
+				"type": "physical",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "front-preferred",
+				"aiWeight": 1.3,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"1d8+2",
+					"2d6+2",
+					"2d8+2"
+				],
+				"extraEffect": {
+					"speed": -1,
+					"duration": 1
+				},
+				"applyCondition": "stunned",
+				"conditionDuration": 1,
+				"description": "A powerful strike that leaves enemies rattled.",
+				"saveStat": "luck",
+				"saveDifficulty": 13
+			},
+			{
+				"id": "terrace_k9_finisher",
+				"name": "K9 Finisher",
+				"type": "physical",
+				"category": "heavy",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "any-enemy",
+				"aiWeight": 1.2,
+				"cooldown": 1,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"2d8+2",
+					"2d10+2",
+					"3d8+3"
+				],
+				"description": "A decisive takedown blow used at the end of K9 drills."
+			},
+			{
+				"id": "terrace_line_breaker",
+				"name": "Line Breaker",
+				"type": "physical",
+				"category": "heavy",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "front-preferred",
+				"aiWeight": 1.25,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"2d6+1",
+					"2d8+1",
+					"2d10+2"
+				],
+				"extraEffect": {
+					"enemy": {
+						"defenseBonus": -1,
+						"duration": 2
+					}
+				},
+				"description": "A driving charge meant to crack the enemy front line."
+			},
+			{
+				"id": "terrace_bulwark_shout",
+				"name": "Bulwark Shout",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "team",
+				"targeting": "team",
+				"aiWeight": 1.05,
+				"cooldown": 3,
+				"effect": {
+					"defenseBonus": 1,
+					"redirectChance": 0.15
+				},
+				"duration": 2,
+				"description": "Rallies allies to tighten their guard and share protection."
+			}
+		],
+		"activeAbilities": [
+			"terrace_warning_shot",
+			"terrace_k9_focus",
+			"terrace_concussive_hit",
+			"terrace_k9_finisher"
+		],
+		"coreAbilities": [
+			"terrace_warning_shot",
+			"terrace_k9_focus"
+		]
+	},
+	"tiger": {
+		"id": "tiger",
+		"name": "Tiger",
+		"role": "Berserker",
+		"roleClass": "frontliner",
+		"position": "front",
+		"maxHP": 32,
+		"attackBonus": 4,
+		"magicBonus": 1,
+		"defenseBonus": 2,
+		"speed": 4,
+		"luck": 4,
+		"resistances": [
+			"physical"
+		],
+		"vulnerabilities": [
+			"magic"
+		],
+		"abilities": [
+			{
+				"id": "tiger_wild_swing",
+				"name": "Wild Swing",
+				"type": "physical",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "random-2-enemies",
+				"targeting": "any-enemy",
+				"aiWeight": 1.5,
+				"cooldown": 2,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"1d8+3",
+					"2d6+2",
+					"2d8+2"
+				],
+				"description": "Tiger swings wildly, sometimes hitting multiple enemies."
+			},
+			{
+				"id": "tiger_snack_break",
+				"name": "Snack Break",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "self",
+				"aiWeight": 1.2,
+				"cooldown": 2,
+				"healByRank": [
+					"1d6+2",
+					"1d8+3",
+					"2d6+2"
+				],
+				"description": "Tiger pauses for a snack, regaining health."
+			},
+			{
+				"id": "tiger_rage",
+				"name": "Rage",
+				"type": "support",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "self",
+				"aiWeight": 1.3,
+				"cooldown": 2,
+				"concentration": true,
+				"effect": {
+					"attackBonus": 3,
+					"defenseBonus": -2
+				},
+				"duration": 3,
+				"description": "Tiger flies into a rage, hitting harder but dropping his guard.",
+				"grantsAdvantage": true
+			},
+			{
+				"id": "tiger_meat_meteor",
+				"name": "Meat Meteor",
+				"type": "physical",
+				"category": "heavy",
+				"rank": 1,
+				"aoe": "enemy-team",
+				"targeting": "any-enemy",
+				"aiWeight": 1.2,
+				"cooldown": 4,
+				"charges": 2,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"2d8+1",
+					"2d10+1",
+					"3d8+2"
+				],
+				"description": "Tiger hurls himself (and maybe a snack) at the enemy team."
+			}
+		],
+		"loadoutSize": 4,
+		"abilityPool": [
+			{
+				"id": "tiger_wild_swing",
+				"name": "Wild Swing",
+				"type": "physical",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "random-2-enemies",
+				"targeting": "any-enemy",
+				"aiWeight": 1.4,
+				"cooldown": 2,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"1d8+3",
+					"2d6+2",
+					"2d8+2"
+				],
+				"description": "Tiger swings wildly, sometimes hitting multiple enemies."
+			},
+			{
+				"id": "tiger_snack_break",
+				"name": "Snack Break",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "self",
+				"aiWeight": 1.2,
+				"cooldown": 2,
+				"healByRank": [
+					"1d6+2",
+					"1d8+3",
+					"2d6+2"
+				],
+				"description": "Tiger pauses for a snack, regaining health."
+			},
+			{
+				"id": "tiger_rage",
+				"name": "Rage",
+				"type": "support",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "self",
+				"aiWeight": 1.3,
+				"cooldown": 2,
+				"concentration": true,
+				"effect": {
+					"attackBonus": 3,
+					"defenseBonus": -2
+				},
+				"duration": 3,
+				"description": "Tiger flies into a rage, hitting harder but dropping his guard.",
+				"grantsAdvantage": true
+			},
+			{
+				"id": "tiger_meat_meteor",
+				"name": "Meat Meteor",
+				"type": "physical",
+				"category": "heavy",
+				"rank": 1,
+				"aoe": "enemy-team",
+				"targeting": "any-enemy",
+				"aiWeight": 1.4,
+				"cooldown": 4,
+				"charges": 2,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"2d8+2",
+					"2d10+2",
+					"3d8+3"
+				],
+				"description": "Tiger hurls himself (and maybe a snack) at the enemy team."
+			},
+			{
+				"id": "tiger_line_breaker",
+				"name": "Line Breaker",
+				"type": "physical",
+				"category": "heavy",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "front-preferred",
+				"aiWeight": 1.25,
+				"hitStat": "attackBonus",
+				"damageByRank": [
+					"2d6+1",
+					"2d8+1",
+					"2d10+2"
+				],
+				"extraEffect": {
+					"enemy": {
+						"defenseBonus": -1,
+						"duration": 2
+					}
+				},
+				"description": "A driving charge meant to crack the enemy front line."
+			},
+			{
+				"id": "tiger_bulwark_shout",
+				"name": "Bulwark Shout",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "team",
+				"targeting": "team",
+				"aiWeight": 1.05,
+				"cooldown": 3,
+				"effect": {
+					"defenseBonus": 1,
+					"redirectChance": 0.15
+				},
+				"duration": 2,
+				"description": "Rallies allies to tighten their guard and share protection."
+			}
+		],
+		"activeAbilities": [
+			"tiger_wild_swing",
+			"tiger_snack_break",
+			"tiger_rage",
+			"tiger_meat_meteor"
+		],
+		"coreAbilities": [
+			"tiger_wild_swing",
+			"tiger_snack_break"
+		]
+	},
+	"steve": {
+		"id": "steve",
+		"name": "Delusional Steve",
+		"role": "Chaos Bruiser",
+		"roleClass": "frontliner",
+		"position": "front",
+		"maxHP": 36,
+		"attackBonus": 4,
+		"magicBonus": 1,
+		"defenseBonus": 2,
+		"speed": 3,
+		"luck": 4,
+		
+		"abilities": [
+			{
+				"id": "steve_wild_slam",
+				"name": "Wild Slam",
+				"type": "physical",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "single",
+				"hitStat": "attackBonus",
+				"damageByRank": ["1d10+1", "2d6+2", "2d8+2"],
+				"aiWeight": 1.25,
+				"description": "A reckless charge that hits surprisingly hard."
+			},
+			{
+				"id": "steve_chaotic_energy",
+				"name": "Chaotic Energy",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "team",
+				"effect": { "luck": 1 },
+				"duration": 2,
+				"aiWeight": 1.0,
+				"description": "Steve radiates confusing hype that boosts team luck."
+			},
+			{
+				"id": "steve_unstable_swing",
+				"name": "Unstable Swing",
+				"type": "physical",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "enemy-team",
+				"hitStat": "attackBonus",
+				"damageByRank": ["1d6+1", "1d8+1", "2d4+2"],
+				"aiWeight": 1.1,
+				"description": "His unpredictable flailing hits multiple foes."
+			},
+			{
+				"id": "steve_frenzy_mode",
+				"name": "Frenzy Mode",
+				"type": "support",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "self",
+				"effect": { "attackBonus": 1, "speed": 1 },
+				"duration": 2,
+				"cooldown": 3,
+				"aiWeight": 1.05,
+				"description": "Steve goes wild, swinging faster and harder."
+			}
+		],
+		
+		"abilityPool": [
+			{
+				"id": "steve_wild_slam",
+				"name": "Wild Slam",
+				"type": "physical",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "single",
+				"hitStat": "attackBonus",
+				"damageByRank": ["1d10+1", "2d6+2", "2d8+2"],
+				"aiWeight": 1.25,
+				"description": "A reckless charge that hits surprisingly hard."
+			},
+			{
+				"id": "steve_chaotic_energy",
+				"name": "Chaotic Energy",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "team",
+				"effect": { "luck": 1 },
+				"duration": 2,
+				"aiWeight": 1.0,
+				"description": "Steve radiates confusing hype that boosts team luck."
+			},
+			{
+				"id": "steve_unstable_swing",
+				"name": "Unstable Swing",
+				"type": "physical",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "enemy-team",
+				"hitStat": "attackBonus",
+				"damageByRank": ["1d6+1", "1d8+1", "2d4+2"],
+				"aiWeight": 1.1,
+				"description": "His unpredictable flailing hits multiple foes."
+			},
+			{
+				"id": "steve_frenzy_mode",
+				"name": "Frenzy Mode",
+				"type": "support",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "self",
+				"effect": { "attackBonus": 1, "speed": 1 },
+				"duration": 2,
+				"cooldown": 3,
+				"aiWeight": 1.05,
+				"description": "Steve goes wild, swinging faster and harder."
+			},
+			
+			{
+				"id": "steve_brain_misfire",
+				"name": "Brain Misfire",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "enemy",
+				"effect": { "defenseBonus": -1 },
+				"duration": 1,
+				"aiWeight": 0.9,
+				"description": "Steve’s nonsense confuses the enemy and lowers their guard."
+			},
+			{
+				"id": "steve_lucky_strike",
+				"name": "Lucky Strike",
+				"type": "physical",
+				"category": "light",
+				"rank": 1,
+				"aoe": "single",
+				"hitStat": "luck",
+				"damageByRank": ["1d6+2", "1d8+2", "2d4+2"],
+				"aiWeight": 1.2,
+				"description": "He hits unusually well when luck is on his side."
+			}
+		],
+		
+		"activeAbilities": [
+			"steve_wild_slam",
+			"steve_chaotic_energy",
+			"steve_unstable_swing",
+			"steve_frenzy_mode"
+		],
+		
+		"coreAbilities": [
+			"steve_wild_slam",
+			"steve_chaotic_energy"
+		]
+	},
+	"zach": {
+		"id": "zach",
+		"name": "Zach",
+		"role": "Support",
+		"roleClass": "support",
+		"position": "back",
+		"maxHP": 28,
+		"attackBonus": 1,
+		"magicBonus": 4,
+		"defenseBonus": 2,
+		"speed": 3,
+		"luck": 6,
+		
+		"abilities": [
+			{
+				"id": "zach_soothing_whisper",
+				"name": "Soothing Whisper",
+				"type": "support",
+				"category": "light",
+				"rank": 1,
+				"aoe": "ally",
+				"heal": "1d6+2",
+				"aiWeight": 1.15,
+				"description": "A gentle reassurance that heals a wounded ally."
+			},
+			{
+				"id": "zach_forest_blessing",
+				"name": "Forest Blessing",
+				"type": "support",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "team",
+				"effect": { "defenseBonus": 1 },
+				"duration": 2,
+				"cooldown": 3,
+				"aiWeight": 1.1,
+				"description": "Zach calls upon the woods to protect his team."
+			},
+			{
+				"id": "zach_luck_sharing",
+				"name": "Share the Luck",
+				"type": "support",
+				"category": "light",
+				"rank": 1,
+				"aoe": "ally",
+				"effect": { "luck": 1 },
+				"duration": 2,
+				"aiWeight": 1.0,
+				"description": "Zach lends his uncanny luck to a teammate."
+			},
+			{
+				"id": "zach_careful_bolt",
+				"name": "Careful Bolt",
+				"type": "magic",
+				"category": "light",
+				"rank": 1,
+				"aoe": "single",
+				"hitStat": "magicBonus",
+				"damageByRank": ["1d6+1", "1d8+1", "2d4+1"],
+				"aiWeight": 0.95,
+				"description": "A simple magical attack he uses only when needed."
+			}
+		],
+		
+		"abilityPool": [
+			{
+				"id": "zach_soothing_whisper",
+				"name": "Soothing Whisper",
+				"type": "support",
+				"category": "light",
+				"rank": 1,
+				"aoe": "ally",
+				"heal": "1d6+2",
+				"aiWeight": 1.15,
+				"description": "A gentle reassurance that heals a wounded ally."
+			},
+			{
+				"id": "zach_forest_blessing",
+				"name": "Forest Blessing",
+				"type": "support",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "team",
+				"effect": { "defenseBonus": 1 },
+				"duration": 2,
+				"cooldown": 3,
+				"aiWeight": 1.1,
+				"description": "Zach calls upon the woods to protect his team."
+			},
+			{
+				"id": "zach_luck_sharing",
+				"name": "Share the Luck",
+				"type": "support",
+				"category": "light",
+				"rank": 1,
+				"aoe": "ally",
+				"effect": { "luck": 1 },
+				"duration": 2,
+				"aiWeight": 1.0,
+				"description": "Zach lends his uncanny luck to a teammate."
+			},
+			{
+				"id": "zach_careful_bolt",
+				"name": "Careful Bolt",
+				"type": "magic",
+				"category": "light",
+				"rank": 1,
+				"aoe": "single",
+				"hitStat": "magicBonus",
+				"damageByRank": ["1d6+1", "1d8+1", "2d4+1"],
+				"aiWeight": 0.95,
+				"description": "A simple magical attack he uses only when needed."
+			},
+			
+			{
+				"id": "zach_focused_healing",
+				"name": "Focused Healing",
+				"type": "support",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "ally",
+				"heal": "1d8+3",
+				"cooldown": 2,
+				"aiWeight": 1.2,
+				"description": "Zach concentrates deeply to mend an ally's wounds."
+			},
+			{
+				"id": "zach_warding_moss",
+				"name": "Warding Moss",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "ally",
+				"effect": { "defenseBonus": 2 },
+				"duration": 1,
+				"aiWeight": 1.0,
+				"description": "A protective charm of moss providing brief resilience."
+			}
+		],
+		
+		"activeAbilities": [
+			"zach_soothing_whisper",
+			"zach_forest_blessing",
+			"zach_luck_sharing",
+			"zach_careful_bolt"
+		],
+		
+		"coreAbilities": [
+			"zach_soothing_whisper",
+			"zach_forest_blessing"
+		]
+	},
+	"jessica": {
+		"id": "jessica",
+		"name": "Jessica",
+		"role": "Debuffer",
+		"roleClass": "trickster",
+		"position": "mid",
+		"maxHP": 32,
+		"attackBonus": 1,
+		"magicBonus": 5,
+		"defenseBonus": 2,
+		"speed": 4,
+		"luck": 3,
+		
+		"abilities": [
+			{
+				"id": "jess_hex_dust",
+				"name": "Hex Dust",
+				"type": "magic",
+				"category": "light",
+				"aoe": "single",
+				"hitStat": "magicBonus",
+				"damageByRank": ["1d6+1", "1d8+1", "2d4+1"],
+				"extraEffect": { "enemy": { "luck": -1, "duration": 2 } },
+				"aiWeight": 1.2,
+				"description": "A sprinkle of cursed dust that weakens an enemy’s fate."
+			},
+			{
+				"id": "jess_shadow_trip",
+				"name": "Shadow Trip",
+				"type": "magic",
+				"category": "light",
+				"aoe": "enemy-team",
+				"extraEffect": { "enemy": { "speed": -1, "duration": 1 } },
+				"aiWeight": 1.1,
+				"description": "Illusions cause foes to stumble and lose speed."
+			},
+			{
+				"id": "jess_enchant_snare",
+				"name": "Enchant Snare",
+				"type": "support",
+				"category": "medium",
+				"aoe": "single",
+				"targeting": "enemy",
+				"effect": { "attackBonus": -1 },
+				"duration": 2,
+				"aiWeight": 1.1,
+				"description": "A sticky magical trap saps enemy aggression."
+			},
+			{
+				"id": "jess_arcane_twirl",
+				"name": "Arcane Twirl",
+				"type": "magic",
+				"category": "medium",
+				"hitStat": "magicBonus",
+				"aoe": "single",
+				"damageByRank": ["1d10+1", "2d6+1", "2d8+1"],
+				"aiWeight": 1.25,
+				"description": "A flourish of swirling magic that strikes cleanly."
+			}
+		],
+		
+		"abilityPool": [
+			{
+				"id": "jess_hex_dust",
+				"name": "Hex Dust",
+				"type": "magic",
+				"category": "light",
+				"aoe": "single",
+				"hitStat": "magicBonus",
+				"damageByRank": ["1d6+1", "1d8+1", "2d4+1"],
+				"extraEffect": { "enemy": { "luck": -1, "duration": 2 } },
+				"aiWeight": 1.2,
+				"description": "A sprinkle of cursed dust that weakens an enemy’s fate."
+			},
+			{
+				"id": "jess_shadow_trip",
+				"name": "Shadow Trip",
+				"type": "magic",
+				"category": "light",
+				"aoe": "enemy-team",
+				"extraEffect": { "enemy": { "speed": -1, "duration": 1 } },
+				"aiWeight": 1.1,
+				"description": "Illusions cause foes to stumble and lose speed."
+			},
+			{
+				"id": "jess_enchant_snare",
+				"name": "Enchant Snare",
+				"type": "support",
+				"category": "medium",
+				"aoe": "single",
+				"targeting": "enemy",
+				"effect": { "attackBonus": -1 },
+				"duration": 2,
+				"aiWeight": 1.1,
+				"description": "A sticky magical trap saps enemy aggression."
+			},
+			{
+				"id": "jess_arcane_twirl",
+				"name": "Arcane Twirl",
+				"type": "magic",
+				"category": "medium",
+				"hitStat": "magicBonus",
+				"aoe": "single",
+				"damageByRank": ["1d10+1", "2d6+1", "2d8+1"],
+				"aiWeight": 1.25,
+				"description": "A flourish of swirling magic that strikes cleanly."
+			},
+			
+			{
+				"id": "jess_ritual_slow",
+				"name": "Ritual Slow",
+				"type": "support",
+				"category": "support",
+				"aoe": "enemy-team",
+				"effect": { "speed": -1 },
+				"duration": 2,
+				"aiWeight": 1.0,
+				"description": "A small ritual that slows enemy movement."
+			},
+			{
+				"id": "jess_mirror_hex",
+				"name": "Mirror Hex",
+				"type": "support",
+				"category": "medium",
+				"aoe": "ally",
+				"effect": { "luck": 1 },
+				"duration": 2,
+				"aiWeight": 0.95,
+				"description": "A reflective charm that manipulates fortune."
+			}
+		],
+		
+		"activeAbilities": [
+			"jess_hex_dust",
+			"jess_shadow_trip",
+			"jess_enchant_snare",
+			"jess_arcane_twirl"
+		],
+		
+		"coreAbilities": [
+			"jess_hex_dust",
+			"jess_shadow_trip"
+		]
+	},
+	"ptah": {
+		"id": "ptah",
+		"name": "Ptah",
+		"role": "Guardian Mage",
+		"roleClass": "frontliner",
+		"position": "front",
+		"maxHP": 36,
+		"attackBonus": 1,
+		"magicBonus": 4,
+		"defenseBonus": 3,
+		"speed": 2,
+		"luck": 4,
+		"loadoutSize": 4,
+		
+		"abilities": [
+			{
+				"id": "ptah_sand_barrier",
+				"name": "Sand Barrier",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "team",
+				"effect": { "defenseBonus": 1 },
+				"duration": 2,
+				"cooldown": 2,
+				"aiWeight": 1.2,
+				"description": "Ptah raises a curtain of sand that hardens around allies."
+			},
+			{
+				"id": "ptah_judging_gaze",
+				"name": "Judging Gaze",
+				"type": "magic",
+				"category": "light",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "front-preferred",
+				"hitStat": "magicBonus",
+				"damageByRank": ["1d6+2", "1d8+2", "2d4+2"],
+				"applyCondition": "vulnerable",
+				"conditionDuration": 1,
+				"saveStat": "luck",
+				"saveDifficulty": 13,
+				"aiWeight": 1.1,
+				"description": "A searing stare that exposes flaws in the enemy’s guard."
+			},
+			{
+				"id": "ptah_weight_of_ages",
+				"name": "Weight of Ages",
+				"type": "magic",
+				"category": "medium",
+				"rank": 2,
+				"aoe": "enemy-team",
+				"hitStat": "magicBonus",
+				"damageByRank": ["1d6+1", "1d6+2", "2d4+2"],
+				"extraEffect": { "speed": -1, "duration": 1 },
+				"saveStat": "luck",
+				"saveDifficulty": 13,
+				"cooldown": 3,
+				"aiWeight": 1.4,
+				"description": "Time presses down on all foes, slowing their movements."
+			},
+			{
+				"id": "ptah_divine_rebuke",
+				"name": "Divine Rebuke",
+				"type": "magic",
+				"category": "heavy",
+				"rank": 3,
+				"aoe": "single",
+				"targeting": "front-preferred",
+				"hitStat": "magicBonus",
+				"damageByRank": ["2d6+3", "2d8+3", "3d6+3"],
+				"cooldown": 3,
+				"aiWeight": 1.6,
+				"description": "A crushing magical blow delivered in response to mortal insolence."
+			}
+		],
+		
+		"abilityPool": [
+			{
+				"id": "ptah_sand_barrier",
+				"name": "Sand Barrier",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "team",
+				"effect": { "defenseBonus": 1 },
+				"duration": 2,
+				"cooldown": 2,
+				"aiWeight": 1.2,
+				"description": "Ptah raises a curtain of sand that hardens around allies."
+			},
+			{
+				"id": "ptah_judging_gaze",
+				"name": "Judging Gaze",
+				"type": "magic",
+				"category": "light",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "front-preferred",
+				"hitStat": "magicBonus",
+				"damageByRank": ["1d6+2", "1d8+2", "2d4+2"],
+				"applyCondition": "vulnerable",
+				"conditionDuration": 1,
+				"saveStat": "luck",
+				"saveDifficulty": 13,
+				"aiWeight": 1.1,
+				"description": "A searing stare that exposes flaws in the enemy’s guard."
+			},
+			{
+				"id": "ptah_weight_of_ages",
+				"name": "Weight of Ages",
+				"type": "magic",
+				"category": "medium",
+				"rank": 2,
+				"aoe": "enemy-team",
+				"hitStat": "magicBonus",
+				"damageByRank": ["1d6+1", "1d6+2", "2d4+2"],
+				"extraEffect": { "speed": -1, "duration": 1 },
+				"saveStat": "luck",
+				"saveDifficulty": 13,
+				"cooldown": 3,
+				"aiWeight": 1.4,
+				"description": "Time presses down on all foes, slowing their movements."
+			},
+			{
+				"id": "ptah_divine_rebuke",
+				"name": "Divine Rebuke",
+				"type": "magic",
+				"category": "heavy",
+				"rank": 3,
+				"aoe": "single",
+				"targeting": "front-preferred",
+				"hitStat": "magicBonus",
+				"damageByRank": ["2d6+3", "2d8+3", "3d6+3"],
+				"cooldown": 3,
+				"aiWeight": 1.6,
+				"description": "A crushing magical blow delivered in response to mortal insolence."
+			},
+			{
+				"id": "ptah_immutable_form",
+				"name": "Immutable Form",
+				"type": "support",
+				"category": "support",
+				"rank": 2,
+				"aoe": "self",
+				"effect": { "defenseBonus": 2 },
+				"duration": 1,
+				"cooldown": 3,
+				"concentration": true,
+				"aiWeight": 1.3,
+				"description": "Ptah anchors himself, becoming a living statue for a short time."
+			},
+			{
+				"id": "ptah_sands_of_judgment",
+				"name": "Sands of Judgment",
+				"type": "magic",
+				"category": "medium",
+				"rank": 2,
+				"aoe": "single",
+				"hitStat": "magicBonus",
+				"damageByRank": ["1d10+2", "2d6+2", "2d8+2"],
+				"aiWeight": 1.3,
+				"description": "Shifting sand lashes out and grinds away at an enemy’s resolve."
+			}
+		]
+	},
+	"satau": {
+		"id": "satau",
+		"name": "Satau",
+		"role": "Priest Support",
+		"roleClass": "support",
+		"position": "back",
+		"maxHP": 32,
+		"attackBonus": 0,
+		"magicBonus": 4,
+		"defenseBonus": 2,
+		"speed": 3,
+		"luck": 6,
+		"loadoutSize": 4,
+		
+		"abilities": [
+			{
+				"id": "satau_calming_chant",
+				"name": "Calming Chant",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "team",
+				"effect": { "defenseBonus": 1 },
+				"duration": 2,
+				"aiWeight": 1.2,
+				"description": "A soothing chant that steadies allies in the heat of battle."
+			},
+			{
+				"id": "satau_restorative_light",
+				"name": "Restorative Light",
+				"type": "magic",
+				"category": "light",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "ally",
+				"healByRank": ["1d6+2", "1d8+2", "2d6+2"],
+				"aiWeight": 1.3,
+				"description": "A gentle radiance that mends an ally’s wounds."
+			},
+			{
+				"id": "satau_blessing_of_ptah",
+				"name": "Blessing of Ptah",
+				"type": "support",
+				"category": "support",
+				"rank": 2,
+				"aoe": "team",
+				"effect": { "attackBonus": 1, "magicBonus": 1 },
+				"duration": 2,
+				"cooldown": 3,
+				"aiWeight": 1.4,
+				"description": "A ritual blessing that empowers both physical and magical strikes."
+			},
+			{
+				"id": "satau_judicial_radiance",
+				"name": "Judicial Radiance",
+				"type": "magic",
+				"category": "medium",
+				"rank": 3,
+				"aoe": "enemy-team",
+				"hitStat": "magicBonus",
+				"damageByRank": ["1d6+2", "1d6+3", "2d4+3"],
+				"extraEffect": { "attackBonus": -1, "duration": 1 },
+				"saveStat": "luck",
+				"saveDifficulty": 13,
+				"cooldown": 3,
+				"aiWeight": 1.5,
+				"description": "Holy light washes over enemies, briefly dulling their strikes."
+			}
+		],
+		
+		"abilityPool": [
+			{
+				"id": "satau_calming_chant",
+				"name": "Calming Chant",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "team",
+				"effect": { "defenseBonus": 1 },
+				"duration": 2,
+				"aiWeight": 1.2,
+				"description": "A soothing chant that steadies allies in the heat of battle."
+			},
+			{
+				"id": "satau_restorative_light",
+				"name": "Restorative Light",
+				"type": "magic",
+				"category": "light",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "ally",
+				"healByRank": ["1d6+2", "1d8+2", "2d6+2"],
+				"aiWeight": 1.3,
+				"description": "A gentle radiance that mends an ally’s wounds."
+			},
+			{
+				"id": "satau_blessing_of_ptah",
+				"name": "Blessing of Ptah",
+				"type": "support",
+				"category": "support",
+				"rank": 2,
+				"aoe": "team",
+				"effect": { "attackBonus": 1, "magicBonus": 1 },
+				"duration": 2,
+				"cooldown": 3,
+				"aiWeight": 1.4,
+				"description": "A ritual blessing that empowers both physical and magical strikes."
+			},
+			{
+				"id": "satau_judicial_radiance",
+				"name": "Judicial Radiance",
+				"type": "magic",
+				"category": "medium",
+				"rank": 3,
+				"aoe": "enemy-team",
+				"hitStat": "magicBonus",
+				"damageByRank": ["1d6+2", "1d6+3", "2d4+3"],
+				"extraEffect": { "attackBonus": -1, "duration": 1 },
+				"saveStat": "luck",
+				"saveDifficulty": 13,
+				"cooldown": 3,
+				"aiWeight": 1.5,
+				"description": "Holy light washes over enemies, briefly dulling their strikes."
+			},
+			{
+				"id": "satau_preserve_life",
+				"name": "Preserve Life",
+				"type": "support",
+				"category": "support",
+				"rank": 2,
+				"aoe": "ally",
+				"effect": { "defenseBonus": 2 },
+				"duration": 1,
+				"cooldown": 3,
+				"aiWeight": 1.2,
+				"description": "Satau reinforces a single ally with a focused protective rite."
+			},
+			{
+				"id": "satau_insightful_word",
+				"name": "Insightful Word",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "ally",
+				"effect": { "luck": 1 },
+				"duration": 2,
+				"aiWeight": 1.0,
+				"description": "A quiet suggestion that helps an ally read the flow of battle."
+			}
+		]
+	},
+	"rufus": {
+		"id": "rufus",
+		"name": "Rufus",
+		"role": "Bruiser",
+		"roleClass": "frontliner",
+		"position": "front",
+		"maxHP": 40,
+		"attackBonus": 4,
+		"magicBonus": 0,
+		"defenseBonus": 3,
+		"speed": 3,
+		"luck": 3,
+		"loadoutSize": 4,
+		
+		"abilities": [
+			{
+				"id": "rufus_feral_swipe",
+				"name": "Feral Swipe",
+				"type": "physical",
+				"category": "light",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "front-preferred",
+				"hitStat": "attackBonus",
+				"damageByRank": ["1d6+3", "1d8+3", "2d4+3"],
+				"aiWeight": 1.1,
+				"description": "A savage swipe that keeps foes at bay."
+			},
+			{
+				"id": "rufus_guarded_growl",
+				"name": "Guarded Growl",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "self",
+				"effect": { "defenseBonus": 1 },
+				"duration": 2,
+				"cooldown": 2,
+				"aiWeight": 1.0,
+				"description": "Rufus lowers his stance and growls, bracing for impact."
+			},
+			{
+				"id": "rufus_rallying_howl",
+				"name": "Rallying Howl",
+				"type": "support",
+				"category": "support",
+				"rank": 2,
+				"aoe": "team",
+				"effect": { "attackBonus": 1 },
+				"duration": 2,
+				"cooldown": 3,
+				"aiWeight": 1.3,
+				"description": "A powerful howl that urges allies to press the attack."
+			},
+			{
+				"id": "rufus_crushing_pounce",
+				"name": "Crushing Pounce",
+				"type": "physical",
+				"category": "heavy",
+				"rank": 3,
+				"aoe": "single",
+				"targeting": "front-preferred",
+				"hitStat": "attackBonus",
+				"damageByRank": ["2d8+2", "2d10+2", "3d8+3"],
+				"cooldown": 3,
+				"aiWeight": 1.6,
+				"description": "Rufus hurls his full weight into a devastating pounce."
+			}
+		],
+		
+		"abilityPool": [
+			{
+				"id": "rufus_feral_swipe",
+				"name": "Feral Swipe",
+				"type": "physical",
+				"category": "light",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "front-preferred",
+				"hitStat": "attackBonus",
+				"damageByRank": ["1d6+3", "1d8+3", "2d4+3"],
+				"aiWeight": 1.1,
+				"description": "A savage swipe that keeps foes at bay."
+			},
+			{
+				"id": "rufus_guarded_growl",
+				"name": "Guarded Growl",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "self",
+				"effect": { "defenseBonus": 1 },
+				"duration": 2,
+				"cooldown": 2,
+				"aiWeight": 1.0,
+				"description": "Rufus lowers his stance and growls, bracing for impact."
+			},
+			{
+				"id": "rufus_rallying_howl",
+				"name": "Rallying Howl",
+				"type": "support",
+				"category": "support",
+				"rank": 2,
+				"aoe": "team",
+				"effect": { "attackBonus": 1 },
+				"duration": 2,
+				"cooldown": 3,
+				"aiWeight": 1.3,
+				"description": "A powerful howl that urges allies to press the attack."
+			},
+			{
+				"id": "rufus_crushing_pounce",
+				"name": "Crushing Pounce",
+				"type": "physical",
+				"category": "heavy",
+				"rank": 3,
+				"aoe": "single",
+				"targeting": "front-preferred",
+				"hitStat": "attackBonus",
+				"damageByRank": ["2d8+2", "2d10+2", "3d8+3"],
+				"cooldown": 3,
+				"aiWeight": 1.6,
+				"description": "Rufus hurls his full weight into a devastating pounce."
+			},
+			{
+				"id": "rufus_mauling_rush",
+				"name": "Mauling Rush",
+				"type": "physical",
+				"category": "medium",
+				"rank": 2,
+				"aoe": "single",
+				"hitStat": "attackBonus",
+				"damageByRank": ["1d10+2", "2d6+2", "2d8+2"],
+				"aiWeight": 1.3,
+				"description": "Rufus charges and tears at an exposed foe."
+			},
+			{
+				"id": "rufus_hold_the_line",
+				"name": "Hold the Line",
+				"type": "support",
+				"category": "support",
+				"rank": 2,
+				"aoe": "team",
+				"effect": { "defenseBonus": 1 },
+				"duration": 1,
+				"cooldown": 3,
+				"aiWeight": 1.1,
+				"description": "Rufus plants his paws and urges his squad to stand firm."
+			}
+		]
+	},
+	"gale": {
+		"id": "gale",
+		"name": "Gale",
+		"role": "Striker",
+		"roleClass": "dps",
+		"position": "front",
+		"maxHP": 36,
+		"attackBonus": 5,
+		"magicBonus": 1,
+		"defenseBonus": 3,
+		"speed": 3,
+		"luck": 2,
+		
+		"abilities": [
+			{
+				"id": "gale_crushing_bite",
+				"name": "Crushing Bite",
+				"type": "physical",
+				"category": "medium",
+				"aoe": "single",
+				"hitStat": "attackBonus",
+				"damageByRank": ["1d10+2", "2d6+2", "2d8+2"],
+				"aiWeight": 1.3,
+				"description": "A powerful bite that tears into the enemy’s defenses."
+			},
+			{
+				"id": "gale_fang_flurry",
+				"name": "Fang Flurry",
+				"type": "physical",
+				"category": "medium",
+				"aoe": "single",
+				"hitStat": "attackBonus",
+				"damageByRank": ["2d4+2", "2d6+2", "3d4+2"],
+				"aiWeight": 1.25,
+				"description": "A rapid series of attacks that overwhelm foes."
+			},
+			{
+				"id": "gale_hunters_instinct",
+				"name": "Hunter’s Instinct",
+				"type": "support",
+				"category": "medium",
+				"aoe": "self",
+				"effect": { "attackBonus": 1 },
+				"duration": 2,
+				"cooldown": 3,
+				"aiWeight": 1.1,
+				"description": "Gale sharpens her focus, increasing her lethal aim."
+			},
+			{
+				"id": "gale_pounce",
+				"name": "Pounce",
+				"type": "physical",
+				"category": "light",
+				"aoe": "single",
+				"hitStat": "attackBonus",
+				"damageByRank": ["1d8+1", "1d10+1", "2d6+1"],
+				"aiWeight": 1.1,
+				"description": "A sudden lunge that catches foes off-guard."
+			}
+		],
+		
+		"abilityPool": [
+			{
+				"id": "gale_crushing_bite",
+				"name": "Crushing Bite",
+				"type": "physical",
+				"category": "medium",
+				"aoe": "single",
+				"hitStat": "attackBonus",
+				"damageByRank": ["1d10+2", "2d6+2", "2d8+2"],
+				"aiWeight": 1.3,
+				"description": "A powerful bite that tears into the enemy’s defenses."
+			},
+			{
+				"id": "gale_fang_flurry",
+				"name": "Fang Flurry",
+				"type": "physical",
+				"category": "medium",
+				"aoe": "single",
+				"hitStat": "attackBonus",
+				"damageByRank": ["2d4+2", "2d6+2", "3d4+2"],
+				"aiWeight": 1.25,
+				"description": "A rapid series of attacks that overwhelm foes."
+			},
+			{
+				"id": "gale_hunters_instinct",
+				"name": "Hunter’s Instinct",
+				"type": "support",
+				"category": "medium",
+				"aoe": "self",
+				"effect": { "attackBonus": 1 },
+				"duration": 2,
+				"cooldown": 3,
+				"aiWeight": 1.1,
+				"description": "Gale sharpens her focus, increasing her lethal aim."
+			},
+			{
+				"id": "gale_pounce",
+				"name": "Pounce",
+				"type": "physical",
+				"category": "light",
+				"aoe": "single",
+				"hitStat": "attackBonus",
+				"damageByRank": ["1d8+1", "1d10+1", "2d6+1"],
+				"aiWeight": 1.1,
+				"description": "A sudden lunge that catches foes off-guard."
+			},
+			
+			{
+				"id": "gale_feral_scream",
+				"name": "Feral Scream",
+				"type": "support",
+				"category": "support",
+				"aoe": "enemy-team",
+				"effect": { "defenseBonus": -1 },
+				"duration": 1,
+				"aiWeight": 1.0,
+				"description": "A terrifying howl that breaks enemy composure."
+			},
+			{
+				"id": "gale_predator_strike",
+				"name": "Predator Strike",
+				"type": "physical",
+				"category": "heavy",
+				"aoe": "single",
+				"hitStat": "attackBonus",
+				"damageByRank": ["2d8+2", "2d10+2", "3d8+2"],
+				"cooldown": 3,
+				"aiWeight": 1.2,
+				"description": "A brutal finishing attack reserved for vulnerable foes."
+			}
+		],
+		
+		"activeAbilities": [
+			"gale_crushing_bite",
+			"gale_fang_flurry",
+			"gale_hunters_instinct",
+			"gale_pounce"
+		],
+		
+		"coreAbilities": [
+			"gale_crushing_bite",
+			"gale_pounce"
+		]
+	},
+	"miles": {
+		"id": "miles",
+		"name": "Miles",
+		"role": "Tank",
+		"roleClass": "frontliner",
+		"position": "front",
+		"maxHP": 40,
+		"attackBonus": 1,
+		"magicBonus": 1,
+		"defenseBonus": 5,
+		"speed": 2,
+		"luck": 4,
+		
+		"abilities": [
+			{
+				"id": "miles_shoulder_wall",
+				"name": "Shoulder Wall",
+				"type": "physical",
+				"category": "light",
+				"hitStat": "attackBonus",
+				"aoe": "single",
+				"damageByRank": ["1d6+1", "1d8+1", "2d4+1"],
+				"aiWeight": 1.0,
+				"description": "Miles uses his bulk to shove and disrupt enemy attackers."
+			},
+			{
+				"id": "miles_alpha_protect",
+				"name": "Alpha Protect",
+				"type": "support",
+				"category": "medium",
+				"aoe": "team",
+				"effect": { "defenseBonus": 1 },
+				"duration": 2,
+				"aiWeight": 1.2,
+				"description": "Miles shields his pack with steady leadership."
+			},
+			{
+				"id": "miles_redirect_guard",
+				"name": "Redirect Guard",
+				"type": "support",
+				"category": "support",
+				"aoe": "ally",
+				"effect": { "redirectChance": 0.4 },
+				"duration": 2,
+				"aiWeight": 1.1,
+				"description": "Miles willingly steps in front of danger."
+			},
+			{
+				"id": "miles_moral_support",
+				"name": "Moral Support",
+				"type": "support",
+				"category": "light",
+				"aoe": "ally",
+				"effect": { "luck": 1 },
+				"duration": 2,
+				"aiWeight": 1.0,
+				"description": "Miles encourages allies with calm fatherly confidence."
+			}
+		],
+		
+		"abilityPool": [
+			{
+				"id": "miles_shoulder_wall",
+				"name": "Shoulder Wall",
+				"type": "physical",
+				"category": "light",
+				"hitStat": "attackBonus",
+				"aoe": "single",
+				"damageByRank": ["1d6+1", "1d8+1", "2d4+1"],
+				"aiWeight": 1.0,
+				"description": "Miles uses his bulk to shove and disrupt enemy attackers."
+			},
+			{
+				"id": "miles_alpha_protect",
+				"name": "Alpha Protect",
+				"type": "support",
+				"category": "medium",
+				"aoe": "team",
+				"effect": { "defenseBonus": 1 },
+				"duration": 2,
+				"aiWeight": 1.2,
+				"description": "Miles shields his pack with steady leadership."
+			},
+			{
+				"id": "miles_redirect_guard",
+				"name": "Redirect Guard",
+				"type": "support",
+				"category": "support",
+				"aoe": "ally",
+				"effect": { "redirectChance": 0.4 },
+				"duration": 2,
+				"aiWeight": 1.1,
+				"description": "Miles willingly steps in front of danger."
+			},
+			{
+				"id": "miles_moral_support",
+				"name": "Moral Support",
+				"type": "support",
+				"category": "light",
+				"aoe": "ally",
+				"effect": { "luck": 1 },
+				"duration": 2,
+				"aiWeight": 1.0,
+				"description": "Miles encourages allies with calm fatherly confidence."
+			},
+			
+			{
+				"id": "miles_endure",
+				"name": "Endure",
+				"type": "support",
+				"category": "support",
+				"aoe": "self",
+				"effect": { "defenseBonus": 2 },
+				"duration": 2,
+				"cooldown": 3,
+				"aiWeight": 1.1,
+				"description": "Miles absorbs incoming damage with iron resolve."
+			},
+			{
+				"id": "miles_safe_haven",
+				"name": "Safe Haven",
+				"type": "support",
+				"category": "medium",
+				"aoe": "ally",
+				"heal": "1d6+2",
+				"aiWeight": 1.05,
+				"description": "A protective gesture that stabilizes a wounded ally."
+			}
+		],
+		
+		"activeAbilities": [
+			"miles_shoulder_wall",
+			"miles_alpha_protect",
+			"miles_redirect_guard",
+			"miles_moral_support"
+		],
+		
+		"coreAbilities": [
+			"miles_shoulder_wall",
+			"miles_alpha_protect"
+		]
+	},
+	"itsuki": {
+		"id": "itsuki",
+		"name": "Itsuki",
+		"role": "Debuff Healer",
+		"roleClass": "support",
+		"position": "back",
+		"maxHP": 28,
+		"attackBonus": 1,
+		"magicBonus": 6,
+		"defenseBonus": 2,
+		"speed": 3,
+		"luck": 4,
+		
+		"abilities": [
+			{
+				"id": "itsuki_spirit_mist",
+				"name": "Spirit Mist",
+				"type": "support",
+				"category": "medium",
+				"aoe": "team",
+				"heal": "1d6+2",
+				"aiWeight": 1.2,
+				"description": "A soothing mist that heals the entire party."
+			},
+			{
+				"id": "itsuki_weaken_charm",
+				"name": "Weaken Charm",
+				"type": "support",
+				"category": "support",
+				"aoe": "enemy",
+				"effect": { "attackBonus": -1 },
+				"duration": 2,
+				"aiWeight": 1.1,
+				"description": "A gentle spiritual tether saps an enemy’s aggression."
+			},
+			{
+				"id": "itsuki_spirit_bolt",
+				"name": "Spirit Bolt",
+				"type": "magic",
+				"category": "light",
+				"aoe": "single",
+				"hitStat": "magicBonus",
+				"damageByRank": ["1d8+2", "1d10+2", "2d6+2"],
+				"aiWeight": 1.0,
+				"description": "A beam of purified spiritual energy."
+			},
+			{
+				"id": "itsuki_focus_ritual",
+				"name": "Focus Ritual",
+				"type": "support",
+				"category": "support",
+				"aoe": "self",
+				"effect": { "magicBonus": 1 },
+				"duration": 2,
+				"cooldown": 3,
+				"aiWeight": 0.9,
+				"description": "Itsuki centers herself to enhance spell potency."
+			}
+		],
+		
+		"abilityPool": [
+			{
+				"id": "itsuki_spirit_mist",
+				"name": "Spirit Mist",
+				"type": "support",
+				"category": "medium",
+				"aoe": "team",
+				"heal": "1d6+2",
+				"aiWeight": 1.2,
+				"description": "A soothing mist that heals the entire party."
+			},
+			{
+				"id": "itsuki_weaken_charm",
+				"name": "Weaken Charm",
+				"type": "support",
+				"category": "support",
+				"aoe": "enemy",
+				"effect": { "attackBonus": -1 },
+				"duration": 2,
+				"aiWeight": 1.1,
+				"description": "A gentle spiritual tether saps an enemy’s aggression."
+			},
+			{
+				"id": "itsuki_spirit_bolt",
+				"name": "Spirit Bolt",
+				"type": "magic",
+				"category": "light",
+				"aoe": "single",
+				"hitStat": "magicBonus",
+				"damageByRank": ["1d8+2", "1d10+2", "2d6+2"],
+				"aiWeight": 1.0,
+				"description": "A beam of purified spiritual energy."
+			},
+			{
+				"id": "itsuki_focus_ritual",
+				"name": "Focus Ritual",
+				"type": "support",
+				"category": "support",
+				"aoe": "self",
+				"effect": { "magicBonus": 1 },
+				"duration": 2,
+				"cooldown": 3,
+				"aiWeight": 0.9,
+				"description": "Itsuki centers herself to enhance spell potency."
+			},
+			
+			{
+				"id": "itsuki_binding_paper",
+				"name": "Binding Paper",
+				"type": "support",
+				"category": "medium",
+				"aoe": "enemy",
+				"effect": { "speed": -1 },
+				"duration": 2,
+				"aiWeight": 1.0,
+				"description": "A talisman that restricts enemy movement."
+			},
+			{
+				"id": "itsuki_purify",
+				"name": "Purify",
+				"type": "support",
+				"category": "light",
+				"aoe": "ally",
+				"heal": "1d6+2",
+				"effect": { "removeDebuffs": true },
+				"aiWeight": 1.1,
+				"description": "A cleansing charm that heals and removes debuffs."
+			}
+		],
+		
+		"activeAbilities": [
+			"itsuki_spirit_mist",
+			"itsuki_weaken_charm",
+			"itsuki_spirit_bolt",
+			"itsuki_focus_ritual"
+		],
+		
+		"coreAbilities": [
+			"itsuki_spirit_mist",
+			"itsuki_weaken_charm"
+		]
+	},
+	"rex": {
+		"id": "rex",
+		"name": "Rex",
+		"role": "Bruiser",
+		"roleClass": "frontliner",
+		"position": "front",
+		"maxHP": 40,
+		"attackBonus": 4,
+		"magicBonus": 1,
+		"defenseBonus": 3,
+		"speed": 3,
+		"luck": 4,
+		"abilities": [
+			{
+				"id": "rex_power_punch",
+				"name": "Power Punch",
+				"type": "physical",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "front-preferred",
+				"hitStat": "attackBonus",
+				"damageByRank": ["1d8+2", "2d6+2", "2d8+2"],
+				"aiWeight": 1.3,
+				"description": "Rex throws a straightforward, heavy punch backed by raw strength."
+			},
+			{
+				"id": "rex_bodyguard_instinct",
+				"name": "Bodyguard Instinct",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "ally",
+				"effect": { "redirectChance": 0.4 },
+				"duration": 2,
+				"aiWeight": 1.2,
+				"description": "Rex steps in front of an ally, instinctively taking blows meant for them."
+			},
+			{
+				"id": "rex_stubborn_stand",
+				"name": "Stubborn Stand",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "self",
+				"effect": { "defenseBonus": 2 },
+				"duration": 2,
+				"cooldown": 2,
+				"aiWeight": 1.0,
+				"description": "Rex digs in his paws and refuses to budge, hardening his defenses."
+			},
+			{
+				"id": "rex_wide_swing",
+				"name": "Wide Swing",
+				"type": "physical",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "enemy-team",
+				"targeting": "front-preferred",
+				"hitStat": "attackBonus",
+				"damageByRank": ["1d6+1", "1d8+1", "2d4+1"],
+				"aiWeight": 1.05,
+				"description": "A big, clumsy swing that can catch multiple foes if they’re too close."
+			}
+		],
+		"loadoutSize": 4,
+		"abilityPool": [
+			{
+				"id": "rex_power_punch",
+				"name": "Power Punch",
+				"type": "physical",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "front-preferred",
+				"hitStat": "attackBonus",
+				"damageByRank": ["1d8+2", "2d6+2", "2d8+2"],
+				"aiWeight": 1.3,
+				"description": "Rex throws a straightforward, heavy punch backed by raw strength."
+			},
+			{
+				"id": "rex_bodyguard_instinct",
+				"name": "Bodyguard Instinct",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "ally",
+				"effect": { "redirectChance": 0.4 },
+				"duration": 2,
+				"aiWeight": 1.2,
+				"description": "Rex steps in front of an ally, instinctively taking blows meant for them."
+			},
+			{
+				"id": "rex_stubborn_stand",
+				"name": "Stubborn Stand",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "self",
+				"effect": { "defenseBonus": 2 },
+				"duration": 2,
+				"cooldown": 2,
+				"aiWeight": 1.0,
+				"description": "Rex digs in his paws and refuses to budge, hardening his defenses."
+			},
+			{
+				"id": "rex_wide_swing",
+				"name": "Wide Swing",
+				"type": "physical",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "enemy-team",
+				"targeting": "front-preferred",
+				"hitStat": "attackBonus",
+				"damageByRank": ["1d6+1", "1d8+1", "2d4+1"],
+				"aiWeight": 1.05,
+				"description": "A big, clumsy swing that can catch multiple foes if they’re too close."
+			},
+			{
+				"id": "rex_reckless_hook",
+				"name": "Reckless Hook",
+				"type": "physical",
+				"category": "heavy",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "front-preferred",
+				"hitStat": "attackBonus",
+				"damageByRank": ["2d8+1", "2d10+1", "3d8+1"],
+				"extraEffect": {
+					"self": {
+						"defenseBonus": -1,
+						"duration": 1
+					}
+				},
+				"cooldown": 3,
+				"aiWeight": 1.1,
+				"description": "Rex swings wildly for a big hit, leaving himself briefly open to counterattacks."
+			},
+			{
+				"id": "rex_coffee_connoisseur",
+				"name": "Coffee Connoisseur",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "self",
+				"effect": { "speed": 1, "luck": 1 },
+				"duration": 2,
+				"cooldown": 3,
+				"aiWeight": 0.9,
+				"description": "Rex perks up after recalling the perfect coffee blend, boosting his reflexes and instincts for a couple of rounds."
+			}
+			
+		],
+		"activeAbilities": [
+			"rex_power_punch",
+			"rex_bodyguard_instinct",
+			"rex_stubborn_stand",
+			"rex_wide_swing"
+		],
+		"coreAbilities": [
+			"rex_power_punch",
+			"rex_bodyguard_instinct"
+		]
+	},
+	
+	"lester": {
+		"id": "lester",
+		"name": "Lester",
+		"role": "Trickster",
+		"roleClass": "dps",
+		"position": "mid",
+		"maxHP": 32,
+		"attackBonus": 1,
+		"magicBonus": 5,
+		"defenseBonus": 3,
+		"speed": 4,
+		"luck": 4,
+		"abilities": [
+			{
+				"id": "lester_ninja_chop",
+				"name": "“Sub-Par Ninja Chop!”",
+				"type": "physical",
+				"category": "light",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "any-enemy",
+				"hitStat": "magicBonus",
+				"damageByRank": ["1d6+2", "1d8+2", "2d4+2"],
+				"extraEffect": {
+					"enemy": {
+						"speed": -1,
+						"duration": 1
+					}
+				},
+				"aiWeight": 1.15,
+				"description": "A dramatic “anime-style” chop that sometimes throws the target off-balance."
+			},
+			{
+				"id": "lester_rules_lawyer",
+				"name": "Rules Lawyer",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "any-enemy",
+				"effect": {
+					"attackBonus": -1
+				},
+				"duration": 2,
+				"saveStat": "luck",
+				"saveDifficulty": 13,
+				"aiWeight": 1.1,
+				"description": "Lester nitpicks the rules, rattling the foe and making their attacks less effective."
+			},
+			{
+				"id": "lester_anime_power_pose",
+				"name": "Anime Power Pose",
+				"type": "support",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "self",
+				"effect": {
+					"speed": 1,
+					"luck": 1
+				},
+				"duration": 2,
+				"cooldown": 2,
+				"aiWeight": 1.0,
+				"description": "Lester strikes a dramatic pose, hyping himself up with imagined theme music."
+			},
+			{
+				"id": "lester_flurry_of_fandom",
+				"name": "Flurry of Fandom",
+				"type": "physical",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "any-enemy",
+				"hitStat": "magicBonus",
+				"damageByRank": ["1d8+2", "2d6+2", "2d8+2"],
+				"aiWeight": 1.35,
+				"description": "A rapid combo of “moves” inspired by way too many anime fight scenes."
+			}
+		],
+		"loadoutSize": 4,
+		"abilityPool": [
+			{
+				"id": "lester_ninja_chop",
+				"name": "“Sub-Par Ninja Chop!”",
+				"type": "physical",
+				"category": "light",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "any-enemy",
+				"hitStat": "magicBonus",
+				"damageByRank": ["1d6+2", "1d8+2", "2d4+2"],
+				"extraEffect": {
+					"enemy": {
+						"speed": -1,
+						"duration": 1
+					}
+				},
+				"aiWeight": 1.15,
+				"description": "A dramatic “anime-style” chop that sometimes throws the target off-balance."
+			},
+			{
+				"id": "lester_rules_lawyer",
+				"name": "Rules Lawyer",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "any-enemy",
+				"effect": {
+					"attackBonus": -1
+				},
+				"duration": 2,
+				"saveStat": "luck",
+				"saveDifficulty": 13,
+				"aiWeight": 1.1,
+				"description": "Lester nitpicks the rules, rattling the foe and making their attacks less effective."
+			},
+			{
+				"id": "lester_anime_power_pose",
+				"name": "Anime Power Pose",
+				"type": "support",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "self",
+				"effect": {
+					"speed": 1,
+					"luck": 1
+				},
+				"duration": 2,
+				"cooldown": 2,
+				"aiWeight": 1.0,
+				"description": "Lester strikes a dramatic pose, hyping himself up with imagined theme music."
+			},
+			{
+				"id": "lester_flurry_of_fandom",
+				"name": "Flurry of Fandom",
+				"type": "physical",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "any-enemy",
+				"hitStat": "magicBonus",
+				"damageByRank": ["1d8+2", "2d6+2", "2d8+2"],
+				"aiWeight": 1.35,
+				"description": "A rapid combo of “moves” inspired by way too many anime fight scenes."
+			},
+			{
+				"id": "lester_dub_rant",
+				"name": "Dub Rant",
+				"type": "support",
+				"category": "light",
+				"rank": 1,
+				"aoe": "enemy-team",
+				"targeting": "any-enemy",
+				"effect": {
+					"luck": -1
+				},
+				"duration": 1,
+				"aiWeight": 0.95,
+				"description": "Lester goes on a tirade about “butchered dubs”, briefly distracting the opposing team."
+			},
+			{
+				"id": "lester_nerd_focus",
+				"name": "Nerd Focus",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "self",
+				"effect": { "magicBonus": 1 },
+				"duration": 2,
+				"cooldown": 3,
+				"aiWeight": 0.9,
+				"description": "Lester tunes out everything except obscure rules minutiae, sharpening his spellcasting for a short while."
+			}
+			
+		],
+		"activeAbilities": [
+			"lester_ninja_chop",
+			"lester_rules_lawyer",
+			"lester_anime_power_pose",
+			"lester_flurry_of_fandom"
+		],
+		"coreAbilities": [
+			"lester_ninja_chop",
+			"lester_rules_lawyer"
+		]
+	},
+	
+	"dallas": {
+		"id": "dallas",
+		"name": "Dallas",
+		"role": "Support",
+		"roleClass": "support",
+		"position": "back",
+		"maxHP": 32,
+		"attackBonus": 3,
+		"magicBonus": 3,
+		"defenseBonus": 3,
+		"speed": 4,
+		"luck": 4,
+		"abilities": [
+			{
+				"id": "dallas_logical_strike",
+				"name": "Logical Strike",
+				"type": "physical",
+				"category": "light",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "any-enemy",
+				"hitStat": "attackBonus",
+				"damageByRank": ["1d8+1", "1d10+1", "2d6+1"],
+				"extraDamageIfTargetDebuffed": 2,
+				"aiWeight": 1.05,
+				"description": "A precise hit delivered after cool analysis of the foe’s openings."
+			},
+			{
+				"id": "dallas_techno_scan",
+				"name": "Techno-Scan",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "any-enemy",
+				"effect": {
+					"defenseBonus": -1
+				},
+				"duration": 2,
+				"saveStat": "luck",
+				"saveDifficulty": 13,
+				"aiWeight": 1.15,
+				"description": "Dallas runs a “sensor sweep”, identifying weak points and lowering the target’s defenses."
+			},
+			{
+				"id": "dallas_stabilizing_field",
+				"name": "Stabilizing Field",
+				"type": "support",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "ally",
+				"effect": {
+					"defenseBonus": 1,
+					"luck": 1
+				},
+				"duration": 2,
+				"aiWeight": 1.2,
+				"description": "A calm, focused assist that steadies an ally and improves their chances."
+			},
+			{
+				"id": "dallas_emergency_beam_out",
+				"name": "Emergency Beam-Out",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "ally",
+				"reaction": {
+					"trigger": "allyLowHP",
+					"action": "heal",
+					"heal": "1d8+2",
+					"target": "ally"
+				},
+				"reactionDuration": 3,
+				"aiWeight": 0.8,
+				"description": "When an ally is in critical condition, Dallas “beams” them out of danger with a quick rescue."
+			}
+		],
+		"loadoutSize": 4,
+		"abilityPool": [
+			{
+				"id": "dallas_logical_strike",
+				"name": "Logical Strike",
+				"type": "physical",
+				"category": "light",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "any-enemy",
+				"hitStat": "attackBonus",
+				"damageByRank": ["1d8+1", "1d10+1", "2d6+1"],
+				"extraDamageIfTargetDebuffed": 2,
+				"aiWeight": 1.05,
+				"description": "A precise hit delivered after cool analysis of the foe’s openings."
+			},
+			{
+				"id": "dallas_techno_scan",
+				"name": "Techno-Scan",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "any-enemy",
+				"effect": {
+					"defenseBonus": -1
+				},
+				"duration": 2,
+				"saveStat": "luck",
+				"saveDifficulty": 13,
+				"aiWeight": 1.15,
+				"description": "Dallas runs a “sensor sweep”, identifying weak points and lowering the target’s defenses."
+			},
+			{
+				"id": "dallas_stabilizing_field",
+				"name": "Stabilizing Field",
+				"type": "support",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "ally",
+				"effect": {
+					"defenseBonus": 1,
+					"luck": 1
+				},
+				"duration": 2,
+				"aiWeight": 1.2,
+				"description": "A calm, focused assist that steadies an ally and improves their chances."
+			},
+			{
+				"id": "dallas_emergency_beam_out",
+				"name": "Emergency Beam-Out",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "ally",
+				"reaction": {
+					"trigger": "allyLowHP",
+					"action": "heal",
+					"heal": "1d8+2",
+					"target": "ally"
+				},
+				"reactionDuration": 3,
+				"aiWeight": 0.8,
+				"description": "When an ally is in critical condition, Dallas “beams” them out of danger with a quick rescue."
+			},
+			{
+				"id": "dallas_prime_directive",
+				"name": "Prime Directive Reminder",
+				"type": "support",
+				"category": "support",
+				"rank": 1,
+				"aoe": "team",
+				"targeting": "team",
+				"effect": {
+					"defenseBonus": 1
+				},
+				"duration": 2,
+				"aiWeight": 0.9,
+				"description": "Dallas reminds everyone of “proper protocol”, encouraging the team to avoid reckless moves."
+			},
+			{
+				"id": "dallas_tactical_medkit",
+				"name": "Tactical Medkit",
+				"type": "support",
+				"category": "medium",
+				"rank": 1,
+				"aoe": "single",
+				"targeting": "ally",
+				"healByRank": ["1d6+2", "1d8+2", "2d4+2"],
+				"cooldown": 2,
+				"aiWeight": 1.05,
+				"description": "Dallas digs into his emergency kit to patch an ally up, just like in his favorite space dramas."
+			}
+			
+		],
+		"activeAbilities": [
+			"dallas_logical_strike",
+			"dallas_techno_scan",
+			"dallas_stabilizing_field",
+			"dallas_emergency_beam_out"
+		],
+		"coreAbilities": [
+			"dallas_logical_strike",
+			"dallas_techno_scan"
+		]
+	}
+}
