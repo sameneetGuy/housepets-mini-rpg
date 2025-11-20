@@ -33,10 +33,45 @@
     .mini-rpg-stage {
       margin: 0.25rem 0;
     }
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 0.5rem 0 0.75rem;
+    }
     button {
       padding: 0.5rem 1rem;
       font-size: 1rem;
       cursor: pointer;
+    }
+    .mini-rpg-stage-progress {
+      margin-top: 0.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+    .stage-chip {
+      padding: 0.45rem 0.75rem;
+      border-left: 5px solid #d1d5db;
+      background: #f9fafb;
+      border-radius: 6px;
+      font-weight: 600;
+    }
+    .stage-chip.boss {
+      border-color: #f97316;
+      background: #fff7ed;
+    }
+    .stage-chip.cleared {
+      border-color: #16a34a;
+      background: #ecfdf3;
+    }
+    .stage-chip.failed {
+      border-color: #dc2626;
+      background: #fef2f2;
+    }
+    .stage-chip.active {
+      border-color: #2563eb;
+      background: #eff6ff;
     }
     .mini-rpg-results {
       margin-top: 1rem;
@@ -51,6 +86,18 @@
       padding: 0.5rem;
       border-radius: 6px;
       border: 1px solid #e5e7eb;
+    }
+    .mini-rpg-summary {
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 6px;
+      padding: 0.75rem;
+      margin-top: 0.75rem;
+    }
+    .mini-rpg-result-damage {
+      margin: 0.25rem 0;
+      color: #4b5563;
+      font-size: 0.95rem;
     }
   </style>
 </head>
@@ -73,12 +120,21 @@
       </label>
     </div>
     <p>Step 2: Start the run</p>
-    <button class="mini-rpg-start">Start Run</button>
+    <div class="button-row">
+      <button class="mini-rpg-start">Start Run (Manual)</button>
+      <button class="mini-rpg-auto">Auto-Run Demo</button>
+      <button class="mini-rpg-next">Next Stage</button>
+      <button class="mini-rpg-restart">Restart Run</button>
+      <button class="mini-rpg-change-party">Change Party</button>
+    </div>
     <p class="mini-rpg-status">Status: not started</p>
     <p class="mini-rpg-progress">Stages cleared: 0</p>
     <p class="mini-rpg-stage">Current stage: --</p>
+    <div class="mini-rpg-stage-progress"></div>
     <h3>Party HP</h3>
     <ul class="mini-rpg-hp"></ul>
+    <h3>Run summary</h3>
+    <div class="mini-rpg-summary"></div>
     <h3>Run results</h3>
     <div class="mini-rpg-results"></div>
   </div>

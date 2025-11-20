@@ -579,7 +579,7 @@ function attemptHit(attacker, defender, ability) {
   return { hit: total >= target, roll, total, target };
 }
 
-function triggerReactions(owner, trigger, context) {
+function triggerReactions(owner, trigger, context, metrics) {
   if (!owner.reactions || owner.reactions.length === 0) return [];
   const fired = [];
   owner.reactions = owner.reactions.filter(r => {
@@ -596,6 +596,7 @@ function triggerReactions(owner, trigger, context) {
         const dmg = rollDiceExpression(r.damage || "1d4+1");
         const oldHP = context.attacker.hp;
         context.attacker.hp = Math.max(0, context.attacker.hp - dmg);
+        recordDamage(metrics, owner, dmg);
         context.log.push(
           `${owner.name} reacts (${r.abilityName}) and strikes ${context.attacker.name} for ${dmg} (${oldHP} → ${context.attacker.hp}).`
         );
@@ -765,7 +766,39 @@ function prepareTeamLoadouts(team, opponents) {
   }));
 }
 
-function computeDamage(attacker, defender, ability) {
+function recordDamage(stats, attacker, amount) {
+  if (!stats || !attacker || !attacker.id || amount <= 0) return;
+  stats.damageByFighter[attacker.id] = (stats.damageByFighter[attacker.id] || 0) + amount;
+}
+
+function applyPassiveDamageMitigation(damage, defender, damageType, logLines) {
+  if (!defender || !defender.passives) return damage;
+
+  let result = damage;
+  const note = msg => {
+    if (logLines) logLines.push(msg);
+  };
+
+  if (damageType === "physical" && defender.passives.physicalDamageMultiplier != null) {
+    const before = result;
+    result = Math.round(result * defender.passives.physicalDamageMultiplier);
+    if (before !== result) {
+      note(`${defender.name} shrugs off part of the blow (physical damage reduced).`);
+    }
+  }
+
+  if (damageType === "magic" && defender.passives.magicDamageMultiplier != null) {
+    const before = result;
+    result = Math.round(result * defender.passives.magicDamageMultiplier);
+    if (before !== result) {
+      note(`${defender.name} bends mana around themselves (magic damage reduced).`);
+    }
+  }
+
+  return result;
+}
+
+function computeDamage(attacker, defender, ability, logLines) {
   const arr = ability.damageByRank;
   const idx = Math.min((ability.rank || 1) - 1, arr.length - 1);
   let dmg = rollDiceExpression(arr[idx]);
@@ -791,6 +824,7 @@ function computeDamage(attacker, defender, ability) {
 
   const damageType = getAbilityDamageType(ability);
   dmg = adjustDamageForResistances(dmg, defender, damageType);
+  dmg = applyPassiveDamageMitigation(dmg, defender, damageType, logLines);
 
   if (dmg < 1) dmg = 1;
 
@@ -1070,8 +1104,10 @@ function chooseAbility(attacker, allies, enemies, round) {
 
 // ---------- Action Execution ----------
 
-function performAction(attacker, allies, enemies, round, logLines) {
+function performAction(attacker, allies, enemies, round, logLines, metrics) {
   if (!isAlive(attacker)) return;
+
+  if (metrics) metrics.turns += 1;
 
   // Stunned: skip this action entirely
   if (hasCondition(attacker, "stunned")) {
@@ -1160,11 +1196,16 @@ function performAction(attacker, allies, enemies, round, logLines) {
           `${attacker.name} uses ${ability.name} on ${target.name}, but misses.`
         );
 
-        triggerReactions(target, "onMissed", {
-          attacker,
+        triggerReactions(
           target,
-          log: logLines
-        });
+          "onMissed",
+          {
+            attacker,
+            target,
+            log: logLines
+          },
+          metrics
+        );
 
         if (
           consumeSpecialFlag(target, "counterNextMiss") &&
@@ -1201,7 +1242,7 @@ function performAction(attacker, allies, enemies, round, logLines) {
         continue;
       }
 
-      let { dmg, isCrit } = computeDamage(attacker, target, ability);
+      let { dmg, isCrit } = computeDamage(attacker, target, ability, logLines);
       if (saveResult && saveResult.scale != null && saveResult.scale !== 1) {
         dmg = Math.max(0, Math.floor(dmg * saveResult.scale));
       }
@@ -1215,6 +1256,7 @@ function performAction(attacker, allies, enemies, round, logLines) {
 
       const oldHP = target.hp;
       target.hp = Math.max(0, target.hp - dmg);
+      recordDamage(metrics, attacker, dmg);
 
       const critText = isCrit ? " (CRIT!)" : "";
       const mitigationText = saveResult && saveResult.success && saveResult.scale < 1 ? " (reduced)" : "";
@@ -1222,20 +1264,37 @@ function performAction(attacker, allies, enemies, round, logLines) {
         `${attacker.name} hits ${target.name} with ${ability.name}${critText} for ${dmg}${mitigationText} (${oldHP} → ${target.hp}).`
       );
 
-      triggerReactions(target, "allyHit", {
-        attacker,
+      if (target.passives && target.passives.attackBuffOnHit) {
+        target.attackBonus = (target.attackBonus || 0) + target.passives.attackBuffOnHit;
+        logLines.push(
+          `${target.name}'s rage builds (+${target.passives.attackBuffOnHit} attack).`
+        );
+      }
+
+      triggerReactions(
         target,
-        log: logLines
-      });
+        "allyHit",
+        {
+          attacker,
+          target,
+          log: logLines
+        },
+        metrics
+      );
 
       for (const ally of enemies) {
         if (ally === target || !isAlive(ally)) continue;
-        triggerReactions(ally, "allyHit", {
-          attacker,
-          target,
-          ally: target,
-          log: logLines
-        });
+        triggerReactions(
+          ally,
+          "allyHit",
+          {
+            attacker,
+            target,
+            ally: target,
+            log: logLines
+          },
+          metrics
+        );
       }
 
       // If this damaging ability also has an effect (e.g. Hex), apply it (with save inside).
@@ -1273,18 +1332,28 @@ function performAction(attacker, allies, enemies, round, logLines) {
       }
 
       if (target.hp > 0) {
-        triggerReactions(attacker, "enemyLowHP", {
-          target,
+        triggerReactions(
           attacker,
-          log: logLines
-        });
-        for (const ally of allies) {
-          if (!isAlive(ally)) continue;
-          triggerReactions(ally, "enemyLowHP", {
+          "enemyLowHP",
+          {
             target,
             attacker,
             log: logLines
-          });
+          },
+          metrics
+        );
+        for (const ally of allies) {
+          if (!isAlive(ally)) continue;
+          triggerReactions(
+            ally,
+            "enemyLowHP",
+            {
+              target,
+              attacker,
+              log: logLines
+            },
+            metrics
+          );
         }
       }
     }
@@ -1374,12 +1443,33 @@ function cloneFighterForBattle(f) {
   return c;
 }
 
+function applyRoundRegeneration(fighters, logLines) {
+  for (const f of fighters) {
+    if (!isAlive(f)) continue;
+    const healAmount = f.passives?.healPerRound;
+    if (healAmount && healAmount > 0) {
+      const old = f.hp;
+      f.hp = Math.min(f.maxHP, f.hp + healAmount);
+      if (f.hp > old) {
+        logLines.push(`${f.name} calmly recovers ${f.hp - old} HP between clashes.`);
+      }
+    }
+  }
+}
+
 // ---------- Main Simulation ----------
 
 // Run a single battle on existing fighter objects (no cloning here).
 // aF and bF are mutated in-place: hp, effects, cooldowns, flags, etc.
 function runBattleOnExistingFighters(aF, bF, options = {}) {
   const log = [];
+  const metrics = options.trackStats
+    ? {
+        rounds: 0,
+        turns: 0,
+        damageByFighter: {}
+      }
+    : null;
 
   log.push(
     `Battle Start: [A] ${aF.map(f => f.name).join(", ")} vs [B] ${bF
@@ -1398,6 +1488,10 @@ function runBattleOnExistingFighters(aF, bF, options = {}) {
 
     log.push(`-- Round ${round} --`);
 
+    if (metrics) metrics.rounds = round;
+
+    applyRoundRegeneration([...aF, ...bF], log);
+
     tickEffects([...aF, ...bF]);
     tickConditions([...aF, ...bF]);
     tickCooldowns([...aF, ...bF]);
@@ -1412,7 +1506,7 @@ function runBattleOnExistingFighters(aF, bF, options = {}) {
 
       if (enemies.filter(isAlive).length === 0) break;
 
-      performAction(fighter, allies, enemies, round, log);
+      performAction(fighter, allies, enemies, round, log, metrics);
 
       if (aF.filter(isAlive).length === 0 || bF.filter(isAlive).length === 0) break;
     }
@@ -1438,7 +1532,7 @@ function runBattleOnExistingFighters(aF, bF, options = {}) {
 
   log.push(`Battle Result: Team ${winner} wins.`);
 
-  return { winner, log: log.join("\n") };
+  return { winner, log: log.join("\n"), stats: metrics };
 }
 
 /**

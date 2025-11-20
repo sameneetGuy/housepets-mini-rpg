@@ -5,13 +5,26 @@ import battleAPI from "../battle/battle_3v3.js";
 const { simulateTeamBattle } = battleAPI;
 
 export const MINI_RPG_STAGES = [
-  { id: "stage1", type: "team", enemyTeamId: "K9PD" },
-  { id: "stage2", type: "team", enemyTeamId: "BabylonKnights" },
-  { id: "stage3", type: "team", enemyTeamId: "ForestFerals_ELITE" },
-  { id: "stage4", type: "boss", bossId: "jata_boss" },
-  { id: "stage5", type: "team", enemyTeamId: "AncientGuardians" },
-  { id: "stage6", type: "boss", bossId: "spirit_dragon" },
-  { id: "stage7", type: "boss", bossId: "great_kitsune" }
+  { id: "stage1", type: "team", enemyTeamId: "K9PD", label: "K9PD Patrol" },
+  { id: "stage2", type: "team", enemyTeamId: "BabylonKnights", label: "Babylon Knights" },
+  { id: "stage3", type: "team", enemyTeamId: "ForestFerals_ELITE", label: "Forest Ferals (Elite)" },
+  {
+    id: "stage4",
+    type: "team",
+    enemyTeamId: "ArcaneGuardians_MR",
+    label: "Arcane Guardians",
+    enemyModifiers: { attackBonus: 1, defenseBonus: 1 }
+  },
+  { id: "stage5", type: "boss", bossId: "spirit_dragon_boss", label: "Spirit Dragon (Boss)" },
+  {
+    id: "stage6",
+    type: "team",
+    enemyTeamId: "ShadowStalkers_MR",
+    label: "Shadow Stalkers",
+    enemyModifiers: { attackBonus: 2 }
+  },
+  { id: "stage7", type: "boss", bossId: "great_kitsune_boss", label: "Great Kitsune (Boss)" },
+  { id: "stage8", type: "boss", bossId: "bahamut_boss", label: "Bahamut, Warden of Skies" }
 ];
 
 const DEFAULT_STATE = {
@@ -20,86 +33,25 @@ const DEFAULT_STATE = {
   partyIds: [],
   partyHP: {},
   modifiers: { attackBonus: 0, defenseBonus: 0 },
-  stageResults: []
+  stageResults: [],
+  runStats: { totalRounds: 0, totalTurns: 0, damageByParty: {} }
 };
+
+function freshState() {
+  return {
+    ...DEFAULT_STATE,
+    partyHP: {},
+    stageResults: [],
+    runStats: { totalRounds: 0, totalTurns: 0, damageByParty: {} }
+  };
+}
 
 const ENEMY_TEAMS = {
   K9PD: ["fido", "grape", "sasha"],
   BabylonKnights: ["bailey", "keene", "sabrina"],
   ForestFerals_ELITE: ["gale", "miles", "itsuki"],
-  AncientGuardians: ["tarot", "karishad", "ralph"]
-};
-
-const BOSSES = {
-  jata_boss: {
-    id: "jata_boss",
-    name: "Jata, Thunderheart",
-    maxHP: 90,
-    attackBonus: 5,
-    defenseBonus: 3,
-    speed: 5,
-    accuracy: 3,
-    evasion: 2,
-    luck: 2,
-    position: "front",
-    abilities: [
-      {
-        id: "storm_breaker",
-        name: "Storm Breaker",
-        type: "physical",
-        targeting: "front-preferred",
-        damageByRank: ["2d10+6"],
-        rank: 1,
-        cooldown: 2
-      }
-    ]
-  },
-  spirit_dragon: {
-    id: "spirit_dragon",
-    name: "Spirit Dragon",
-    maxHP: 105,
-    attackBonus: 4,
-    defenseBonus: 4,
-    speed: 6,
-    accuracy: 4,
-    evasion: 2,
-    luck: 3,
-    position: "mid",
-    abilities: [
-      {
-        id: "astral_breath",
-        name: "Astral Breath",
-        type: "magic",
-        targeting: "any-enemy",
-        damageByRank: ["2d12+4"],
-        rank: 1,
-        cooldown: 2
-      }
-    ]
-  },
-  great_kitsune: {
-    id: "great_kitsune",
-    name: "Great Kitsune",
-    maxHP: 95,
-    attackBonus: 4,
-    defenseBonus: 3,
-    speed: 7,
-    accuracy: 4,
-    evasion: 3,
-    luck: 4,
-    position: "back",
-    abilities: [
-      {
-        id: "foxfire_barrage",
-        name: "Foxfire Barrage",
-        type: "magic",
-        targeting: "any-enemy",
-        damageByRank: ["2d8+6"],
-        rank: 1,
-        cooldown: 1
-      }
-    ]
-  }
+  ArcaneGuardians_MR: ["tarot", "sabrina", "breel"],
+  ShadowStalkers_MR: ["rufus", "joey", "marvin"]
 };
 
 function cloneAbility(ab) {
@@ -169,11 +121,9 @@ function buildPlayerTeam(state) {
 
 function buildEnemyTeam(stage) {
   if (stage.type === "boss") {
-    const boss = BOSSES[stage.bossId];
-    if (boss) {
-      const b = cloneFighter(boss, { position: boss.position || "front" });
-      return [{ ...b, hp: b.maxHP }];
-    }
+    const boss = ensureFighter(stage.bossId);
+    const bossWithPosition = assignPosition(boss, 0);
+    return [{ ...bossWithPosition, hp: bossWithPosition.maxHP }];
   }
 
   const ids = ENEMY_TEAMS[stage.enemyTeamId] || [];
@@ -184,20 +134,27 @@ function buildEnemyTeam(stage) {
     mapped.push(assignPosition(ensureFighter(fillerId), mapped.length));
   }
 
-  return mapped.map(f => ({ ...applyBonuses(f, { attackBonus: 0, defenseBonus: 0 }), hp: f.maxHP }));
+  const enemyModifiers = stage.enemyModifiers || { attackBonus: 0, defenseBonus: 0 };
+  return mapped.map(f => ({ ...applyBonuses(f, enemyModifiers), hp: f.maxHP }));
 }
 
 function describeEnemy(stage) {
   if (stage.type === "boss") {
-    return BOSSES[stage.bossId]?.name || stage.bossId;
+    return GAME.fighters?.[stage.bossId]?.name || stage.bossId;
   }
   return stage.enemyTeamId;
 }
 
-let state = { ...DEFAULT_STATE };
+export function describeStage(stage, index) {
+  const prefix = `Stage ${index + 1} / ${MINI_RPG_STAGES.length}`;
+  const label = stage.label || describeEnemy(stage);
+  return `${prefix} – ${label}`;
+}
+
+let state = freshState();
 
 function resetRun() {
-  state = { ...DEFAULT_STATE, partyHP: {}, stageResults: [] };
+  state = freshState();
 }
 
 function storePartyHP(partyIds) {
@@ -221,7 +178,8 @@ function stepStage(options = {}) {
 
   const playerTeam = buildPlayerTeam(state);
   const enemyTeam = buildEnemyTeam(stage);
-  const result = simulateTeamBattle(playerTeam, enemyTeam, options.battleOptions || { log: true });
+  const battleOptions = { log: true, trackStats: true, ...(options.battleOptions || {}) };
+  const result = simulateTeamBattle(playerTeam, enemyTeam, battleOptions);
   const victory = result.winner === "A";
 
   if (victory) {
@@ -234,10 +192,24 @@ function stepStage(options = {}) {
     state.status = "failed";
   }
 
+  const stats = result.stats || {};
+  if (stats.rounds) state.runStats.totalRounds += stats.rounds;
+  if (stats.turns) state.runStats.totalTurns += stats.turns;
+  if (stats.damageByFighter) {
+    for (const [fid, dmg] of Object.entries(stats.damageByFighter)) {
+      if (state.partyIds.includes(fid)) {
+        state.runStats.damageByParty[fid] = (state.runStats.damageByParty[fid] || 0) + dmg;
+      }
+    }
+  }
+
   state.stageResults.push({
     stageId: stage.id,
     enemy: describeEnemy(stage),
     outcome: victory ? "cleared" : "failed",
+    rounds: stats.rounds || 0,
+    turns: stats.turns || 0,
+    damageByFighter: stats.damageByFighter || {},
     log: result.log
   });
 
@@ -256,7 +228,14 @@ function autoRun(options = {}) {
 
 export const MiniRPG = {
   getState() {
-    return { ...state, stageResults: [...state.stageResults] };
+    return {
+      ...state,
+      stageResults: [...state.stageResults],
+      runStats: {
+        ...state.runStats,
+        damageByParty: { ...(state.runStats?.damageByParty || {}) }
+      }
+    };
   },
   startRun(partyIds, options = {}) {
     resetRun();
@@ -271,7 +250,14 @@ export const MiniRPG = {
 
     return this.getState();
   },
+  autoRun(options = {}) {
+    return autoRun(options);
+  },
   runNextStage(options = {}) {
     return stepStage(options);
+  },
+  reset() {
+    resetRun();
+    return this.getState();
   }
 };
