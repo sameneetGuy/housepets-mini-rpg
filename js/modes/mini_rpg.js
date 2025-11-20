@@ -13,7 +13,7 @@ export const MINI_RPG_STAGES = [
     type: "team",
     enemyTeamId: "ArcaneGuardians_MR",
     label: "Arcane Guardians",
-    enemyModifiers: { attackBonus: 0, defenseBonus: 1 }
+    enemyModifiers: { attackBonus: 0, defenseBonus: 0 }
   },
   { id: "stage5", type: "boss", bossId: "spirit_dragon_boss", label: "Spirit Dragon (Boss)" },
   {
@@ -21,7 +21,7 @@ export const MINI_RPG_STAGES = [
     type: "team",
     enemyTeamId: "ShadowStalkers_MR",
     label: "Shadow Stalkers",
-    enemyModifiers: { attackBonus: 1 }
+    enemyModifiers: { attackBonus: 0 }
   },
   { id: "stage7", type: "boss", bossId: "great_kitsune_boss", label: "Great Kitsune (Boss)" },
   { id: "stage8", type: "boss", bossId: "bahamut_boss", label: "Bahamut, Warden of Skies" }
@@ -32,7 +32,7 @@ const DEFAULT_STATE = {
   currentStageIndex: 0,
   partyIds: [],
   partyHP: {},
-  modifiers: { attackBonus: 0, defenseBonus: 0 },
+  modifiers: { attackBonus: 3, defenseBonus: 3 },
   stageResults: [],
   runStats: { totalRounds: 0, totalTurns: 0, damageByParty: {} },
   // NEW: selected ability ids per fighter
@@ -63,6 +63,11 @@ const ENEMY_TEAMS = {
 
 function cloneAbility(ab) {
   return { ...ab };
+}
+
+function getAbilityPoolForFighter(id) {
+  const base = ensureFighter(id);
+  return base.abilityPool || base.abilities || [];
 }
 
 function cloneFighter(base, overrides = {}) {
@@ -215,6 +220,44 @@ function storePartyHP(partyIds) {
   }
 }
 
+function autoSpendRankUpPoints() {
+  let points = state.rankUpPoints || 0;
+  if (points <= 0) return;
+
+  state.abilityRanks = state.abilityRanks || {};
+
+  while (points > 0) {
+    let upgradedThisPass = false;
+
+    for (const fid of state.partyIds) {
+      const pool = getAbilityPoolForFighter(fid);
+      if (!pool.length) continue;
+
+      const ranks = state.abilityRanks[fid] || {};
+      const candidates = pool
+        .map(ab => {
+          const current = ranks[ab.id] ?? ab.rank ?? 1;
+          return { id: ab.id, current };
+        })
+        .filter(entry => entry.current < 3)
+        .sort((a, b) => a.current - b.current);
+
+      if (!candidates.length) continue;
+
+      const target = candidates[0];
+      ranks[target.id] = target.current + 1;
+      state.abilityRanks[fid] = ranks;
+      points -= 1;
+      upgradedThisPass = true;
+      if (points <= 0) break;
+    }
+
+    if (!upgradedThisPass) break;
+  }
+
+  state.rankUpPoints = Math.max(0, points);
+}
+
 function stepStage(options = {}) {
   if (state.status !== "in progress") {
     return { finished: true, state };
@@ -236,10 +279,11 @@ function stepStage(options = {}) {
     state.currentStageIndex += 1;
     storePartyHP(state.partyIds);
 	
-	// Don't award points after the final stage
-	if (state.currentStageIndex < MINI_RPG_STAGES.length) {
-	  state.rankUpPoints = (state.rankUpPoints || 0) + 1; // 1 point per win
-	}
+        // Don't award points after the final stage
+        if (state.currentStageIndex < MINI_RPG_STAGES.length) {
+          state.rankUpPoints = (state.rankUpPoints || 0) + 2; // 2 points per win for faster growth
+          autoSpendRankUpPoints();
+        }
 	
     if (state.currentStageIndex >= MINI_RPG_STAGES.length) {
       state.status = "completed";
