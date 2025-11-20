@@ -453,7 +453,9 @@ function wireButtons(container) {
     const loadouts = buildPartyLoadouts(party);
     MiniRPG.setPartyLoadouts(loadouts);
     MiniRPG.startRun(party, { auto, battleOptions: { trackStats: true, log: true } });
-    renderStatus(container, MiniRPG.getState());
+    const updatedState = MiniRPG.getState();
+    renderStatus(container, updatedState);
+    renderRankUpPanel(container, updatedState);
   };
 
 
@@ -478,8 +480,9 @@ function wireButtons(container) {
     const loadouts = buildPartyLoadouts(party);
     MiniRPG.setPartyLoadouts(loadouts);
     MiniRPG.startRun(party, { auto: false, battleOptions: { trackStats: true, log: true } });
-    renderStatus(container, MiniRPG.getState());
-	renderRankUpPanel(container, result.state);
+    const updatedState = MiniRPG.getState();
+    renderStatus(container, updatedState);
+    renderRankUpPanel(container, updatedState);
   });
 
 
