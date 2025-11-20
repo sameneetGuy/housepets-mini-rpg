@@ -7036,9 +7036,171 @@
 			"dallas_stabilizing_field",
 			"dallas_emergency_beam_out"
 		],
-		"coreAbilities": [
-			"dallas_logical_strike",
-			"dallas_techno_scan"
-		]
-	}
+                "coreAbilities": [
+                        "dallas_logical_strike",
+                        "dallas_techno_scan"
+                ]
+        },
+        "spirit_dragon_boss": {
+                "id": "spirit_dragon_boss",
+                "name": "Spirit Dragon",
+                "role": "Boss",
+                "roleClass": "mythic",
+                "position": "mid",
+                "maxHP": 140,
+                "attackBonus": 5,
+                "magicBonus": 7,
+                "defenseBonus": 5,
+                "speed": 6,
+                "luck": 4,
+                "resistances": [
+                        "magic"
+                ],
+                "vulnerabilities": [
+                        "radiant"
+                ],
+                "passives": {
+                        "magicDamageMultiplier": 0.5,
+                        "healPerRound": 6
+                },
+                "abilities": [
+                        {
+                                "id": "astral_tempest",
+                                "name": "Astral Tempest",
+                                "type": "magic",
+                                "category": "heavy",
+                                "rank": 1,
+                                "aoe": "enemy-team",
+                                "targeting": "any-enemy",
+                                "aiWeight": 1.4,
+                                "cooldown": 2,
+                                "hitStat": "magicBonus",
+                                "damageByRank": [
+                                        "2d12+6"
+                                ],
+                                "description": "A roaring wave of starlight that batters the entire party."
+                        },
+                        {
+                                "id": "spirit_tail_sweep",
+                                "name": "Tail Sweep",
+                                "type": "physical",
+                                "category": "medium",
+                                "rank": 1,
+                                "aoe": "enemy-team",
+                                "targeting": "front-preferred",
+                                "aiWeight": 1,
+                                "cooldown": 2,
+                                "hitStat": "attackBonus",
+                                "damageByRank": [
+                                        "2d8+4"
+                                ],
+                                "description": "A sweeping strike that bowls over the frontline."
+                        }
+                ]
+        },
+        "great_kitsune_boss": {
+                "id": "great_kitsune_boss",
+                "name": "Great Kitsune",
+                "role": "Boss",
+                "roleClass": "mythic",
+                "position": "back",
+                "maxHP": 130,
+                "attackBonus": 4,
+                "magicBonus": 8,
+                "defenseBonus": 4,
+                "speed": 8,
+                "luck": 6,
+                "passives": {
+                        "attackBuffOnHit": 1
+                },
+                "abilities": [
+                        {
+                                "id": "foxfire_storm",
+                                "name": "Foxfire Storm",
+                                "type": "magic",
+                                "category": "heavy",
+                                "rank": 1,
+                                "aoe": "enemy-team",
+                                "targeting": "any-enemy",
+                                "aiWeight": 1.5,
+                                "cooldown": 2,
+                                "hitStat": "magicBonus",
+                                "damageByRank": [
+                                        "2d10+7"
+                                ],
+                                "description": "A cascade of blue fire lashes every foe."
+                        },
+                        {
+                                "id": "illusory_veil",
+                                "name": "Illusory Veil",
+                                "type": "support",
+                                "category": "support",
+                                "rank": 1,
+                                "aoe": "team",
+                                "targeting": "team",
+                                "aiWeight": 1,
+                                "cooldown": 3,
+                                "effect": {
+                                        "evasion": 2,
+                                        "luck": 1
+                                },
+                                "duration": 2,
+                                "description": "Shimmering illusions make allies harder to pin down."
+                        }
+                ]
+        },
+        "bahamut_boss": {
+                "id": "bahamut_boss",
+                "name": "Bahamut, Sky Warden",
+                "role": "Boss",
+                "roleClass": "mythic",
+                "position": "front",
+                "maxHP": 180,
+                "attackBonus": 7,
+                "magicBonus": 6,
+                "defenseBonus": 7,
+                "speed": 5,
+                "luck": 5,
+                "resistances": [
+                        "radiant"
+                ],
+                "passives": {
+                        "physicalDamageMultiplier": 0.5,
+                        "healPerRound": 4
+                },
+                "abilities": [
+                        {
+                                "id": "mega_flare",
+                                "name": "Mega Flare",
+                                "type": "magic",
+                                "category": "heavy",
+                                "rank": 1,
+                                "aoe": "enemy-team",
+                                "targeting": "any-enemy",
+                                "aiWeight": 1.6,
+                                "cooldown": 3,
+                                "hitStat": "magicBonus",
+                                "damageByRank": [
+                                        "3d8+8"
+                                ],
+                                "description": "A cataclysmic blast of radiant fire that engulfs the party."
+                        },
+                        {
+                                "id": "tyrants_crash",
+                                "name": "Tyrant's Crash",
+                                "type": "physical",
+                                "category": "heavy",
+                                "rank": 1,
+                                "aoe": "enemy-team",
+                                "targeting": "front-preferred",
+                                "aiWeight": 1.2,
+                                "cooldown": 2,
+                                "hitStat": "attackBonus",
+                                "damageByRank": [
+                                        "2d10+6"
+                                ],
+                                "description": "Bahamut slams the front line with crushing force."
+                        }
+                ]
+        }
 }
