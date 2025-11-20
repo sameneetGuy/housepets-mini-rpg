@@ -161,7 +161,8 @@ function buildPlayerTeam(state) {
   return partyIds.map((id, idx) => {
     const base = ensureFighter(id);
     const withPosition = assignPosition(base, idx);
-    const withBonuses = applyBonuses(withPosition, modifiers);
+    const withLoadout = applyLoadoutToFighter(withPosition, state);
+    const withBonuses = applyBonuses(withLoadout, modifiers);
     const withRanks = applyAbilityRanksToFighter(withBonuses, state);
     return { ...withRanks, hp: withRanks.maxHP };
   });
@@ -290,8 +291,9 @@ function setAbilityRanks(abilityRanks) {
 }
 
 function awardRankUpPoints(amount) {
-  const n = Number.isFinite(amount) ? amount : 0;
-  state.rankUpPoints = (state.rankUpPoints || 0) + Math.max(0, n);
+  const delta = Number.isFinite(amount) ? amount : 0;
+  const next = (state.rankUpPoints || 0) + delta;
+  state.rankUpPoints = Math.max(0, next);
 }
 
 export const MiniRPG = {
@@ -320,17 +322,6 @@ export const MiniRPG = {
   
   setPartyLoadouts(loadouts) {
     setPartyLoadouts(loadouts);
-    return this.getState();
-  },
-  
-  startRun(partyIds, options = {}) {
-    resetRun();
-    state.partyIds = [...partyIds];
-    storePartyHP(state.partyIds);
-    state.status = "in progress";
-    if (options.auto) {
-      autoRun(options);
-    }
     return this.getState();
   },
   startRun(partyIds, options = {}) {
