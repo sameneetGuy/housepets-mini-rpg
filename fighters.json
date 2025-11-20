@@ -7047,10 +7047,10 @@
                 "role": "Boss",
                 "roleClass": "mythic",
                 "position": "mid",
-                "maxHP": 110,
+                "maxHP": 85,
                 "attackBonus": 3,
-                "magicBonus": 5,
-                "defenseBonus": 3,
+                "magicBonus": 4,
+                "defenseBonus": 2,
                 "speed": 5,
                 "luck": 4,
                 "resistances": [
@@ -7060,7 +7060,7 @@
                         "radiant"
                 ],
                 "passives": {
-                        "healPerRound": 3
+                        "healPerRound": 1
                 },
                 "abilities": [
                         {
@@ -7075,7 +7075,7 @@
                                 "cooldown": 2,
                                 "hitStat": "magicBonus",
                                 "damageByRank": [
-                                        "2d8+3"
+                                        "2d6+2"
                                 ],
                                 "description": "A roaring wave of starlight that batters the entire party."
                         },
@@ -7091,7 +7091,7 @@
                                 "cooldown": 2,
                                 "hitStat": "attackBonus",
                                 "damageByRank": [
-                                        "2d6+1"
+                                        "2d6"
                                 ],
                                 "description": "A sweeping strike that bowls over the frontline."
                         }
@@ -7103,11 +7103,11 @@
                 "role": "Boss",
                 "roleClass": "mythic",
                 "position": "back",
-                "maxHP": 110,
+                "maxHP": 90,
                 "attackBonus": 3,
-                "magicBonus": 6,
-                "defenseBonus": 3,
-                "speed": 6,
+                "magicBonus": 5,
+                "defenseBonus": 2,
+                "speed": 5,
                 "luck": 6,
                 "passives": {},
                 "abilities": [
@@ -7123,7 +7123,7 @@
                                 "cooldown": 2,
                                 "hitStat": "magicBonus",
                                 "damageByRank": [
-                                        "2d8+5"
+                                        "2d6+4"
                                 ],
                                 "description": "A cascade of blue fire lashes every foe."
                         },
@@ -7152,18 +7152,18 @@
                 "role": "Boss",
                 "roleClass": "mythic",
                 "position": "front",
-                "maxHP": 150,
-                "attackBonus": 6,
-                "magicBonus": 5,
-                "defenseBonus": 6,
+                "maxHP": 120,
+                "attackBonus": 5,
+                "magicBonus": 4,
+                "defenseBonus": 5,
                 "speed": 4,
                 "luck": 5,
                 "resistances": [
                         "radiant"
                 ],
                 "passives": {
-                        "physicalDamageMultiplier": 0.75,
-                        "healPerRound": 2
+                        "physicalDamageMultiplier": 0.9,
+                        "healPerRound": 1
                 },
                 "abilities": [
                         {
@@ -7178,7 +7178,7 @@
                                 "cooldown": 3,
                                 "hitStat": "magicBonus",
                                 "damageByRank": [
-                                        "3d6+6"
+                                        "2d8+4"
                                 ],
                                 "description": "A cataclysmic blast of radiant fire that engulfs the party."
                         },
@@ -7194,7 +7194,7 @@
                                 "cooldown": 2,
                                 "hitStat": "attackBonus",
                                 "damageByRank": [
-                                        "2d8+5"
+                                        "2d6+4"
                                 ],
                                 "description": "Bahamut slams the front line with crushing force."
                         }

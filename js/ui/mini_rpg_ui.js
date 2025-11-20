@@ -5,6 +5,14 @@ const CURRENT_RANKS = {}; // { [fighterId]: { [abilityId]: rankInt } }
 
 const CURRENT_LOADOUTS = {}; // { [fighterId]: string[] }
 
+function isPlayableFighter(fid) {
+  const fighter = GAME.fighters[fid];
+  if (!fighter) return false;
+  if (fid.includes("_boss")) return false;
+  if ((fighter.role || "").toLowerCase() === "boss") return false;
+  return true;
+}
+
 function ensureLoadoutForFighter(fighter) {
   const loadoutSize = fighter.loadoutSize || 4;
   const coreSet = new Set(fighter.coreAbilities || []);
@@ -400,10 +408,11 @@ function renderRunSummary(container, state) {
 
 function buildSelectors(container) {
   const slotIds = ["slot1", "slot2", "slot3"];
+  const playable = GAME.fighterOrder.filter(isPlayableFighter);
   for (const slot of slotIds) {
     const select = container.querySelector(`#${slot}`);
     select.innerHTML = '<option value="">-- choose fighter --</option>';
-    for (const fid of GAME.fighterOrder) {
+    for (const fid of playable) {
       select.insertAdjacentHTML("beforeend", buildOption(fid));
     }
   }
