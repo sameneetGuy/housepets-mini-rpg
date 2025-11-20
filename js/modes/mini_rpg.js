@@ -24,7 +24,7 @@ const DEFAULT_STATE = {
 };
 
 const ENEMY_TEAMS = {
-  K9PD: ["fido", "grape", "sasha"]
+  K9PD: ["fido", "grape", "sasha"],
   BabylonKnights: ["bailey", "keene", "sabrina"],
   ForestFerals_ELITE: ["gale", "miles", "itsuki"],
   AncientGuardians: ["tarot", "karishad", "ralph"]
