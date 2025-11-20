@@ -9,22 +9,42 @@ const SUPPORTED_SAVE_OUTCOMES = new Set(["negate", "reduced", "half"]);
  * Returns a Promise that resolves when loading is complete.
  */
 export async function loadFighters() {
+  const candidates = [
+    new URL("../../fighters.json", import.meta.url).href,
+    typeof window !== "undefined" ? new URL("fighters.json", window.location.href).href : null,
+    "/fighters.json"
+  ].filter(Boolean);
+
   let response;
-  try {
-    response = await fetch("fighters.json");
-  } catch (err) {
-    throw new Error(`Unable to reach fighters.json: ${err.message}`);
+  let lastError;
+  for (const url of candidates) {
+    try {
+      response = await fetch(url);
+    } catch (err) {
+      lastError = err;
+      continue;
+    }
+
+    if (response.ok) {
+      break;
+    }
+
+    lastError = new Error(`HTTP ${response.status}`);
+    response = null;
   }
 
-  if (!response.ok) {
-    throw new Error(`Failed to load fighters.json: ${response.status}`);
+  if (!response) {
+    const detail = lastError ? ` (${lastError.message})` : "";
+    throw new Error(`Unable to load fighters.json from any known location${detail}`);
   }
+
+  const resolvedUrl = response.url || candidates[candidates.length - 1];
 
   let json;
   try {
     json = await response.json();
   } catch (err) {
-    throw new Error(`Invalid fighters.json: ${err.message}`);
+    throw new Error(`Invalid fighters.json (${resolvedUrl}): ${err.message}`);
   }
 
   // Store raw fighters
