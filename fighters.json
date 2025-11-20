@@ -1,0 +1,178 @@
+{
+  "thunder_pup": {
+    "id": "thunder_pup",
+    "name": "Thunder Pup",
+    "maxHP": 34,
+    "attackBonus": 3,
+    "defenseBonus": 1,
+    "speed": 4,
+    "accuracy": 1,
+    "evasion": 1,
+    "luck": 1,
+    "position": "front",
+    "abilities": [
+      {
+        "id": "lightning_jab",
+        "name": "Lightning Jab",
+        "type": "physical",
+        "targeting": "front-preferred",
+        "damageByRank": ["1d8+2"],
+        "rank": 1
+      }
+    ]
+  },
+  "arcane_otter": {
+    "id": "arcane_otter",
+    "name": "Arcane Otter",
+    "maxHP": 30,
+    "attackBonus": 2,
+    "defenseBonus": 1,
+    "speed": 5,
+    "accuracy": 2,
+    "evasion": 1,
+    "luck": 2,
+    "position": "mid",
+    "abilities": [
+      {
+        "id": "spark_bolt",
+        "name": "Spark Bolt",
+        "type": "magic",
+        "targeting": "any-enemy",
+        "damageByRank": ["1d10+1"],
+        "rank": 1
+      }
+    ]
+  },
+  "shadow_fox": {
+    "id": "shadow_fox",
+    "name": "Shadow Fox",
+    "maxHP": 28,
+    "attackBonus": 4,
+    "defenseBonus": 0,
+    "speed": 6,
+    "accuracy": 2,
+    "evasion": 2,
+    "luck": 2,
+    "position": "back",
+    "abilities": [
+      {
+        "id": "shadow_strike",
+        "name": "Shadow Strike",
+        "type": "physical",
+        "targeting": "any-enemy",
+        "damageByRank": ["1d10+3"],
+        "rank": 1
+      }
+    ]
+  },
+  "brass_bunny": {
+    "id": "brass_bunny",
+    "name": "Brass Bunny",
+    "maxHP": 36,
+    "attackBonus": 2,
+    "defenseBonus": 3,
+    "speed": 3,
+    "accuracy": 1,
+    "evasion": 0,
+    "luck": 1,
+    "position": "front",
+    "abilities": [
+      {
+        "id": "steam_ram",
+        "name": "Steam Ram",
+        "type": "physical",
+        "targeting": "front-preferred",
+        "damageByRank": ["1d8+3"],
+        "rank": 1
+      }
+    ]
+  },
+  "crystal_wolf": {
+    "id": "crystal_wolf",
+    "name": "Crystal Wolf",
+    "maxHP": 32,
+    "attackBonus": 3,
+    "defenseBonus": 2,
+    "speed": 4,
+    "accuracy": 1,
+    "evasion": 1,
+    "luck": 1,
+    "position": "mid",
+    "abilities": [
+      {
+        "id": "gleaming_bite",
+        "name": "Gleaming Bite",
+        "type": "physical",
+        "targeting": "any-enemy",
+        "damageByRank": ["1d8+2"],
+        "rank": 1
+      }
+    ]
+  },
+  "ember_hawk": {
+    "id": "ember_hawk",
+    "name": "Ember Hawk",
+    "maxHP": 30,
+    "attackBonus": 3,
+    "defenseBonus": 1,
+    "speed": 5,
+    "accuracy": 2,
+    "evasion": 1,
+    "luck": 1,
+    "position": "back",
+    "abilities": [
+      {
+        "id": "flame_talon",
+        "name": "Flame Talon",
+        "type": "magic",
+        "targeting": "any-enemy",
+        "damageByRank": ["1d8+3"],
+        "rank": 1
+      }
+    ]
+  },
+  "grove_guardian": {
+    "id": "grove_guardian",
+    "name": "Grove Guardian",
+    "maxHP": 40,
+    "attackBonus": 2,
+    "defenseBonus": 3,
+    "speed": 3,
+    "accuracy": 1,
+    "evasion": 0,
+    "luck": 1,
+    "position": "front",
+    "abilities": [
+      {
+        "id": "vineslam",
+        "name": "Vine Slam",
+        "type": "physical",
+        "targeting": "front-preferred",
+        "damageByRank": ["1d8+4"],
+        "rank": 1
+      }
+    ]
+  },
+  "tidecaller": {
+    "id": "tidecaller",
+    "name": "Tidecaller",
+    "maxHP": 34,
+    "attackBonus": 2,
+    "defenseBonus": 2,
+    "speed": 4,
+    "accuracy": 2,
+    "evasion": 1,
+    "luck": 1,
+    "position": "mid",
+    "abilities": [
+      {
+        "id": "wave_crash",
+        "name": "Wave Crash",
+        "type": "magic",
+        "targeting": "any-enemy",
+        "damageByRank": ["1d10+2"],
+        "rank": 1
+      }
+    ]
+  }
+}
