@@ -24,10 +24,10 @@ const DEFAULT_STATE = {
 };
 
 const ENEMY_TEAMS = {
-  K9PD: ["thunder_pup", "brass_bunny", "shadow_fox"],
-  BabylonKnights: ["crystal_wolf", "ember_hawk", "arcane_otter"],
-  ForestFerals_ELITE: ["grove_guardian", "shadow_fox", "crystal_wolf"],
-  AncientGuardians: ["tidecaller", "grove_guardian", "ember_hawk"]
+  K9PD: ["fido", "grape", "sasha"]
+  BabylonKnights: ["bailey", "keene", "sabrina"],
+  ForestFerals_ELITE: ["gale", "miles", "itsuki"],
+  AncientGuardians: ["tarot", "karishad", "ralph"]
 };
 
 const BOSSES = {
