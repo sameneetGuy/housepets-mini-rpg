@@ -36,7 +36,10 @@ const DEFAULT_STATE = {
   stageResults: [],
   runStats: { totalRounds: 0, totalTurns: 0, damageByParty: {} },
   // NEW: selected ability ids per fighter
-  partyLoadouts: {} // { [fighterId]: string[] }
+  partyLoadouts: {}, // { [fighterId]: string[] }
+  // NEW: rank up system
+  rankUpPoints: 0,            // how many points the player can spend
+  abilityRanks: {}            // { [fighterId]: { [abilityId]: rankInt } }
 };
 
 function freshState() {
@@ -118,6 +121,24 @@ function applyLoadoutToFighter(fighter, state) {
   return { ...fighter, abilities: filtered };
 }
 
+function applyAbilityRanksToFighter(fighter, state) {
+  const rankMap = state.abilityRanks || {};
+  const fighterRanks = rankMap[fighter.id] || {};
+
+  if (!Array.isArray(fighter.abilities)) return fighter;
+
+  const newAbilities = fighter.abilities.map(ab => {
+    const desiredRank = fighterRanks[ab.id];
+    if (!desiredRank || desiredRank <= 1) {
+      return { ...ab, rank: ab.rank || 1 };
+    }
+    // cap rank at 3 for safety (fits your damageByRank arrays)
+    const capped = Math.max(1, Math.min(3, desiredRank));
+    return { ...ab, rank: capped };
+  });
+
+  return { ...fighter, abilities: newAbilities };
+}
 
 function applyBonuses(fighter, modifiers) {
   const withBonuses = { ...fighter };
@@ -141,10 +162,11 @@ function buildPlayerTeam(state) {
     const base = ensureFighter(id);
     const withPosition = assignPosition(base, idx);
     const withBonuses = applyBonuses(withPosition, modifiers);
-    const withLoadout = applyLoadoutToFighter(withBonuses, state);
-    return { ...withLoadout, hp: withLoadout.maxHP };
+    const withRanks = applyAbilityRanksToFighter(withBonuses, state);
+    return { ...withRanks, hp: withRanks.maxHP };
   });
 }
+
 
 function buildEnemyTeam(stage) {
   if (stage.type === "boss") {
@@ -212,6 +234,12 @@ function stepStage(options = {}) {
   if (victory) {
     state.currentStageIndex += 1;
     storePartyHP(state.partyIds);
+	
+	// Don't award points after the final stage
+	if (state.currentStageIndex < MINI_RPG_STAGES.length) {
+	  state.rankUpPoints = (state.rankUpPoints || 0) + 1; // 1 point per win
+	}
+	
     if (state.currentStageIndex >= MINI_RPG_STAGES.length) {
       state.status = "completed";
     }
@@ -257,6 +285,15 @@ function setPartyLoadouts(loadouts) {
   state.partyLoadouts = loadouts || {};
 }
 
+function setAbilityRanks(abilityRanks) {
+  state.abilityRanks = abilityRanks || {};
+}
+
+function awardRankUpPoints(amount) {
+  const n = Number.isFinite(amount) ? amount : 0;
+  state.rankUpPoints = (state.rankUpPoints || 0) + Math.max(0, n);
+}
+
 export const MiniRPG = {
   getState() {
     return {
@@ -268,11 +305,24 @@ export const MiniRPG = {
       }
     };
   },
-  // NEW
+  
+  // allow UI to push ranks
+  setAbilityRanks(abilityRanks) {
+    setAbilityRanks(abilityRanks);
+    return this.getState();
+  },
+
+  // optionally award rank points from UI/dev console
+  awardRankUpPoints(amount) {
+    awardRankUpPoints(amount);
+    return this.getState();
+  },
+  
   setPartyLoadouts(loadouts) {
     setPartyLoadouts(loadouts);
     return this.getState();
   },
+  
   startRun(partyIds, options = {}) {
     resetRun();
     state.partyIds = [...partyIds];

@@ -7047,10 +7047,10 @@
                 "role": "Boss",
                 "roleClass": "mythic",
                 "position": "mid",
-                "maxHP": 140,
-                "attackBonus": 5,
-                "magicBonus": 7,
-                "defenseBonus": 5,
+                "maxHP": 128,
+                "attackBonus": 4,
+                "magicBonus": 6,
+                "defenseBonus": 4,
                 "speed": 6,
                 "luck": 4,
                 "resistances": [
@@ -7060,7 +7060,6 @@
                         "radiant"
                 ],
                 "passives": {
-                        "magicDamageMultiplier": 0.5,
                         "healPerRound": 6
                 },
                 "abilities": [
@@ -7076,7 +7075,7 @@
                                 "cooldown": 2,
                                 "hitStat": "magicBonus",
                                 "damageByRank": [
-                                        "2d12+6"
+                                        "2d10+4"
                                 ],
                                 "description": "A roaring wave of starlight that batters the entire party."
                         },
@@ -7092,7 +7091,7 @@
                                 "cooldown": 2,
                                 "hitStat": "attackBonus",
                                 "damageByRank": [
-                                        "2d8+4"
+                                        "2d6+3"
                                 ],
                                 "description": "A sweeping strike that bowls over the frontline."
                         }

@@ -1,6 +1,7 @@
 // js/ui/mini_rpg_ui.js
 import { GAME } from "../core/state.js";
 import { MiniRPG, MINI_RPG_STAGES, describeStage } from "../modes/mini_rpg.js";
+const CURRENT_RANKS = {}; // { [fighterId]: { [abilityId]: rankInt } }
 
 const CURRENT_LOADOUTS = {}; // { [fighterId]: string[] }
 
@@ -44,6 +45,115 @@ function ensureLoadoutForFighter(fighter) {
   CURRENT_LOADOUTS[fighter.id] = unique;
   return { loadoutSize, coreSet, selectedIds: unique };
 }
+
+function getAbilityBaseRank(fighterId, abilityId) {
+  const fighter = GAME.fighters[fighterId];
+  if (!fighter || !Array.isArray(fighter.abilities)) return 1;
+  const ab = fighter.abilities.find(a => a.id === abilityId);
+  return (ab && ab.rank) || 1;
+}
+
+function renderRankUpPanel(container, state) {
+  const pointsDiv = container.querySelector("#rankup-points-display");
+  const rowsDiv = container.querySelector("#rankup-rows");
+  const applyButton = container.querySelector("#apply-rankups-button");
+  if (!pointsDiv || !rowsDiv || !applyButton) return;
+
+  const points = state.rankUpPoints || 0;
+  pointsDiv.textContent = `Rank-up points: ${points}`;
+
+  rowsDiv.innerHTML = "";
+
+  const party = state.partyIds || [];
+  if (!party.length) {
+    rowsDiv.textContent = "Select a party to rank up abilities.";
+    applyButton.disabled = true;
+    return;
+  }
+
+  applyButton.disabled = false;
+
+  // make sure CURRENT_RANKS has entries for current party
+  for (const fid of party) {
+    if (!CURRENT_RANKS[fid]) CURRENT_RANKS[fid] = {};
+  }
+
+  for (const fid of party) {
+    const fighter = GAME.fighters[fid];
+    if (!fighter) continue;
+
+    const row = document.createElement("div");
+    row.className = "rankup-row";
+
+    const title = document.createElement("div");
+    title.innerHTML = `<strong>${fighter.name}</strong>`;
+    row.appendChild(title);
+
+    const pool = fighter.abilityPool || fighter.abilities || [];
+    const fighterRanks = CURRENT_RANKS[fid];
+
+    pool.forEach(ab => {
+      const baseRank = getAbilityBaseRank(fid, ab.id);
+      const currentRank = fighterRanks[ab.id] || baseRank;
+
+      const item = document.createElement("div");
+      item.className = "rankup-ability";
+
+      const nameSpan = document.createElement("span");
+      nameSpan.className = "rankup-ability-name";
+      nameSpan.textContent = ab.name;
+
+      const rankSpan = document.createElement("span");
+      rankSpan.className = "rankup-rank-label";
+      rankSpan.textContent = `Rank: ${currentRank}`;
+
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "rankup-button";
+      btn.textContent = "+";
+
+      const canIncrease =
+        points > 0 && currentRank < 3; // hard cap rank 3 to match your data
+
+      btn.disabled = !canIncrease;
+
+      btn.addEventListener("click", () => {
+        const s = MiniRPG.getState();
+        if ((s.rankUpPoints || 0) <= 0) return;
+
+        const fRanks = CURRENT_RANKS[fid] || {};
+        const nextRank = (fRanks[ab.id] || baseRank) + 1;
+        if (nextRank > 3) return;
+
+        fRanks[ab.id] = nextRank;
+        CURRENT_RANKS[fid] = fRanks;
+
+        // consume 1 point in engine
+        MiniRPG.awardRankUpPoints(-1);
+        const updatedState = MiniRPG.getState();
+
+        // re-render with new numbers
+        renderRankUpPanel(container, updatedState);
+        renderStatus(container, updatedState);
+      });
+
+      item.appendChild(nameSpan);
+      item.appendChild(rankSpan);
+      item.appendChild(btn);
+      row.appendChild(item);
+    });
+
+    rowsDiv.appendChild(row);
+  }
+
+  applyButton.onclick = () => {
+    MiniRPG.setAbilityRanks(CURRENT_RANKS);
+    const updatedState = MiniRPG.getState();
+    renderRankUpPanel(container, updatedState);
+    renderStatus(container, updatedState);
+  };
+}
+
 
 function renderSlotAbilityUI(container, slotIndex) {
   const select = container.querySelector(`#slot${slotIndex}`);
@@ -358,6 +468,7 @@ function wireButtons(container) {
     }
     const result = MiniRPG.runNextStage({ battleOptions: { trackStats: true, log: true } });
     renderStatus(container, result.state);
+	renderRankUpPanel(container, result.state);
   });
 
   restartButton?.addEventListener("click", () => {
@@ -368,6 +479,7 @@ function wireButtons(container) {
     MiniRPG.setPartyLoadouts(loadouts);
     MiniRPG.startRun(party, { auto: false, battleOptions: { trackStats: true, log: true } });
     renderStatus(container, MiniRPG.getState());
+	renderRankUpPanel(container, result.state);
   });
 
 
@@ -382,5 +494,8 @@ export function initMiniRPGUI(container) {
   if (!container) return;
   buildSelectors(container);
   wireButtons(container);
-  renderStatus(container, MiniRPG.getState());
+
+  const state = MiniRPG.getState();
+  renderStatus(container, state);
+  renderRankUpPanel(container, state);
 }

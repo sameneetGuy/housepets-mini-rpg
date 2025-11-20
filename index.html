@@ -110,6 +110,50 @@
       border-top: 1px solid #e5e7eb;
       padding: 0.5rem 0;
     }
+	.rankup-panel {
+	  margin-top: 0.75rem;
+	  padding: 0.75rem;
+	  border: 1px solid #e5e7eb;
+	  border-radius: 6px;
+	  background: #f9fafb;
+	  font-size: 0.9rem;
+	}
+
+	.rankup-row {
+	  margin-top: 0.5rem;
+	  padding-top: 0.25rem;
+	  border-top: 1px dashed #d1d5db;
+	}
+
+	.rankup-ability {
+	  display: flex;
+	  align-items: center;
+	  gap: 0.5rem;
+	  margin: 0.15rem 0;
+	}
+
+	.rankup-ability-name {
+	  font-weight: 600;
+	}
+
+	.rankup-rank-label {
+	  font-size: 0.8rem;
+	  color: #4b5563;
+	}
+
+	.rankup-button {
+	  padding: 0.1rem 0.4rem;
+	  border-radius: 4px;
+	  border: 1px solid #9ca3af;
+	  cursor: pointer;
+	  font-size: 0.75rem;
+	}
+
+	.rankup-button:disabled {
+	  opacity: 0.4;
+	  cursor: default;
+	}
+
     pre {
       white-space: pre-wrap;
       background: #f9fafb;
@@ -168,7 +212,16 @@
         <div id="slot3-abilities" class="mini-rpg-ability-box"></div>
       </div>
     </div>
-
+	<div class="rankup-panel">
+	  <h3>Ability Rank Ups</h3>
+	  <p class="rankup-info">
+		Rank up your abilities to improve their damage or healing. Each rank costs 1 point.
+	  </p>
+	  <div id="rankup-points-display">Rank-up points: 0</div>
+	  <div id="rankup-rows"></div>
+	  <button id="apply-rankups-button" type="button">Apply Rank Ups</button>
+	</div>
+	
 	<p>Step 2: Start the run</p>
     <div class="button-row">
       <button class="mini-rpg-start">Start Run (Manual)</button>
