@@ -28,6 +28,36 @@
       gap: 0.5rem;
       margin-bottom: 1rem;
     }
+	.ability-loadouts {
+      margin-bottom: 1rem;
+      padding: 0.75rem;
+      border: 1px solid #e5e7eb;
+      border-radius: 6px;
+      background: #f9fafb;
+    }
+    .ability-loadout-slot {
+      margin-bottom: 0.5rem;
+    }
+    .mini-rpg-ability-box {
+      padding: 0.25rem 0;
+    }
+    .mini-rpg-abilities-info {
+      font-size: 0.85rem;
+      color: #4b5563;
+      margin-bottom: 0.25rem;
+    }
+    .mini-rpg-abilities-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+    .mini-rpg-ability-option {
+      display: flex;
+      gap: 0.5rem;
+      align-items: flex-start;
+      font-size: 0.9rem;
+    }
+
     .mini-rpg-status,
     .mini-rpg-progress,
     .mini-rpg-stage {
@@ -119,7 +149,27 @@
         <select id="slot3"></select>
       </label>
     </div>
-    <p>Step 2: Start the run</p>
+    <div class="ability-loadouts">
+      <h3>Ability loadouts</h3>
+      <p class="mini-rpg-abilities-help">
+        Choose which abilities each fighter brings. Core abilities are locked and always included.
+      </p>
+
+      <div class="ability-loadout-slot">
+        <h4>Slot 1 abilities</h4>
+        <div id="slot1-abilities" class="mini-rpg-ability-box"></div>
+      </div>
+      <div class="ability-loadout-slot">
+        <h4>Slot 2 abilities</h4>
+        <div id="slot2-abilities" class="mini-rpg-ability-box"></div>
+      </div>
+      <div class="ability-loadout-slot">
+        <h4>Slot 3 abilities</h4>
+        <div id="slot3-abilities" class="mini-rpg-ability-box"></div>
+      </div>
+    </div>
+
+	<p>Step 2: Start the run</p>
     <div class="button-row">
       <button class="mini-rpg-start">Start Run (Manual)</button>
       <button class="mini-rpg-auto">Auto-Run Demo</button>

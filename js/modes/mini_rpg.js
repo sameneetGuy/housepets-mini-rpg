@@ -34,7 +34,9 @@ const DEFAULT_STATE = {
   partyHP: {},
   modifiers: { attackBonus: 0, defenseBonus: 0 },
   stageResults: [],
-  runStats: { totalRounds: 0, totalTurns: 0, damageByParty: {} }
+  runStats: { totalRounds: 0, totalTurns: 0, damageByParty: {} },
+  // NEW: selected ability ids per fighter
+  partyLoadouts: {} // { [fighterId]: string[] }
 };
 
 function freshState() {
@@ -42,9 +44,11 @@ function freshState() {
     ...DEFAULT_STATE,
     partyHP: {},
     stageResults: [],
-    runStats: { totalRounds: 0, totalTurns: 0, damageByParty: {} }
+    runStats: { totalRounds: 0, totalTurns: 0, damageByParty: {} },
+    partyLoadouts: {}
   };
 }
+
 
 const ENEMY_TEAMS = {
   K9PD: ["fido", "grape", "sasha"],
@@ -93,6 +97,28 @@ function ensureFighter(id) {
   };
 }
 
+function applyLoadoutToFighter(fighter, state) {
+  const loadouts = state.partyLoadouts || {};
+  const selectedIds = loadouts[fighter.id];
+  if (!selectedIds || !Array.isArray(selectedIds) || !selectedIds.length) {
+    // no custom loadout – use fighter as-is
+    return fighter;
+  }
+
+  if (!Array.isArray(fighter.abilities) || !fighter.abilities.length) {
+    return fighter;
+  }
+
+  const allowed = new Set(selectedIds);
+  const filtered = fighter.abilities.filter(ab => allowed.has(ab.id));
+
+  // Safety: if filter results in empty list, keep original abilities
+  if (!filtered.length) return fighter;
+
+  return { ...fighter, abilities: filtered };
+}
+
+
 function applyBonuses(fighter, modifiers) {
   const withBonuses = { ...fighter };
   if (modifiers.attackBonus) {
@@ -115,7 +141,8 @@ function buildPlayerTeam(state) {
     const base = ensureFighter(id);
     const withPosition = assignPosition(base, idx);
     const withBonuses = applyBonuses(withPosition, modifiers);
-    return { ...withBonuses, hp: withBonuses.maxHP };
+    const withLoadout = applyLoadoutToFighter(withBonuses, state);
+    return { ...withLoadout, hp: withLoadout.maxHP };
   });
 }
 
@@ -226,6 +253,10 @@ function autoRun(options = {}) {
   return snapshots;
 }
 
+function setPartyLoadouts(loadouts) {
+  state.partyLoadouts = loadouts || {};
+}
+
 export const MiniRPG = {
   getState() {
     return {
@@ -236,6 +267,21 @@ export const MiniRPG = {
         damageByParty: { ...(state.runStats?.damageByParty || {}) }
       }
     };
+  },
+  // NEW
+  setPartyLoadouts(loadouts) {
+    setPartyLoadouts(loadouts);
+    return this.getState();
+  },
+  startRun(partyIds, options = {}) {
+    resetRun();
+    state.partyIds = [...partyIds];
+    storePartyHP(state.partyIds);
+    state.status = "in progress";
+    if (options.auto) {
+      autoRun(options);
+    }
+    return this.getState();
   },
   startRun(partyIds, options = {}) {
     resetRun();

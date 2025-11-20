@@ -2,6 +2,150 @@
 import { GAME } from "../core/state.js";
 import { MiniRPG, MINI_RPG_STAGES, describeStage } from "../modes/mini_rpg.js";
 
+const CURRENT_LOADOUTS = {}; // { [fighterId]: string[] }
+
+function ensureLoadoutForFighter(fighter) {
+  const loadoutSize = fighter.loadoutSize || 4;
+  const coreSet = new Set(fighter.coreAbilities || []);
+
+  let selected = CURRENT_LOADOUTS[fighter.id];
+  if (!selected || !selected.length) {
+    // Default: use activeAbilities or current abilities ids
+    const baseActive =
+      (fighter.activeAbilities && fighter.activeAbilities.length
+        ? fighter.activeAbilities
+        : (fighter.abilities || []).map(ab => ab.id));
+
+    selected = baseActive.slice(0, loadoutSize);
+  }
+
+  // Make sure all core abilities are present
+  for (const core of coreSet) {
+    if (!selected.includes(core)) selected.unshift(core);
+  }
+
+  // Deduplicate while preserving order
+  const unique = [];
+  const seen = new Set();
+  for (const id of selected) {
+    if (!seen.has(id)) {
+      seen.add(id);
+      unique.push(id);
+    }
+  }
+
+  // Trim to loadoutSize, but never drop core abilities
+  while (unique.length > loadoutSize) {
+    const removableIndex = unique.findIndex(id => !coreSet.has(id));
+    if (removableIndex === -1) break;
+    unique.splice(removableIndex, 1);
+  }
+
+  CURRENT_LOADOUTS[fighter.id] = unique;
+  return { loadoutSize, coreSet, selectedIds: unique };
+}
+
+function renderSlotAbilityUI(container, slotIndex) {
+  const select = container.querySelector(`#slot${slotIndex}`);
+  const box = container.querySelector(`#slot${slotIndex}-abilities`);
+  if (!box) return;
+
+  box.innerHTML = "";
+
+  const fighterId = select?.value;
+  if (!fighterId) {
+    box.textContent = "Pick a fighter to customize abilities.";
+    return;
+  }
+
+  const fighter = GAME.fighters[fighterId];
+  if (!fighter) {
+    box.textContent = "Unknown fighter.";
+    return;
+  }
+
+  const pool = fighter.abilityPool || fighter.abilities || [];
+  if (!pool.length) {
+    box.textContent = "No abilities to customize.";
+    return;
+  }
+
+  const { loadoutSize, coreSet, selectedIds } = ensureLoadoutForFighter(fighter);
+
+  const info = document.createElement("p");
+  info.className = "mini-rpg-abilities-info";
+  info.textContent = `Loadout: ${selectedIds.length}/${loadoutSize} (core abilities are locked)`;
+  box.appendChild(info);
+
+  const list = document.createElement("div");
+  list.className = "mini-rpg-abilities-list";
+
+  for (const ab of pool) {
+    const wrapper = document.createElement("label");
+    wrapper.className = "mini-rpg-ability-option";
+
+    const cb = document.createElement("input");
+    cb.type = "checkbox";
+    cb.value = ab.id;
+
+    const isCore = coreSet.has(ab.id);
+    const checked = selectedIds.includes(ab.id);
+
+    cb.checked = checked;
+    cb.disabled = isCore;
+
+    cb.addEventListener("change", () => {
+      const current = CURRENT_LOADOUTS[fighterId] || [];
+      if (cb.checked) {
+        if (current.includes(ab.id)) return;
+        if (current.length >= loadoutSize) {
+          // hard cap
+          cb.checked = false;
+          return;
+        }
+        CURRENT_LOADOUTS[fighterId] = [...current, ab.id];
+      } else {
+        if (isCore) {
+          // cannot uncheck core
+          cb.checked = true;
+          return;
+        }
+        CURRENT_LOADOUTS[fighterId] = current.filter(id => id !== ab.id);
+      }
+      info.textContent = `Loadout: ${CURRENT_LOADOUTS[fighterId].length}/${loadoutSize} (core abilities are locked)`;
+    });
+
+    const span = document.createElement("span");
+    span.innerHTML = `<strong>${ab.name}</strong> — ${ab.description || ""}`;
+
+    wrapper.appendChild(cb);
+    wrapper.appendChild(span);
+    list.appendChild(wrapper);
+  }
+
+  box.appendChild(list);
+}
+
+function buildPartyLoadouts(party) {
+  const map = {};
+  for (const id of party) {
+    const fighter = GAME.fighters[id];
+    if (!fighter) continue;
+
+    let selected = CURRENT_LOADOUTS[id];
+    if (!selected || !selected.length) {
+      const baseActive =
+        (fighter.activeAbilities && fighter.activeAbilities.length
+          ? fighter.activeAbilities
+          : (fighter.abilities || []).map(ab => ab.id));
+      const size = fighter.loadoutSize || 4;
+      selected = baseActive.slice(0, size);
+    }
+    map[id] = selected;
+  }
+  return map;
+}
+
 function buildOption(fid) {
   const fighter = GAME.fighters[fid];
   const label = fighter ? `${fighter.name} (${fid})` : fid;
@@ -148,12 +292,24 @@ function buildSelectors(container) {
   const slotIds = ["slot1", "slot2", "slot3"];
   for (const slot of slotIds) {
     const select = container.querySelector(`#${slot}`);
-    select.innerHTML = "<option value=\"\">-- choose fighter --</option>";
+    select.innerHTML = '<option value="">-- choose fighter --</option>';
     for (const fid of GAME.fighterOrder) {
       select.insertAdjacentHTML("beforeend", buildOption(fid));
     }
   }
+
+  // NEW: update ability UI when a slot changes
+  container.querySelector("#slot1")?.addEventListener("change", () =>
+    renderSlotAbilityUI(container, 1)
+  );
+  container.querySelector("#slot2")?.addEventListener("change", () =>
+    renderSlotAbilityUI(container, 2)
+  );
+  container.querySelector("#slot3")?.addEventListener("change", () =>
+    renderSlotAbilityUI(container, 3)
+  );
 }
+
 
 function getSelectedParty(container) {
   const ids = [
@@ -184,9 +340,12 @@ function wireButtons(container) {
   const startRun = auto => {
     const party = ensurePartySelected();
     if (!party) return;
+    const loadouts = buildPartyLoadouts(party);
+    MiniRPG.setPartyLoadouts(loadouts);
     MiniRPG.startRun(party, { auto, battleOptions: { trackStats: true, log: true } });
     renderStatus(container, MiniRPG.getState());
   };
+
 
   startButton?.addEventListener("click", () => startRun(false));
   autoButton?.addEventListener("click", () => startRun(true));
@@ -205,9 +364,12 @@ function wireButtons(container) {
     const state = MiniRPG.getState();
     const party = state.partyIds.length === 3 ? state.partyIds : ensurePartySelected();
     if (!party) return;
+    const loadouts = buildPartyLoadouts(party);
+    MiniRPG.setPartyLoadouts(loadouts);
     MiniRPG.startRun(party, { auto: false, battleOptions: { trackStats: true, log: true } });
     renderStatus(container, MiniRPG.getState());
   });
+
 
   changePartyButton?.addEventListener("click", () => {
     MiniRPG.reset();
