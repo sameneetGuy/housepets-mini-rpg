@@ -10,14 +10,15 @@ const SUPPORTED_SAVE_OUTCOMES = new Set(["negate", "reduced", "half"]);
  */
 export async function loadFighters() {
   let response;
+  const fightersUrl = new URL("../../fighters.json", import.meta.url);
   try {
-    response = await fetch("fighters.json");
+    response = await fetch(fightersUrl);
   } catch (err) {
-    throw new Error(`Unable to reach fighters.json: ${err.message}`);
+    throw new Error(`Unable to reach fighters.json (${fightersUrl}): ${err.message}`);
   }
 
   if (!response.ok) {
-    throw new Error(`Failed to load fighters.json: ${response.status}`);
+    throw new Error(`Failed to load fighters.json from ${fightersUrl}: ${response.status}`);
   }
 
   let json;
