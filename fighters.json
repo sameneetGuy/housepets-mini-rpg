@@ -7047,11 +7047,11 @@
                 "role": "Boss",
                 "roleClass": "mythic",
                 "position": "mid",
-                "maxHP": 128,
-                "attackBonus": 4,
-                "magicBonus": 6,
-                "defenseBonus": 4,
-                "speed": 6,
+                "maxHP": 110,
+                "attackBonus": 3,
+                "magicBonus": 5,
+                "defenseBonus": 3,
+                "speed": 5,
                 "luck": 4,
                 "resistances": [
                         "magic"
@@ -7060,7 +7060,7 @@
                         "radiant"
                 ],
                 "passives": {
-                        "healPerRound": 6
+                        "healPerRound": 3
                 },
                 "abilities": [
                         {
@@ -7075,7 +7075,7 @@
                                 "cooldown": 2,
                                 "hitStat": "magicBonus",
                                 "damageByRank": [
-                                        "2d10+4"
+                                        "2d8+3"
                                 ],
                                 "description": "A roaring wave of starlight that batters the entire party."
                         },
@@ -7091,7 +7091,7 @@
                                 "cooldown": 2,
                                 "hitStat": "attackBonus",
                                 "damageByRank": [
-                                        "2d6+3"
+                                        "2d6+1"
                                 ],
                                 "description": "A sweeping strike that bowls over the frontline."
                         }
@@ -7103,15 +7103,13 @@
                 "role": "Boss",
                 "roleClass": "mythic",
                 "position": "back",
-                "maxHP": 130,
-                "attackBonus": 4,
-                "magicBonus": 8,
-                "defenseBonus": 4,
-                "speed": 8,
+                "maxHP": 110,
+                "attackBonus": 3,
+                "magicBonus": 6,
+                "defenseBonus": 3,
+                "speed": 6,
                 "luck": 6,
-                "passives": {
-                        "attackBuffOnHit": 1
-                },
+                "passives": {},
                 "abilities": [
                         {
                                 "id": "foxfire_storm",
@@ -7125,7 +7123,7 @@
                                 "cooldown": 2,
                                 "hitStat": "magicBonus",
                                 "damageByRank": [
-                                        "2d10+7"
+                                        "2d8+5"
                                 ],
                                 "description": "A cascade of blue fire lashes every foe."
                         },
@@ -7140,8 +7138,8 @@
                                 "aiWeight": 1,
                                 "cooldown": 3,
                                 "effect": {
-                                        "evasion": 2,
-                                        "luck": 1
+                                        "evasion": 1,
+                                        "luck": 0
                                 },
                                 "duration": 2,
                                 "description": "Shimmering illusions make allies harder to pin down."
@@ -7154,18 +7152,18 @@
                 "role": "Boss",
                 "roleClass": "mythic",
                 "position": "front",
-                "maxHP": 180,
-                "attackBonus": 7,
-                "magicBonus": 6,
-                "defenseBonus": 7,
-                "speed": 5,
+                "maxHP": 150,
+                "attackBonus": 6,
+                "magicBonus": 5,
+                "defenseBonus": 6,
+                "speed": 4,
                 "luck": 5,
                 "resistances": [
                         "radiant"
                 ],
                 "passives": {
-                        "physicalDamageMultiplier": 0.5,
-                        "healPerRound": 4
+                        "physicalDamageMultiplier": 0.75,
+                        "healPerRound": 2
                 },
                 "abilities": [
                         {
@@ -7180,7 +7178,7 @@
                                 "cooldown": 3,
                                 "hitStat": "magicBonus",
                                 "damageByRank": [
-                                        "3d8+8"
+                                        "3d6+6"
                                 ],
                                 "description": "A cataclysmic blast of radiant fire that engulfs the party."
                         },
@@ -7196,7 +7194,7 @@
                                 "cooldown": 2,
                                 "hitStat": "attackBonus",
                                 "damageByRank": [
-                                        "2d10+6"
+                                        "2d8+5"
                                 ],
                                 "description": "Bahamut slams the front line with crushing force."
                         }
