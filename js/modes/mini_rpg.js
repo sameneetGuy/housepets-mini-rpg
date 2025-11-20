@@ -13,7 +13,7 @@ export const MINI_RPG_STAGES = [
     type: "team",
     enemyTeamId: "ArcaneGuardians_MR",
     label: "Arcane Guardians",
-    enemyModifiers: { attackBonus: 1, defenseBonus: 1 }
+    enemyModifiers: { attackBonus: 0, defenseBonus: 1 }
   },
   { id: "stage5", type: "boss", bossId: "spirit_dragon_boss", label: "Spirit Dragon (Boss)" },
   {
@@ -21,7 +21,7 @@ export const MINI_RPG_STAGES = [
     type: "team",
     enemyTeamId: "ShadowStalkers_MR",
     label: "Shadow Stalkers",
-    enemyModifiers: { attackBonus: 2 }
+    enemyModifiers: { attackBonus: 1 }
   },
   { id: "stage7", type: "boss", bossId: "great_kitsune_boss", label: "Great Kitsune (Boss)" },
   { id: "stage8", type: "boss", bossId: "bahamut_boss", label: "Bahamut, Warden of Skies" }
