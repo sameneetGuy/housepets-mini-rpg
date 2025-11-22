@@ -204,7 +204,15 @@ export function describeStage(stage, index) {
 let state = freshState();
 
 function resetRun() {
+  // Preserve player selections that should persist between runs
+  const preservedLoadouts = state.partyLoadouts || {};
+  const preservedAbilityRanks = state.abilityRanks || {};
+  const preservedRankUpPoints = state.rankUpPoints || 0;
+
   state = freshState();
+  state.partyLoadouts = preservedLoadouts;
+  state.abilityRanks = preservedAbilityRanks;
+  state.rankUpPoints = preservedRankUpPoints;
 }
 
 function storePartyHP(partyIds) {
